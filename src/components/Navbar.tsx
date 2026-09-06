@@ -4,17 +4,19 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Labs', href: '#labs' },
-    { label: 'Studio', href: '#studio' },
-    { label: 'Openings', href: '#openings' },
-    { label: 'Shop', href: '#shop' },
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Experiences', href: '#experiences' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Tests', href: '#tests' },
   ];
 
   return (
     <>
       <header
         id="main-navbar"
-        className="fixed top-0 left-0 w-full z-20 px-5 sm:px-8 py-4 sm:py-5 flex row justify-between items-center"
+        className="fixed top-0 left-0 w-full z-50 px-5 sm:px-8 py-4 sm:py-5 flex row justify-between items-center"
       >
         {/* Logo (left) */}
         <div id="navbar-logo" className="flex items-center gap-3">
@@ -36,7 +38,7 @@ export function Navbar() {
         {/* Desktop nav links (center, hidden below md) */}
         <nav
           id="desktop-nav-links"
-          className="hidden md:flex flex-row items-center gap-1 text-[23px] text-white"
+          className="hidden md:flex flex-row items-center gap-1 text-[18px] lg:text-[21px] xl:text-[23px] text-white"
           aria-label="Main Navigation"
         >
           {navLinks.map((link, index) => (
@@ -68,7 +70,7 @@ export function Navbar() {
           id="mobile-hamburger-btn"
           type="button"
           onClick={() => setMobileMenuOpen((prev) => !prev)}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] z-20 cursor-pointer focus:outline-none"
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] z-50 cursor-pointer focus:outline-none"
           aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
           aria-expanded={mobileMenuOpen}
         >
@@ -90,10 +92,10 @@ export function Navbar() {
         </button>
       </header>
 
-      {/* Mobile overlay (z-index: 9) */}
+      {/* Mobile overlay (z-index: 40, above hero z-10 so hero text is completely covered and links are fully clickable) */}
       <div
         id="mobile-overlay-menu"
-        className={`fixed inset-0 z-[9] bg-black/90 backdrop-blur-md flex flex-col justify-center items-start px-8 gap-8 md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-black/95 backdrop-blur-md flex flex-col justify-center items-start px-8 gap-8 md:hidden transition-opacity duration-300 ${
           mobileMenuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -105,7 +107,7 @@ export function Navbar() {
             key={link.label}
             href={link.href}
             onClick={() => setMobileMenuOpen(false)}
-            className="text-[32px] font-medium text-white hover:opacity-60 transition-opacity"
+            className="text-[32px] font-medium text-white hover:opacity-60 transition-opacity py-2 w-full block cursor-pointer select-auto"
           >
             {link.label}
           </a>
@@ -113,7 +115,7 @@ export function Navbar() {
         <a
           href="#contact"
           onClick={() => setMobileMenuOpen(false)}
-          className="text-[32px] font-medium text-white underline underline-offset-4 hover:opacity-60 transition-opacity mt-4"
+          className="text-[32px] font-medium text-white underline underline-offset-4 hover:opacity-60 transition-opacity mt-4 py-2 w-full block cursor-pointer select-auto"
         >
           Get in touch
         </a>

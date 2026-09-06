@@ -1,10 +1,11 @@
 import { BackgroundVideo } from './components/BackgroundVideo';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { AboutSection } from './components/AboutSection';
 
 export default function App() {
   return (
-    <main className="relative w-full h-screen overflow-hidden bg-black text-white select-none">
+    <main className="relative w-full min-h-screen bg-black text-white selection:bg-white selection:text-black">
       {/* Background Video controlled by mouse scrub */}
       <BackgroundVideo />
 
@@ -13,7 +14,11 @@ export default function App() {
 
       {/* Main Hero Section */}
       <HeroSection />
+
+      {/* About Me Section directly below Hero */}
+      <AboutSection />
     </main>
   );
 }
+
 

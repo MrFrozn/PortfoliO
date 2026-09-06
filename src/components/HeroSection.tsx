@@ -1,32 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
 export function HeroSection() {
-  const [pillsVisible, setPillsVisible] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const { displayed, done } = useTypewriter(
-    'Glad you stopped in. Good taste tends to find us. Now, what are we building?',
+    'Welcome to my porfolio, hope you will enjoy it !',
     38,
     600
   );
 
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setPillsVisible(true);
-    }, 400);
-
-    return () => window.clearTimeout(timer);
-  }, []);
-
   const handleCopyEmail = async () => {
+    const email = 'maxencefontainegros@ik.me';
     try {
       if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText('hello@mainframe.co');
+        await navigator.clipboard.writeText(email);
       } else {
         // Fallback for older browsers / iframe restrictions
         const textArea = document.createElement('textarea');
-        textArea.value = 'hello@mainframe.co';
+        textArea.value = email;
         textArea.style.position = 'fixed';
         textArea.style.opacity = '0';
         document.body.appendChild(textArea);
@@ -42,47 +34,32 @@ export function HeroSection() {
     }
   };
 
-  const handlePillClick = (label: string) => {
-    const subjectMap: Record<string, string> = {
-      'Pitch us an idea': 'Project Inquiry / Pitch',
-      'Come work here': 'Job Inquiry / Application',
-      'Send a brief hello': 'Hello from Mainframe',
-      'See how we operate': 'Mainframe Operations & Process Inquiry',
-    };
-    const subject = subjectMap[label] || 'Mainframe Inquiry';
-    window.location.href = `mailto:hello@mainframe.co?subject=${encodeURIComponent(subject)}`;
-  };
-
   return (
     <section
-      id="hero-section"
-      className="relative z-10 h-screen w-full flex flex-col justify-end pb-12 md:justify-center md:pb-0 px-5 sm:px-8 md:px-10 overflow-hidden"
+      id="home"
+      className="relative z-10 h-screen w-full flex flex-col justify-between pt-28 sm:pt-32 pb-8 sm:pb-10 px-5 sm:px-8 md:px-10 overflow-hidden animate-fade-in"
     >
-      <div id="hero-content-container" className="max-w-2xl relative z-10">
-        {/* 1. Blurred intro label */}
-        <div
-          id="hero-blurred-label"
-          className="pointer-events-none select-none mb-6 text-white opacity-80"
+      {/* Central / Upper Hero Content */}
+      <div id="hero-content-container" className="max-w-3xl relative z-10 my-auto">
+        {/* Big Letters Name replacing blurred intro text */}
+        <h1
+          id="hero-author-name"
+          className="text-white font-medium tracking-tight mb-4 sm:mb-6 select-none"
           style={{
-            fontSize: 'clamp(20px, 4vw, 26px)',
-            lineHeight: 1.3,
-            fontWeight: 400,
-            filter: 'blur(4px)',
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'clamp(36px, 6.5vw, 68px)',
+            lineHeight: 1.05,
+            letterSpacing: '-0.03em',
           }}
         >
-          Hey there, meet A.R.I.A,
-          <br />
-          Mainframe's Adaptive Response Interface Agent
-        </div>
+          Maxence <span className="whitespace-nowrap">FONTAINE&nbsp;GROS</span>
+        </h1>
 
-        {/* 2. Typewriter text */}
-        <div className="mb-8 min-h-[80px] sm:min-h-[100px]">
+        {/* Typewriter text */}
+        <div className="min-h-[50px] sm:min-h-[70px]">
           <p
             id="hero-typewriter-text"
-            className="text-white text-[20px] sm:text-[26px] leading-[1.35] inline"
-            style={{
-              fontWeight: 400,
-            }}
+            className="text-white/90 text-[20px] sm:text-[26px] leading-[1.35] inline font-normal"
           >
             {displayed}
           </p>
@@ -94,82 +71,56 @@ export function HeroSection() {
             />
           )}
         </div>
+      </div>
 
-        {/* 3. Action pill buttons */}
-        <div
-          id="hero-action-pills"
-          className="flex flex-wrap gap-2"
-          style={{
-            opacity: pillsVisible ? 1 : 0,
-            transform: pillsVisible ? 'translateY(0)' : 'translateY(8px)',
-            transition: 'opacity 0.4s ease, transform 0.4s ease',
-          }}
+      {/* Bottom Left Button: Reach me */}
+      <div id="hero-bottom-bar" className="relative z-10 flex justify-start items-center">
+        <button
+          id="copy-email-pill"
+          type="button"
+          onClick={handleCopyEmail}
+          title={copied ? 'Copied to clipboard!' : 'Click to copy email'}
+          className="group flex items-center gap-3 border border-white text-white bg-transparent px-5 py-2.5 rounded-full text-[15px] sm:text-[16px] hover:bg-white hover:text-black transition-colors duration-200 whitespace-nowrap cursor-pointer relative backdrop-blur-xs"
         >
-          {/* 4 White pill buttons */}
-          {[
-            'Pitch us an idea',
-            'Come work here',
-            'Send a brief hello',
-            'See how we operate',
-          ].map((label) => (
-            <button
-              key={label}
-              type="button"
-              onClick={() => handlePillClick(label)}
-              className="bg-white text-black px-5 py-2 rounded-full text-[15px] hover:bg-black hover:text-white border border-black/10 transition-colors duration-200 whitespace-nowrap cursor-pointer"
-            >
-              {label}
-            </button>
-          ))}
+          <span className="underline underline-offset-2">
+            Reach me : maxencefontainegros@ik.me
+          </span>
 
-          {/* 1 Outline pill button with copy icon */}
-          <button
-            id="copy-email-pill"
-            type="button"
-            onClick={handleCopyEmail}
-            title={copied ? 'Copied to clipboard!' : 'Click to copy email'}
-            className="group flex items-center gap-3 border border-white text-white bg-transparent px-5 py-2 rounded-full text-[15px] hover:bg-white hover:text-black transition-colors duration-200 whitespace-nowrap cursor-pointer relative"
+          {/* Copy icon */}
+          <svg
+            className="w-3.5 h-3.5 flex-shrink-0 transition-transform duration-150 group-active:scale-90"
+            width="14"
+            height="14"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
-            <span className="underline underline-offset-2">
-              Reach us: hello@mainframe.co
+            <rect
+              x="1"
+              y="3"
+              width="7"
+              height="8"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+            <rect
+              x="4"
+              y="1"
+              width="7"
+              height="8"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+          </svg>
+
+          {/* Subtle "Copied!" floating indicator */}
+          {copied && (
+            <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 text-[11px] bg-white text-black rounded font-medium shadow-lg pointer-events-none transition-opacity duration-200">
+              Copied!
             </span>
-
-            {/* Copy icon */}
-            <svg
-              className="w-3 h-3 flex-shrink-0 transition-transform duration-150 group-active:scale-90"
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <rect
-                x="1"
-                y="3"
-                width="7"
-                height="8"
-                stroke="currentColor"
-                strokeWidth="1"
-              />
-              <rect
-                x="4"
-                y="1"
-                width="7"
-                height="8"
-                stroke="currentColor"
-                strokeWidth="1"
-              />
-            </svg>
-
-            {/* Subtle "Copied!" floating indicator */}
-            {copied && (
-              <span className="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[11px] bg-white text-black rounded font-medium shadow-md pointer-events-none transition-opacity duration-200">
-                Copied!
-              </span>
-            )}
-          </button>
-        </div>
+          )}
+        </button>
       </div>
     </section>
   );
