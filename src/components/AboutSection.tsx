@@ -132,19 +132,10 @@ export function AboutSection({ cvUrl = '/cv.pdf' }: AboutSectionProps) {
 
             <div className="flex flex-row justify-between items-baseline gap-4">
               <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wider font-medium">
-                Statut
-              </span>
-              <span className="text-white/90 text-right">
-                Alternance / Stage disponible
-              </span>
-            </div>
-
-            <div className="flex flex-row justify-between items-baseline gap-4">
-              <span className="text-white/50 text-xs sm:text-sm uppercase tracking-wider font-medium">
                 Langues
               </span>
               <span className="text-white/90 text-right">
-                Français (Natif), Anglais (Technique)
+                Français (Natif), Anglais (B2+)
               </span>
             </div>
           </div>

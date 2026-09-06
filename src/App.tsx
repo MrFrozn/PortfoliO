@@ -2,6 +2,8 @@ import { BackgroundVideo } from './components/BackgroundVideo';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
+import { ExperiencesSection } from './components/ExperiencesSection';
+import { SkillsSection } from './components/SkillsSection';
 
 export default function App() {
   return (
@@ -17,6 +19,12 @@ export default function App() {
 
       {/* About Me Section directly below Hero */}
       <AboutSection />
+
+      {/* Experiences & Path Section */}
+      <ExperiencesSection />
+
+      {/* Skills & Certifications Section */}
+      <SkillsSection />
     </main>
   );
 }
