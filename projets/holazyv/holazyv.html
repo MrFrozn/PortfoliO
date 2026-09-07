@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet HoLazyV — Branding & E-Commerce — Maxence FONTAINE GROS</title>
+    <meta
+      name="description"
+      content="Création de boutique en ligne, identité visuelle complète, branding vectoriel et design e-commerce pour le projet HoLazyV."
+    />
+    <!-- Preconnect origins and Preload critical background image for LCP -->
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind configuration & Non-blocking deferred CDN script -->
+    <script>
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              warmMuted: '#121110',
+            },
+            keyframes: {
+              fadeInPage: {
+                '0%': { opacity: '0', transform: 'translateY(16px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-in': 'fadeInPage 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts matching portfolio -->
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+      type="text/css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+      }
+      body {
+        font-family: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+        background-color: #0b0a09;
+        color: #ffffff;
+        -webkit-overflow-scrolling: touch;
+      }
+      .font-heading {
+        font-family: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#0b0a09] text-white selection:bg-white selection:text-black antialiased relative">
+    <!-- Dark warm muted backdrop & background matching hero and about sections -->
+    <div
+      class="fixed inset-0 z-0 bg-cover bg-center opacity-25 pointer-events-none"
+      style="background-image: url('/bg%20site2.png');"
+    ></div>
+
+    <!-- Radial soft vignette overlay -->
+    <div class="fixed inset-0 z-0 bg-radial from-transparent via-black/40 to-black/85 pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- =========================================================================
+           TOP NAVIGATION BAR
+           ========================================================================= -->
+      <header
+        id="project-navbar"
+        class="sticky top-0 z-40 w-full px-6 sm:px-12 py-5 flex items-center justify-between backdrop-blur-sm md:backdrop-blur-md bg-black/40 border-b border-white/10"
+      >
+        <!-- Logo Brand -->
+        <a href="../../index.html" class="flex items-center gap-2 group">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading">
+            Mainframe®
+          </span>
+          <span class="text-2xl text-white opacity-80 leading-none group-hover:rotate-45 transition-transform duration-300">
+            ✳︎
+          </span>
+        </a>
+
+        <!-- Back to Portfolio Pill-Button -->
+        <a
+          id="btn-back-portfolio"
+          href="../../index.html#projects"
+          class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Portfolio</span>
+        </a>
+      </header>
+
+      <!-- =========================================================================
+           HERO HEADER SECTION
+           ========================================================================= -->
+      <section class="w-full px-6 sm:px-12 pt-16 sm:pt-24 pb-16 sm:pb-20 max-w-6xl mx-auto animate-fade-in text-left">
+        <div class="space-y-6 max-w-3xl">
+          <!-- Small Category Eyebrow -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs font-mono uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+            Branding · E-Commerce & Direction Artistique
+          </div>
+
+          <!-- Hero Title -->
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] font-heading"
+          >
+            Projet HoLazyV
+          </h1>
+
+          <!-- Intro Paragraph -->
+          <p class="text-lg sm:text-xl text-white/75 leading-relaxed font-normal">
+            Création de boutique en ligne, identité visuelle complète, branding vectoriel et design e-commerce pour le projet HoLazyV. Une expérience moderne axée sur l'originalité graphique et l'ergonomie d'achat.
+          </p>
+
+          <!-- Button Group -->
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <!-- Button 1: Presentation PDF (Opens in new tab without forced download) -->
+            <a
+              id="btn-holazyv-pdf"
+              href="holazyv-presentation.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-xl select-none"
+            >
+              <span>Voir le document du projet (PDF)</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+
+            <!-- Button 2: Return to Projects -->
+            <a
+              id="btn-retour-projets"
+              href="../../index.html#projects"
+              class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm sm:text-base font-medium transition-all duration-200 active:scale-95 select-none"
+            >
+              <span>Retour aux projets</span>
+              <svg class="w-4 h-4 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content Container -->
+      <main class="w-full px-6 sm:px-12 pb-24 sm:pb-32 max-w-6xl mx-auto space-y-16 sm:space-y-24">
+
+        <!-- =====================================================================
+             CONTENT GRID (Branding, Typography, Vectors, Liquid Effects)
+             ===================================================================== -->
+        <section class="space-y-8">
+          <div class="space-y-3 pb-4 border-b border-white/10">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading">
+              Direction Artistique & Conception
+            </h2>
+            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+              Le projet HoLazyV est né de la volonté de fusionner une esthétique streetwear underground avec une boutique en ligne haut de gamme et parfaitement fluide.
+            </p>
+          </div>
+
+          <!-- 2x2 Grid of Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <!-- Card 1: Branding Concept -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Compass / Creative Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                  </svg>
+                </div>
+
+                <span class="text-xs font-mono uppercase tracking-widest text-indigo-400">Identité & ADN</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                  Concept de Marque (Branding)
+                </h3>
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                  Définition des valeurs fondamentales de la marque : décontraction assumée, culture urbaine contemporaine et exclusivité. Création de la charte graphique globale comprenant le logotype, les déclinaisons monochrome et couleurs, ainsi que le packaging digital.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                Logotype · Moodboard · Charte graphique
+              </div>
+            </article>
+
+            <!-- Card 2: Typography Choices -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Type Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                    <line x1="9" y1="20" x2="15" y2="20"></line>
+                    <line x1="12" y1="4" x2="12" y2="20"></line>
+                  </svg>
+                </div>
+
+                <span class="text-xs font-mono uppercase tracking-widest text-amber-400">Typographie</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                  Choix Typographiques
+                </h3>
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                  Sélection minutieuse de polices à fort impact visuel : des titrages display imposants et expressifs associés à des polices de corps géométriques sans-serif hautement lisibles sur mobile comme sur desktop pour maximiser le taux de conversion.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                Hiérarchie visuelle · Display Fonts · Ratios optiques
+              </div>
+            </article>
+
+            <!-- Card 3: Vector Graphics -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Vector / Pen Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 19 7-7 3 3-7 7-3-3z"></path>
+                    <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                    <path d="m2 2 7.586 7.586"></path>
+                    <circle cx="11" cy="11" r="2"></circle>
+                  </svg>
+                </div>
+
+                <span class="text-xs font-mono uppercase tracking-widest text-pink-400">Illustration & Vector</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                  Graphismes Vectoriels
+                </h3>
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                  Réalisation de tracés vectoriels originaux sous Kittle : icônes personnalisées pour la boutique, motifs de broderie/sérigraphie, badges de certification et éléments d'habillage responsive sans perte de résolution.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                Figma · SVG optimisés
+              </div>
+            </article>
+
+            <!-- Card 4: Liquid Dripping Effects -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Droplet / Liquid Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path>
+                  </svg>
+                </div>
+
+                <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Effets Visuels & Shaders</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                  Effets Astronomiques
+                </h3>
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                  Signature visuelle distinctive du projet : mise au point d'une ambiance astronomique appliqués aux éléments d'arrière-plan, conférant une atmosphère futuriste et dynamique à la vitrine e-commerce.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                Spacey Atmosphere · Textures · Street-wear · Future
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="mt-auto w-full py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-mono">
+        <p>© 2026 - 2027 Projet HoLazyV · Direction Artistique & E-commerce · Maxence FONTAINE GROS</p>
+      </footer>
+    </div>
+  </body>
+</html>

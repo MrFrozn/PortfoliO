@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Épreuve E6 — Cybersécurité & Veille Technologique — Maxence FONTAINE GROS</title>
+    <meta
+      name="description"
+      content="Dossier d'épreuve E6 du BTS SIO SISR : Projets d'administration d'infrastructure sécurisée, audits, durcissement et démarche de veille technologique sur le modèle Zero Trust (ZTNA)."
+    />
+
+    <!-- Preconnect origins and Preload critical background image for LCP -->
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind configuration & Non-blocking deferred CDN script -->
+    <script>
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              warmMuted: '#121110',
+              primaryBrown: '#7A553A',
+              darkBrown: '#382A22',
+              hoverBrown: '#4A382E',
+            },
+            keyframes: {
+              fadeInPage: {
+                '0%': { opacity: '0', transform: 'translateY(14px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-in': 'fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts matching portfolio -->
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+      type="text/css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+      }
+      body {
+        font-family: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+        background-color: #0b0a09;
+        color: #ffffff;
+        -webkit-overflow-scrolling: touch;
+      }
+      .font-heading {
+        font-family: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0b0a09;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(122, 85, 58, 0.4);
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(122, 85, 58, 0.7);
+      }
+
+      /* =========================================================================
+         SIDEBAR STYLES: COLLAPSED & EXPANDED STATES
+         ========================================================================= */
+      #sidebar {
+        transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Collapsed State (#sidebar.collapsed or #sidebar.w-16) */
+      #sidebar.collapsed,
+      #sidebar.w-16 {
+        width: 4.5rem !important;
+        min-width: 4.5rem !important;
+        max-width: 4.5rem !important;
+      }
+      @media (min-width: 1024px) {
+        #sidebar.collapsed,
+        #sidebar.lg\:w-16 {
+          width: 4.5rem !important;
+          min-width: 4.5rem !important;
+          max-width: 4.5rem !important;
+        }
+      }
+
+      /* When collapsed: hide ALL text, category titles, badges, and headers */
+      #sidebar.collapsed .sidebar-text,
+      #sidebar.collapsed #sidebar-expanded-title,
+      #sidebar.collapsed #sidebar-count,
+      #sidebar.collapsed .sidebar-category-header,
+      #sidebar.collapsed #sidebar-footer {
+        display: none !important;
+      }
+
+      /* Header in collapsed state: center the toggle button */
+      #sidebar.collapsed #sidebar-header {
+        justify-content: center !important;
+        padding-bottom: 0.75rem;
+      }
+
+      /* Inner container padding in collapsed state */
+      #sidebar.collapsed #sidebar-inner {
+        padding: 1.25rem 0.5rem !important;
+        overflow: hidden;
+      }
+
+      /* Task list container in collapsed state */
+      #sidebar.collapsed #sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      /* Circular icon buttons when collapsed */
+      #sidebar.collapsed .sidebar-jump-btn {
+        width: 2.5rem !important; /* 40px = w-10 */
+        height: 2.5rem !important; /* 40px = h-10 */
+        min-width: 2.5rem !important;
+        max-width: 2.5rem !important;
+        border-radius: 9999px !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 0 !important;
+        margin: 0.35rem auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: none !important;
+      }
+
+      #sidebar.collapsed .sidebar-jump-btn:hover {
+        background-color: rgba(122, 85, 58, 0.5) !important;
+        border-color: rgba(122, 85, 58, 0.8) !important;
+      }
+
+      #sidebar.collapsed .sidebar-jump-btn .task-badge {
+        width: 100% !important;
+        height: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        font-size: 0.875rem !important; /* text-sm */
+        font-weight: 700 !important; /* font-bold */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #ffffff !important;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#0b0a09] text-white selection:bg-[#7A553A] selection:text-white antialiased relative">
+    <!-- Dark warm muted backdrop & background matching hero and exams sections -->
+    <div
+      class="fixed inset-0 z-0 bg-cover bg-center opacity-25 pointer-events-none"
+      style="background-image: url('/bg%20site2.png');"
+    ></div>
+
+    <!-- Radial soft vignette overlay -->
+    <div class="fixed inset-0 z-0 bg-radial from-transparent via-black/40 to-black/90 pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- =========================================================================
+           1. SIMPLIFIED TOP HEADER
+           ========================================================================= -->
+      <header
+        id="navbar-e6"
+        class="sticky top-0 z-40 w-full px-6 sm:px-10 md:px-14 py-4 flex items-center justify-between backdrop-blur-sm md:backdrop-blur-md bg-black/40 border-b border-[#7A553A]/20 select-none"
+      >
+        <!-- Logo Brand -->
+        <a href="index.html#home" class="flex items-center gap-2 group cursor-pointer" title="Retour à l'accueil">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading">
+            Mainframe®
+          </span>
+          <span class="text-2xl text-[#7A553A] group-hover:text-amber-300 leading-none group-hover:rotate-45 transition-transform duration-300">
+            ✳︎
+          </span>
+        </a>
+
+        <!-- Right: Single pill-style button "← Retour portfolio" pointing to index.html#exams -->
+        <a
+          id="btn-back-portfolio"
+          href="index.html#exams"
+          class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 rounded-full bg-[#382A22] hover:bg-[#4A382E] border border-[#7A553A]/40 hover:border-[#7A553A]/70 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-lg backdrop-blur-sm md:backdrop-blur-md cursor-pointer group"
+        >
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5 text-white/80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>← Retour portfolio</span>
+        </a>
+      </header>
+
+      <!-- =========================================================================
+           2. MAIN TWO-COLUMN DASHBOARD LAYOUT
+           ========================================================================= -->
+      <main class="w-full max-w-[94rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-12 flex-1">
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start transition-all duration-300">
+          
+          <!-- ===================================================================
+               LEFT COLLAPSIBLE SIDEBAR ("Tableau de bord - E6")
+               =================================================================== -->
+          <aside
+            id="sidebar"
+            class="w-full lg:w-72 shrink-0 transition-all duration-300 ease-in-out lg:sticky lg:top-24 space-y-6 select-none"
+            aria-expanded="true"
+          >
+            <div id="sidebar-inner" class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/25 p-5 shadow-2xl space-y-5 transition-all duration-300">
+              
+              <!-- Sidebar Header -->
+              <div id="sidebar-header" class="flex items-center justify-between pb-4 border-b border-white/10 gap-2">
+                <div id="sidebar-expanded-title" class="flex items-center gap-2 min-w-0">
+                  <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                  <h2 class="text-base font-bold text-white font-heading whitespace-nowrap">Tableau de bord E6</h2>
+                  <span id="sidebar-count" class="px-2 py-0.5 text-xs bg-[#7A553A]/40 text-amber-200 border border-[#7A553A]/40 rounded-full font-mono shrink-0">
+                    6 modules
+                  </span>
+                </div>
+
+                <!-- Sidebar Toggle Button -->
+                <button
+                  type="button"
+                  id="sidebarToggle"
+                  class="w-8 h-8 rounded-xl bg-white/10 hover:bg-[#7A553A]/40 border border-white/20 flex items-center justify-center text-white font-bold transition-all duration-200 active:scale-95 cursor-pointer shadow-sm shrink-0"
+                  title="Réduire / Agrandir la barre latérale"
+                  aria-label="Basculer la barre latérale"
+                >
+                  <span id="toggleIcon" class="leading-none select-none text-base">‹</span>
+                </button>
+              </div>
+
+              <!-- Sidebar Navigation Links (Divided into 2 Categories) -->
+              <div class="space-y-4" id="sidebar-nav">
+                <!-- Category 1: Projet SISR & Cybersécurité -->
+                <div class="space-y-2">
+                  <div class="sidebar-category-header flex items-center gap-2 px-2 text-[11px] font-mono uppercase tracking-wider text-amber-300/80 font-semibold">
+                    <span>🛡️ Projet SISR & Cyber</span>
+                  </div>
+                  <div class="space-y-1.5" id="sidebar-projects-list">
+                    <!-- Injected dynamically or pre-rendered -->
+                    <button
+                      type="button"
+                      data-sidebar-target="card-firewall"
+                      data-tab="projects"
+                      data-modal-type="project"
+                      data-index="0"
+                      class="sidebar-jump-btn w-full px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-[#7A553A]/30 border border-white/10 hover:border-[#7A553A]/50 transition-all text-left flex items-center justify-between gap-3 group cursor-pointer"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="task-badge w-6 h-6 rounded-lg bg-red-500/20 text-red-300 border border-red-500/30 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          P1
+                        </span>
+                        <span class="sidebar-text text-xs sm:text-sm text-white/80 group-hover:text-white truncate font-medium">
+                          Firewall & FortiAnalyzer
+                        </span>
+                      </div>
+                      <span class="sidebar-text text-xs text-white/40 group-hover:text-white transition-all shrink-0">↗</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      data-sidebar-target="card-hardening"
+                      data-tab="projects"
+                      data-modal-type="project"
+                      data-index="1"
+                      class="sidebar-jump-btn w-full px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-[#7A553A]/30 border border-white/10 hover:border-[#7A553A]/50 transition-all text-left flex items-center justify-between gap-3 group cursor-pointer"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="task-badge w-6 h-6 rounded-lg bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          P2
+                        </span>
+                        <span class="sidebar-text text-xs sm:text-sm text-white/80 group-hover:text-white truncate font-medium">
+                          Hardening Serveurs AD/Linux
+                        </span>
+                      </div>
+                      <span class="sidebar-text text-xs text-white/40 group-hover:text-white transition-all shrink-0">↗</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      data-sidebar-target="card-vlans"
+                      data-tab="projects"
+                      data-modal-type="project"
+                      data-index="2"
+                      class="sidebar-jump-btn w-full px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-[#7A553A]/30 border border-white/10 hover:border-[#7A553A]/50 transition-all text-left flex items-center justify-between gap-3 group cursor-pointer"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="task-badge w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          P3
+                        </span>
+                        <span class="sidebar-text text-xs sm:text-sm text-white/80 group-hover:text-white truncate font-medium">
+                          Réseau VLAN Cisco & PAgP
+                        </span>
+                      </div>
+                      <span class="sidebar-text text-xs text-white/40 group-hover:text-white transition-all shrink-0">↗</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Category 2: Veille Technologique -->
+                <div class="space-y-2 pt-2 border-t border-white/10">
+                  <div class="sidebar-category-header flex items-center gap-2 px-2 text-[11px] font-mono uppercase tracking-wider text-purple-300/80 font-semibold">
+                    <span>👁️ Veille Technologique</span>
+                  </div>
+                  <div class="space-y-1.5" id="sidebar-veille-list">
+                    <button
+                      type="button"
+                      data-sidebar-target="veille-banner"
+                      data-tab="veille"
+                      data-modal-type="veille"
+                      data-index="0"
+                      class="sidebar-jump-btn w-full px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-[#7A553A]/30 border border-white/10 hover:border-[#7A553A]/50 transition-all text-left flex items-center justify-between gap-3 group cursor-pointer"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="task-badge w-6 h-6 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          V1
+                        </span>
+                        <span class="sidebar-text text-xs sm:text-sm text-white/80 group-hover:text-white truncate font-medium">
+                          Architecture Zero-Trust (ZTNA)
+                        </span>
+                      </div>
+                      <span class="sidebar-text text-xs text-white/40 group-hover:text-white transition-all shrink-0">↗</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      data-sidebar-target="veille-methodology"
+                      data-tab="veille"
+                      data-modal-type="veille"
+                      data-index="1"
+                      class="sidebar-jump-btn w-full px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-[#7A553A]/30 border border-white/10 hover:border-[#7A553A]/50 transition-all text-left flex items-center justify-between gap-3 group cursor-pointer"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="task-badge w-6 h-6 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          V2
+                        </span>
+                        <span class="sidebar-text text-xs sm:text-sm text-white/80 group-hover:text-white truncate font-medium">
+                          Outils, Flux & Méthodologie
+                        </span>
+                      </div>
+                      <span class="sidebar-text text-xs text-white/40 group-hover:text-white transition-all shrink-0">↗</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      data-sidebar-target="veille-articles"
+                      data-tab="veille"
+                      data-modal-type="veille"
+                      data-index="2"
+                      class="sidebar-jump-btn w-full px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-[#7A553A]/30 border border-white/10 hover:border-[#7A553A]/50 transition-all text-left flex items-center justify-between gap-3 group cursor-pointer"
+                    >
+                      <div class="flex items-center gap-3 min-w-0">
+                        <span class="task-badge w-6 h-6 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/30 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                          V3
+                        </span>
+                        <span class="sidebar-text text-xs sm:text-sm text-white/80 group-hover:text-white truncate font-medium">
+                          Synthèses & Fiches d'Impact
+                        </span>
+                      </div>
+                      <span class="sidebar-text text-xs text-white/40 group-hover:text-white transition-all shrink-0">↗</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sidebar Footer Quick Info -->
+              <div id="sidebar-footer" class="pt-3 border-t border-white/10 text-center">
+                <div class="text-[11px] text-white/50 font-mono">
+                  Session BTS SIO 2026 · SISR
+                </div>
+              </div>
+
+            </div>
+          </aside>
+
+          <!-- ===================================================================
+               MAIN CONTENT AREA
+               =================================================================== -->
+          <section id="mainContent" class="flex-1 w-full min-w-0 space-y-8 sm:space-y-10 transition-all duration-300">
+
+            <!-- Hero Banner: Title, Subtitle, and Action Button -->
+            <div class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-64 h-64 bg-[#7A553A]/20 rounded-full blur-3xl pointer-events-none"></div>
+              <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="space-y-3 max-w-3xl">
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/40 text-amber-200 text-xs font-mono font-medium tracking-wide">
+                    <span>ÉPREUVE TERMINALE E6 · COEFFICIENT 4</span>
+                  </div>
+                  <h1
+                    class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight"
+                    style="font-family: 'HelveticaNowDisplay-Medium', sans-serif;"
+                  >
+                    Épreuve E6 — Cybersécurité & Veille Technologique
+                  </h1>
+                  <p class="text-sm sm:text-base md:text-lg text-white/75 font-normal leading-relaxed">
+                    Parcours de professionnalisation, projets d'administration d'infrastructure et démarche de veille scientifique et technique.
+                  </p>
+                </div>
+
+                <!-- Fast Action Badge / Quick link -->
+                <div class="shrink-0 flex items-center">
+                  <a
+                    id="btn-quick-dossier"
+                    href="cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all duration-300 active:scale-95 shadow-[0_0_25px_rgba(122,85,58,0.4)] cursor-pointer"
+                  >
+                    <span>Dossier de synthèse (PDF)</span>
+                    <span class="text-base">↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===================================================================
+                 TAB / SECTION SWITCHER
+                 =================================================================== -->
+            <div
+              id="tab-switcher"
+              class="relative z-20 rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/25 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl select-none"
+            >
+              <!-- Tab switch buttons -->
+              <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto" role="tablist">
+                <button
+                  type="button"
+                  id="tab-btn-projects"
+                  data-tab="projects"
+                  role="tab"
+                  aria-selected="true"
+                  class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer bg-white text-black shadow-md flex items-center gap-2"
+                >
+                  <span>🛡️ Projet d'Infrastructure & Cybersécurité</span>
+                  <span class="px-2 py-0.5 text-[11px] rounded-full bg-black/10 text-black font-mono font-bold">3</span>
+                </button>
+
+                <button
+                  type="button"
+                  id="tab-btn-veille"
+                  data-tab="veille"
+                  role="tab"
+                  aria-selected="false"
+                  class="tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer bg-white/10 text-white/80 hover:bg-white/15 border border-white/15 flex items-center gap-2"
+                >
+                  <span>👁️ Veille Technologique</span>
+                  <span class="px-2 py-0.5 text-[11px] rounded-full bg-white/20 text-white font-mono font-bold">ZTNA</span>
+                </button>
+              </div>
+
+              <!-- Action Button: Pill-button "Télécharger le dossier E6 (PDF) ↗" -->
+              <a
+                id="btn-download-dossier"
+                href="cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-xs sm:text-sm font-semibold transition-all duration-200 active:scale-95 shadow-[0_0_20px_rgba(122,85,58,0.35)] cursor-pointer shrink-0"
+              >
+                <span>Télécharger le dossier E6 (PDF)</span>
+                <span class="text-sm">↗</span>
+              </a>
+            </div>
+
+            <!-- ===================================================================
+                 SECTION 1: PROJET D'INFRASTRUCTURE SISR & CYBERSÉCURITÉ
+                 =================================================================== -->
+            <div id="section-projects" class="space-y-8 transition-opacity duration-300">
+              
+              <!-- Section Intro Banner -->
+              <div class="rounded-3xl bg-neutral-900/60 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 space-y-3">
+                <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#7A553A] font-semibold">
+                  <span>Bloc 3 — Cybersécurité des Services Informatiques</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white font-heading">
+                  Projets d'Administration, Durcissement & Maintien de la Sécurité
+                </h2>
+                <p class="text-white/70 text-sm sm:text-base leading-relaxed">
+                  L'épreuve E6 valide la capacité du candidat à administrer une infrastructure réseau et systèmes en appliquant les règles d'hygiène informatique (ANSSI / CIS), en assurant la protection périmétrique, le cloisonnement des flux et la détection d'incidents.
+                </p>
+              </div>
+
+              <!-- Projects Grid (3 Cards) -->
+              <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <!-- Card 1: Audit & Sécurisation Firewall / FortiAnalyzer -->
+                <article
+                  id="card-firewall"
+                  data-project-index="0"
+                  class="group relative rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-8 shadow-xl flex flex-col justify-between hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                >
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                      <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 text-xs font-mono font-semibold">
+                        Sécurité Périmétrique
+                      </span>
+                      <span class="text-xs font-mono text-white/50">Projet 01</span>
+                    </div>
+
+                    <div class="space-y-2">
+                      <h3 class="text-lg sm:text-xl font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        Audit & Sécurisation Firewall / FortiAnalyzer
+                      </h3>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed line-clamp-3">
+                        Mise en place d'un pare-feu FortiGate avec inspection étatique, segmentation DMZ/LAN, profils de sécurité IPS/Antivirus et centralisation des logs sous FortiAnalyzer pour la détection des menaces.
+                      </p>
+                    </div>
+
+                    <!-- Tech Badges -->
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">Fortinet</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">FortiAnalyzer</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">Inspection SSL</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">Syslog SIEM</span>
+                    </div>
+
+                    <!-- Screenshot Preview Container -->
+                    <div class="relative w-full h-44 aspect-video rounded-2xl bg-neutral-950/60 border border-white/10 overflow-hidden flex items-center justify-center">
+                      <div class="p-4 text-center space-y-2 select-none">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-red-500/20 border border-red-500/30 flex items-center justify-center text-red-300 text-lg">
+                          🛡️
+                        </div>
+                        <div class="text-xs font-mono text-white/80 font-semibold">FortiGate Firewall & UTM</div>
+                        <div class="text-[11px] text-white/50">Inspection HTTPS & Filtrage Applicatif</div>
+                      </div>
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                  </div>
+
+                  <div class="pt-6 border-t border-white/10 flex items-center justify-between mt-4">
+                    <span class="text-xs text-white/50 font-mono">Maquette & Prod</span>
+                    <button
+                      type="button"
+                      class="btn-open-project-modal inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-xs font-semibold transition-all shadow-md"
+                      data-project-index="0"
+                    >
+                      <span>En savoir plus...</span>
+                      <span>↗</span>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Card 2: Déploiement et Hardening de Serveurs -->
+                <article
+                  id="card-hardening"
+                  data-project-index="1"
+                  class="group relative rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-8 shadow-xl flex flex-col justify-between hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                >
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                      <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-mono font-semibold">
+                        Durcissement Systèmes
+                      </span>
+                      <span class="text-xs font-mono text-white/50">Projet 02</span>
+                    </div>
+
+                    <div class="space-y-2">
+                      <h3 class="text-lg sm:text-xl font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        Déploiement et Hardening de Serveurs
+                      </h3>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed line-clamp-3">
+                        Durcissement des contrôleurs de domaine Windows Server 2022 et serveurs AlmaLinux 9 selon les recommandations ANSSI/CIS : stratégies GPO restrictives, SSH Ed25519 et Fail2ban.
+                      </p>
+                    </div>
+
+                    <!-- Tech Badges -->
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">Windows Server</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">AlmaLinux 9</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">SSH Ed25519</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">GPO Security</span>
+                    </div>
+
+                    <!-- Screenshot Preview Container -->
+                    <div class="relative w-full h-44 aspect-video rounded-2xl bg-neutral-950/60 border border-white/10 overflow-hidden flex items-center justify-center">
+                      <div class="p-4 text-center space-y-2 select-none">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-300 text-lg">
+                          🖥️
+                        </div>
+                        <div class="text-xs font-mono text-white/80 font-semibold">Active Directory & Linux CIS</div>
+                        <div class="text-[11px] text-white/50">Stratégies de groupe & Chiffrement</div>
+                      </div>
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                  </div>
+
+                  <div class="pt-6 border-t border-white/10 flex items-center justify-between mt-4">
+                    <span class="text-xs text-white/50 font-mono">Hygiène Informatique</span>
+                    <button
+                      type="button"
+                      class="btn-open-project-modal inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-xs font-semibold transition-all shadow-md"
+                      data-project-index="1"
+                    >
+                      <span>En savoir plus...</span>
+                      <span>↗</span>
+                    </button>
+                  </div>
+                </article>
+
+                <!-- Card 3: Architecture Réseau VLAN & Switching -->
+                <article
+                  id="card-vlans"
+                  data-project-index="2"
+                  class="group relative rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-8 shadow-xl flex flex-col justify-between hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+                >
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                      <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono font-semibold">
+                        Segmentation L2/L3
+                      </span>
+                      <span class="text-xs font-mono text-white/50">Projet 03</span>
+                    </div>
+
+                    <div class="space-y-2">
+                      <h3 class="text-lg sm:text-xl font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        Architecture Réseau VLAN & Switching
+                      </h3>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed line-clamp-3">
+                        Conception et déploiement d'une matrice de commutation Cisco Catalyst : agrégation de liens EtherChannel (PAgP), cloisonnement étanche par VLANs et protection contre les attaques de couche 2.
+                      </p>
+                    </div>
+
+                    <!-- Tech Badges -->
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">Cisco Catalyst</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">802.1Q Trunk</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">PAgP EtherChannel</span>
+                      <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/80 text-[11px] font-mono">Port-Security</span>
+                    </div>
+
+                    <!-- Screenshot Preview Container -->
+                    <div class="relative w-full h-44 aspect-video rounded-2xl bg-neutral-950/60 border border-white/10 overflow-hidden flex items-center justify-center">
+                      <div class="p-4 text-center space-y-2 select-none">
+                        <div class="w-10 h-10 mx-auto rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 text-lg">
+                          🔀
+                        </div>
+                        <div class="text-xs font-mono text-white/80 font-semibold">Commutation & Redondance</div>
+                        <div class="text-[11px] text-white/50">DHCP Snooping & Protection DAI</div>
+                      </div>
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                    </div>
+                  </div>
+
+                  <div class="pt-6 border-t border-white/10 flex items-center justify-between mt-4">
+                    <span class="text-xs text-white/50 font-mono">Infrastructure Cisco</span>
+                    <button
+                      type="button"
+                      class="btn-open-project-modal inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-xs font-semibold transition-all shadow-md"
+                      data-project-index="2"
+                    >
+                      <span>En savoir plus...</span>
+                      <span>↗</span>
+                    </button>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- ===================================================================
+                 SECTION 2: VEILLE TECHNOLOGIQUE & STRATÉGIQUE
+                 =================================================================== -->
+            <div id="section-veille" class="hidden space-y-8 sm:space-y-10 transition-opacity duration-300">
+              
+              <!-- Veille Topic Banner -->
+              <div
+                id="veille-banner"
+                class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-10 shadow-2xl relative overflow-hidden space-y-5"
+              >
+                <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-purple-300 font-semibold">
+                  <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                  <span>Thématique Officielle de Veille BTS SIO SISR</span>
+                </div>
+
+                <div class="space-y-3">
+                  <h2 class="text-2xl sm:text-3xl font-extrabold text-white font-heading">
+                    L'avènement du modèle Zero-Trust (ZTNA) : Redéfinir la sécurité périmétrique face au nomadisme et au Cloud
+                  </h2>
+                  <p class="text-sm sm:text-base text-white/75 leading-relaxed max-w-4xl">
+                    Face à l'obsolescence du périmètre de sécurité traditionnel et à l'explosion des attaques par rebond (mouvements latéraux et rançongiciels), le modèle <span class="text-amber-200 font-semibold font-mono">Zero Trust</span> (« Never trust, always verify ») s'impose comme le nouveau standard d'architecture pour les administrateurs réseaux et systèmes.
+                  </p>
+                </div>
+
+                <!-- 4 Pillars of Zero Trust -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                  <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <div class="text-xs font-mono text-purple-300 font-semibold mb-1">01. Vérification</div>
+                    <div class="text-xs text-white/80">Validation explicite de l'identité et du contexte</div>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <div class="text-xs font-mono text-amber-300 font-semibold mb-1">02. Moindre Privilège</div>
+                    <div class="text-xs text-white/80">Accès granulaire strictly limité au besoin</div>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <div class="text-xs font-mono text-blue-300 font-semibold mb-1">03. Micro-segmentation</div>
+                    <div class="text-xs text-white/80">Isolement des charges et confinement des flux</div>
+                  </div>
+                  <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <div class="text-xs font-mono text-emerald-300 font-semibold mb-1">04. Chiffrement End-to-End</div>
+                    <div class="text-xs text-white/80">Télémétrie continue & inspection des anomalies</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Methodology Grid (3 Cards) -->
+              <div id="veille-methodology" class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg sm:text-xl font-bold text-white font-heading">
+                    Démarche Méthodologique & Organisation de la Veille
+                  </h3>
+                  <span class="text-xs font-mono text-white/50">Processus continu</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <!-- Card 1: Sources & Agrégation -->
+                  <div class="rounded-3xl bg-neutral-900/60 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 text-lg">
+                      📡
+                    </div>
+                    <h4 class="text-base font-bold text-white font-heading">1. Sources & Agrégation</h4>
+                    <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                      Collecte automatisée multi-canaux via agrégateurs RSS (Feedly), alertes thématiques Google Alerts, bulletins de sécurité CERT-FR / ANSSI, et médias spécialisés (BleepingComputer, ZDNet, The Hacker News).
+                    </p>
+                    <div class="pt-2 text-[11px] font-mono text-amber-300/80">
+                      Feedly · CERT-FR · BleepingComputer · ANSSI
+                    </div>
+                  </div>
+
+                  <!-- Card 2: Analyse & Curation -->
+                  <div class="rounded-3xl bg-neutral-900/60 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-300 text-lg">
+                      🔍
+                    </div>
+                    <h4 class="text-base font-bold text-white font-heading">2. Analyse & Curation</h4>
+                    <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                      Filtrage critique des annonces constructeurs, confrontation des cas d'usage réels, identification des vulnérabilités critiques (CVE) et expérimentation en laboratoire virtuel de solutions ZTNA (Cloudflare Zero Trust, Tailscale).
+                    </p>
+                    <div class="pt-2 text-[11px] font-mono text-purple-300/80">
+                      Fiches de lecture · Sandbox · Test PoC
+                    </div>
+                  </div>
+
+                  <!-- Card 3: Diffusion & Restitution -->
+                  <div class="rounded-3xl bg-neutral-900/60 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 space-y-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300 text-lg">
+                      📑
+                    </div>
+                    <h4 class="text-base font-bold text-white font-heading">3. Diffusion & Restitution</h4>
+                    <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                      Stockage et structuration dans une base de connaissances Notion, rédaction de fiches de synthèse synthétiques pour l'équipe technique et transposition aux projets d'infrastructure SISR.
+                    </p>
+                    <div class="pt-2 text-[11px] font-mono text-emerald-300/80">
+                      Notion DB · Fiches Synthèse · Présentations E6
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Article / Topic Cards Grid -->
+              <div id="veille-articles" class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg sm:text-xl font-bold text-white font-heading">
+                    Fiches d'Impact & Synthèses d'Actualité
+                  </h3>
+                  <span class="text-xs font-mono text-white/50">4 fiches sélectionnées</span>
+                </div>
+
+                <div id="veille-articles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  <!-- Article 1 -->
+                  <article
+                    data-veille-index="0"
+                    class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-7 shadow-xl hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 transition-all flex flex-col justify-between group cursor-pointer"
+                  >
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between text-xs font-mono text-white/50">
+                        <span class="px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">Architecture</span>
+                        <span>Lecture : 5 min</span>
+                      </div>
+                      <h4 class="text-base sm:text-lg font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        Transition du VPN traditionnel vers le ZTNA : La fin du tunnel global
+                      </h4>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                        Analyse comparative des risques liés aux concentrateurs VPN SSL (vulnérabilités d'authentification, exposition directe de l'IP du serveur) versus les connecteurs sortants ZTNA sans port ouvert vers Internet.
+                      </p>
+                      <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">VPN vs ZTNA</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Zero Trust Network</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Reverse Proxy</span>
+                      </div>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                      <span class="text-xs text-white/40 font-mono">Date : Janvier 2026</span>
+                      <button
+                        type="button"
+                        data-veille-index="0"
+                        class="btn-open-veille-modal inline-flex items-center gap-1 text-xs text-amber-300 font-semibold group-hover:underline"
+                      >
+                        <span>Lire la synthèse</span>
+                        <span>→</span>
+                      </button>
+                    </div>
+                  </article>
+
+                  <!-- Article 2 -->
+                  <article
+                    data-veille-index="1"
+                    class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-7 shadow-xl hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 transition-all flex flex-col justify-between group cursor-pointer"
+                  >
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between text-xs font-mono text-white/50">
+                        <span class="px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">Gestion de Crise</span>
+                        <span>Lecture : 6 min</span>
+                      </div>
+                      <h4 class="text-base sm:text-lg font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        Micro-segmentation et blocage des mouvements latéraux (Ransomware)
+                      </h4>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                        Comment le confinement strict des flux Est-Ouest et l'isolation réseau au niveau de l'hôte permettent de neutraliser la propagation d'un malware après la compromission initiale d'un poste nomade.
+                      </p>
+                      <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Flux Est-Ouest</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Kill-Chain</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">EDR / Micro-seg</span>
+                      </div>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                      <span class="text-xs text-white/40 font-mono">Date : Décembre 2025</span>
+                      <button
+                        type="button"
+                        data-veille-index="1"
+                        class="btn-open-veille-modal inline-flex items-center gap-1 text-xs text-amber-300 font-semibold group-hover:underline"
+                      >
+                        <span>Lire la synthèse</span>
+                        <span>→</span>
+                      </button>
+                    </div>
+                  </article>
+
+                  <!-- Article 3 -->
+                  <article
+                    data-veille-index="2"
+                    class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-7 shadow-xl hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 transition-all flex flex-col justify-between group cursor-pointer"
+                  >
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between text-xs font-mono text-white/50">
+                        <span class="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">Identité & IAM</span>
+                        <span>Lecture : 4 min</span>
+                      </div>
+                      <h4 class="text-base sm:text-lg font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        Authentification forte FIDO2 et résistance aux attaques AiTM
+                      </h4>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                        Limites du MFA classique par SMS face aux proxys inversés de phishing (Evilginx) et adoption des clés matérielles FIDO2/WebAuthn pour une authentification cryptographiquement liée au domaine.
+                      </p>
+                      <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">FIDO2 Passkeys</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Anti-AiTM</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Entra ID / Okta</span>
+                      </div>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                      <span class="text-xs text-white/40 font-mono">Date : Novembre 2025</span>
+                      <button
+                        type="button"
+                        data-veille-index="2"
+                        class="btn-open-veille-modal inline-flex items-center gap-1 text-xs text-amber-300 font-semibold group-hover:underline"
+                      >
+                        <span>Lire la synthèse</span>
+                        <span>→</span>
+                      </button>
+                    </div>
+                  </article>
+
+                  <!-- Article 4 -->
+                  <article
+                    data-veille-index="3"
+                    class="rounded-3xl bg-[#382A22]/40 backdrop-blur-sm md:backdrop-blur-xl border border-[#7A553A]/30 p-6 sm:p-7 shadow-xl hover:border-[#7A553A]/60 hover:bg-[#382A22]/60 transition-all flex flex-col justify-between group cursor-pointer"
+                  >
+                    <div class="space-y-3">
+                      <div class="flex items-center justify-between text-xs font-mono text-white/50">
+                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Télémétrie & IA</span>
+                        <span>Lecture : 7 min</span>
+                      </div>
+                      <h4 class="text-base sm:text-lg font-bold text-white font-heading group-hover:text-amber-200 transition-colors">
+                        L'IA et le Machine Learning dans la détection d'anomalies (UEBA & XDR)
+                      </h4>
+                      <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+                        Évaluation continue de la posture de l'équipement client par des modèles d'analyse comportementale pour révoquer instantanément les sessions suspectes sans intervention humaine préalable.
+                      </p>
+                      <div class="flex flex-wrap gap-1.5 pt-1">
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">UEBA</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">XDR Telemetry</span>
+                        <span class="px-2 py-0.5 rounded-md bg-white/10 text-[11px] font-mono text-white/80">Posture Check</span>
+                      </div>
+                    </div>
+                    <div class="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                      <span class="text-xs text-white/40 font-mono">Date : Octobre 2025</span>
+                      <button
+                        type="button"
+                        data-veille-index="3"
+                        class="btn-open-veille-modal inline-flex items-center gap-1 text-xs text-amber-300 font-semibold group-hover:underline"
+                      >
+                        <span>Lire la synthèse</span>
+                        <span>→</span>
+                      </button>
+                    </div>
+                  </article>
+
+                </div>
+              </div>
+
+            </div>
+
+          </section>
+        </div>
+      </main>
+
+      <!-- =========================================================================
+           3. FOOTER
+           ========================================================================= -->
+      <footer class="w-full border-t border-white/10 bg-black/50 py-8 px-6 sm:px-10 text-center select-none">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-white">Maxence FONTAINE GROS</span>
+            <span>—</span>
+            <span>BTS SIO option SISR · Session 2026</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="e5.html" class="hover:text-white transition-colors">Épreuve E5</a>
+            <span>·</span>
+            <a href="index.html#exams" class="hover:text-white transition-colors">Grille & Certifications</a>
+            <span>·</span>
+            <a href="index.html#home" class="hover:text-white transition-colors">Portfolio</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- =========================================================================
+         4. INTERACTIVE DETAIL MODAL (#e6Modal - PLACED AT DOCUMENT ROOT)
+         ========================================================================= -->
+    <div
+      id="e6Modal"
+      class="hidden fixed inset-0 z-[9999] backdrop-blur-sm md:backdrop-blur-md bg-black/80 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-e6-title"
+    >
+      <div
+        id="modal-card"
+        class="relative w-full max-w-2xl max-h-[88vh] overflow-y-auto bg-neutral-900/95 border border-[#7A553A]/40 rounded-3xl p-6 sm:p-8 backdrop-blur-sm md:backdrop-blur-xl shadow-2xl space-y-6 text-white text-left animate-fade-in"
+      >
+        
+        <!-- Modal Top Row: Badge, Status, Close Button -->
+        <div class="flex items-center justify-between pb-3 border-b border-white/10 gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span
+              id="modal-category-badge"
+              class="px-3 py-1 rounded-full bg-[#7A553A]/30 text-amber-200 border border-[#7A553A]/50 text-xs font-mono font-semibold"
+            >
+              Projet SISR E6
+            </span>
+            <span
+              id="modal-status-badge"
+              class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-mono"
+            >
+              ✓ Validé Référentiel
+            </span>
+          </div>
+
+          <!-- Close button -->
+          <button
+            type="button"
+            id="btn-close-modal"
+            class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-colors active:scale-95 cursor-pointer shrink-0"
+            title="Fermer la fenêtre (Échap)"
+            aria-label="Fermer la modal"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Title & Subtitle -->
+        <div class="space-y-1.5">
+          <h2
+            id="modal-e6-title"
+            class="text-xl sm:text-2xl font-bold text-white font-heading"
+          >
+            Titre de la réalisation
+          </h2>
+          <p
+            id="modal-e6-subtitle"
+            class="text-xs sm:text-sm text-white/70 leading-relaxed font-mono"
+          >
+            Description synthétique
+          </p>
+        </div>
+
+        <!-- Context & Scope -->
+        <div class="rounded-2xl bg-white/5 border border-white/10 p-4 space-y-2">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-300 font-semibold">
+            <span>🎯 Contexte & Objectifs de Sécurité</span>
+          </div>
+          <p id="modal-context" class="text-xs sm:text-sm text-white/80 leading-relaxed">
+            Contexte détaillé
+          </p>
+        </div>
+
+        <!-- Technical Steps / Realisations -->
+        <div class="space-y-3">
+          <h3 class="text-sm sm:text-base font-bold text-white font-heading flex items-center gap-2">
+            <span>⚙️ Démarche & Travaux Réalisés</span>
+          </h3>
+          <div id="modal-steps" class="space-y-2.5 text-xs sm:text-sm text-white/80 leading-relaxed">
+            <!-- Dynamic steps -->
+          </div>
+        </div>
+
+        <!-- Security Hardening Controls -->
+        <div class="space-y-3">
+          <h3 class="text-sm sm:text-base font-bold text-white font-heading flex items-center gap-2">
+            <span>🔒 Mesures de Cybersécurité & Hardening</span>
+          </h3>
+          <div id="modal-security-controls" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-white/80 font-mono">
+            <!-- Dynamic controls -->
+          </div>
+        </div>
+
+        <!-- Tools & Protocols -->
+        <div class="space-y-2 pt-1">
+          <span class="text-xs font-mono uppercase tracking-widest text-white/50">Environnement & Outils :</span>
+          <div id="modal-tech-tags" class="flex flex-wrap gap-1.5">
+            <!-- Dynamic tech tags -->
+          </div>
+        </div>
+
+        <!-- Architecture / Screenshot Preview Container -->
+        <div class="space-y-2 pt-1">
+          <span class="text-xs font-mono uppercase tracking-widest text-white/50">Schéma & Preuve Technique :</span>
+          <div
+            id="modal-evidence-box"
+            class="relative w-full rounded-2xl bg-neutral-950/80 border border-white/15 p-5 text-center space-y-3 select-none"
+          >
+            <div id="modal-evidence-icon" class="text-2xl">🛡️</div>
+            <div id="modal-evidence-title" class="text-xs font-mono font-bold text-white">Environnement de maquette validé</div>
+            <div id="modal-evidence-desc" class="text-[11px] text-white/60 max-w-md mx-auto">
+              Traces de configuration, extraits de règles de filtrage et journaux d'audit archivés dans le classeur de preuves.
+            </div>
+          </div>
+        </div>
+
+        <!-- External Link / Dossier Reference -->
+        <div class="pt-2 flex items-center justify-between">
+          <a
+            id="modal-external-link"
+            href="cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#7A553A]/50 hover:bg-[#7A553A] border border-[#7A553A] text-xs font-semibold text-white transition-all cursor-pointer"
+          >
+            <span>Consulter la documentation technique</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <!-- Modal Bottom Navigation (Prev / Next & Counter) -->
+        <div class="pt-5 border-t border-white/10 flex items-center justify-between gap-4">
+          <button
+            type="button"
+            id="btn-prev-modal-item"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-xs font-medium text-white transition-colors active:scale-95 cursor-pointer"
+          >
+            <span>← Précédent</span>
+          </button>
+
+          <span id="modal-item-counter" class="text-xs font-mono text-white/50">
+            1 / 3
+          </span>
+
+          <button
+            type="button"
+            id="btn-next-modal-item"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-xs font-medium text-white transition-colors active:scale-95 cursor-pointer"
+          >
+            <span>Suivant →</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         5. VANILLA JAVASCRIPT ENGINE (EVENT DELEGATION & MODAL LOGIC)
+         ========================================================================= -->
+    <script>
+      // 1. Project SISR & Cyber Data
+      const projectsData = [
+        {
+          id: 'card-firewall',
+          title: "Audit & Sécurisation Firewall / FortiAnalyzer",
+          subtitle: "Filtrage périmétrique UTM, inspection SSL/TLS et journalisation SIEM",
+          category: "Projet SISR & Cybersécurité",
+          status: "✓ Validé & Testé",
+          context: "Déploiement et audit d'un boîtier pare-feu FortiGate 60F pour protéger les services hébergés en DMZ et les postes clients du réseau d'entreprise. Centralisation des alertes et conformité ANSSI.",
+          steps: [
+            "Conception du plan d'adressage et segmentation physique des interfaces (WAN, LAN, DMZ publique et DMZ privée).",
+            "Écriture de politiques de filtrage strictes (règle 'Deny All' par défaut, autorisations explicites par port et sous-réseau).",
+            "Activation des profils de sécurité UTM : Antivirus de flux, Web Filtering par catégories et système de prévention d'intrusion (IPS).",
+            "Mise en place de l'inspection approfondie SSL/TLS (Deep Packet Inspection) avec déploiement du certificat racine CA sur les postes clients.",
+            "Raccordement au serveur FortiAnalyzer : corrélation des logs, tableaux de bord de conformité et alertes d'anomalies de trafic."
+          ],
+          securityControls: [
+            "Politique Zero-Trust implicite sur le firewall (Deny All)",
+            "Inspection SSL/TLS des flux HTTPS chiffrés",
+            "Profils IPS bloquant les exploits connus (CVE)",
+            "Isolation hermétique de la zone DMZ des serveurs",
+            "Journalisation inviolable déportée sur FortiAnalyzer",
+            "Alertes automatiques en cas de scan de ports ou brute-force"
+          ],
+          technologies: ["Fortinet FortiOS 7.x", "FortiGate 60F", "FortiAnalyzer", "Syslog", "IPS / IDS", "SSL Inspection"],
+          evidenceIcon: "🛡️",
+          evidenceTitle: "Architecture Fortinet & Topologie DMZ",
+          evidenceDesc: "Matrice de flux validée, règles de filtrage étatiques et captures d'écran des dashboards FortiAnalyzer."
+        },
+        {
+          id: 'card-hardening',
+          title: "Déploiement et Hardening de Serveurs",
+          subtitle: "Durcissement de contrôleurs AD Windows 2022 et serveurs AlmaLinux 9",
+          category: "Projet SISR & Cybersécurité",
+          status: "✓ Validé & Testé",
+          context: "Application des guides d'hygiène et des benchmarks CIS (Center for Internet Security) sur les serveurs piliers de l'infrastructure afin de limiter la surface d'attaque et prévenir les élévations de privilèges.",
+          steps: [
+            "Installation minimale d'AlmaLinux 9 (sans environnement graphique, désactivation des services non indispensables).",
+            "Configuration sécurisée du démon OpenSSH : port personnalisé, interdiction du login root, authentification exclusive par bi-clé Ed25519.",
+            "Déploiement de Fail2ban avec filtres stricts sur les tentatives de connexion et blocage automatique temporaire d'IP.",
+            "Durcissement des contrôleurs de domaine Active Directory : désactivation définitive de SMBv1, NTLMv1, LLMNR et NetBIOS.",
+            "Création de GPO de sécurité : restriction d'exécution applicative AppLocker, audit avancé des connexions Kerberos et durée de validité des mots de passe."
+          ],
+          securityControls: [
+            "Authentification SSH asymétrique Ed25519",
+            "Protection anti force-brute via Fail2ban et iptables",
+            "Désactivation des protocoles d'héritage vulnérables (LLMNR/NetBIOS)",
+            "Politique de moindre privilège (LAPS pour mots de passe locaux)",
+            "Chiffrement BitLocker des volumes de données sensibles",
+            "Surveillance des journaux Event Viewer (IDs 4624, 4625, 4720)"
+          ],
+          technologies: ["Windows Server 2022", "AlmaLinux 9", "OpenSSH", "Fail2ban", "Active Directory GPO", "LAPS"],
+          evidenceIcon: "🖥️",
+          evidenceTitle: "GPO de Hardening & Configuration SSH",
+          evidenceDesc: "Fichiers de configuration sshd_config durcis, arborescence GPO ANSSI et rapports d'audit LAPS."
+        },
+        {
+          id: 'card-vlans',
+          title: "Architecture Réseau VLAN & Switching Sécurisé",
+          subtitle: "Cloisonnement 802.1Q, agrégation de liens EtherChannel PAgP et sécurité L2",
+          category: "Projet SISR & Cybersécurité",
+          status: "✓ Validé & Testé",
+          context: "Conception du cœur de commutation local sur commutateurs Cisco Catalyst, renforcement contre les attaques de couche 2 (MAC flooding, rogue DHCP, ARP spoofing) et redondance des liens inter-switchs.",
+          steps: [
+            "Définition du plan de VLANs : VLAN 10 (Administration), VLAN 20 (Serveurs), VLAN 30 (Postes Collaborateurs), VLAN 40 (Invités isolés).",
+            "Configuration des liens Trunks 802.1Q avec élagage (VLAN pruning) et modification du VLAN natif par défaut (interdiction du VLAN 1).",
+            "Mise en œuvre d'un EtherChannel PAgP liant 2 interfaces Gigabit pour doubler la bande passante et assurer la tolérance aux pannes.",
+            "Activation du DHCP Snooping avec désignation des ports approuvés (trusted) pour contrer l'installation de serveurs DHCP pirates.",
+            "Configuration de Port-Security sur tous les ports d'accès : limite à 1 adresse MAC avec bascule en mode 'errdisable' en cas de violation."
+          ],
+          securityControls: [
+            "Isolation étanche des flux inter-services par VLANs",
+            "Sécurisation des ports d'accès via Port-Security (Sticky MAC)",
+            "Prévention des attaques Man-in-the-Middle via DHCP Snooping",
+            "Inspection dynamique des paquets ARP (DAI)",
+            "Changement systématique du Native VLAN 99 non routé",
+            "Tolérance de panne et haute disponibilité via EtherChannel PAgP"
+          ],
+          technologies: ["Cisco Catalyst 2960/3650", "802.1Q", "PAgP EtherChannel", "DHCP Snooping", "Dynamic ARP Inspection", "Port-Security"],
+          evidenceIcon: "🔀",
+          evidenceTitle: "Topologie Commutation Cisco & Trunks",
+          evidenceDesc: "Exports 'show running-config', tableau des VLANs et tests de violation Port-Security."
+        }
+      ];
+
+      // 2. Veille Technologique Data
+      const veilleData = [
+        {
+          id: 'veille-art-1',
+          title: "Transition du VPN traditionnel vers le ZTNA : La fin du tunnel global",
+          subtitle: "Analyse des vulnérabilités des passerelles VPN SSL face au modèle Zero Trust Network Access",
+          category: "Veille Technologique (ZTNA)",
+          status: "Fiche Synthèse #01",
+          context: "Le modèle VPN traditionnel octroie un accès complet au sous-réseau une fois le tunnel établi, favorisant les mouvements latéraux en cas de compromission d'un poste client. Le ZTNA remplace ce canal par des micro-tunnels chiffrés point-à-point restreints aux seules applications autorisées.",
+          steps: [
+            "Recensement des failles critiques ayant frappé les concentrateurs VPN SSL (Ivanti, FortiOS, SonicWall) entre 2024 et 2026.",
+            "Étude comparative des architectures : périmètre de confiance VPN vs connecteurs légers ZTNA sans écoute publique (ports fermés).",
+            "Évaluation du principe de moindre privilège appliqué aux flux applicatifs (accès à l'intranet comptable sans visibilité sur le réseau global).",
+            "Modélisation d'une transition hybride pour les PME : maintien temporaire du VPN d'administration et bascule progressive des postes nomades."
+          ],
+          securityControls: [
+            "Élimination de l'exposition directe de serveurs sur Internet",
+            "Micro-tunnels applicatifs chiffrés de bout en bout",
+            "Vérification continue de la conformité du terminal (posture check)",
+            "Suppression de la visibilité sur le plan d'adressage interne"
+          ],
+          technologies: ["ZTNA Architecture", "Cloudflare Access", "Twingate", "WireGuard", "Reverse Proxy inverse", "SSL VPN"],
+          evidenceIcon: "📡",
+          evidenceTitle: "Schéma d'Architecture : Tunnel VPN vs Connecteur ZTNA",
+          evidenceDesc: "Fiche de synthèse comparative, analyse de la surface d'attaque résiduelle et métriques de latence."
+        },
+        {
+          id: 'veille-art-2',
+          title: "Micro-segmentation et blocage des mouvements latéraux (Ransomware)",
+          subtitle: "Confinement strict des flux Est-Ouest pour neutraliser la propagation d'attaques",
+          category: "Veille Technologique (ZTNA)",
+          status: "Fiche Synthèse #02",
+          context: "Dans 85 % des attaques par rançongiciel modernes, l'attaquant utilise un poste non privilégié comme tête de pont avant d'explorer le réseau local (scan SMB, requêtes LDAP, vol de tokens mémoire). La micro-segmentation isole chaque machine virtuellement pour briser la kill-chain.",
+          steps: [
+            "Analyse des phases d'une cyberattaque moderne : compromission initiale, énumération réseau et propagation Est-Ouest.",
+            "Mise en place de règles de pare-feu d'hôtes distribuées bloquant les communications directes entre postes de travail (Client-to-Client Isolation).",
+            "Étude des solutions de micro-segmentation logicielle (Software-Defined Perimeter) appliquées aux serveurs d'infrastructure.",
+            "Tests de confinement d'un faux script de propagation dans un bac à sable (sandbox) isolé."
+          ],
+          securityControls: [
+            "Interdiction des communications latérales entre PC nomades",
+            "Filtrage granulaire des protocoles d'administration (RDP, WinRM, SSH)",
+            "Chiffrement systématique des liaisons internes TLS 1.3",
+            "Alerte immédiate en cas de tentative de découverte réseau anormale"
+          ],
+          technologies: ["Micro-segmentation", "Software-Defined Perimeter (SDP)", "EDR Telemetry", "Isolation L2/L3", "MITRE ATT&CK"],
+          evidenceIcon: "🛡️",
+          evidenceTitle: "Matrice d'Isolation Est-Ouest & Kill-Chain",
+          evidenceDesc: "Diagramme de propagation ransomware stoppée par les règles de micro-segmentation Zero-Trust."
+        },
+        {
+          id: 'veille-art-3',
+          title: "Authentification forte FIDO2 et résistance aux attaques AiTM",
+          subtitle: "Dépassement du MFA par SMS et adoption des clés matérielles FIDO2/WebAuthn",
+          category: "Veille Technologique (ZTNA)",
+          status: "Fiche Synthèse #03",
+          context: "L'essor d'outils de phishing avancés (Evilginx, Modlishka) permet aux attaquants de dérober les cookies de session même en présence d'un MFA par SMS ou application OTP. L'authentification FIDO2 garantit la résistance au phishing grâce à une liaison cryptographique indissociable du nom de domaine légitime.",
+          steps: [
+            "Démonstration du fonctionnement d'une attaque AiTM (Adversary-in-the-Middle) et du vol de jeton de session.",
+            "Principe cryptographique de FIDO2 / WebAuthn : clé publique enregistrée sur le serveur et clé privée scellée dans l'enclave sécurisée.",
+            "Protocole de binding d'origine : impossibilité d'authentifier un faux site même en cas d'erreur de l'utilisateur.",
+            "Guide de déploiement progressif des Passkeys et clés de sécurité matérielles (YubiKey) dans un annuaire d'entreprise."
+          ],
+          securityControls: [
+            "Liaison cryptographique stricte au nom de domaine (Anti-AiTM)",
+            "Suppression des mots de passe partagés vulnérables au rejeu",
+            "Vérification biométrique ou PIN local sur la clé de sécurité",
+            "Révocation instantanée des jetons de session en cas d'anomalie"
+          ],
+          technologies: ["FIDO2 / WebAuthn", "YubiKey", "Passkeys", "Entra ID (Azure AD)", "Anti-Phishing AiTM", "PKI"],
+          evidenceIcon: "🔑",
+          evidenceTitle: "Fonctionnement du Challenge-Response FIDO2",
+          evidenceDesc: "Fiche technique de validation cryptographique et synthèse des bonnes pratiques ANSSI."
+        },
+        {
+          id: 'veille-art-4',
+          title: "L'IA et le Machine Learning dans la détection d'anomalies (UEBA & XDR)",
+          subtitle: "Surveillance comportementale continue et ajustement dynamique du niveau de confiance",
+          category: "Veille Technologique (ZTNA)",
+          status: "Fiche Synthèse #04",
+          context: "Le modèle Zero-Trust ne valide pas l'accès une fois pour toutes : il recalcule en permanence le score de confiance du client. L'intégration de modules d'intelligence artificielle permet d'identifier les signaux faibles (heures inhabituelles, volume de données exfiltré, géolocalisation suspecte) et de bloquer l'accès en temps réel.",
+          steps: [
+            "Fonctionnement des moteurs UEBA (User and Entity Behavior Analytics) : création d'une ligne de base d'activité normale.",
+            "Détection en temps réel des déviations statistiques : connexion simultanée depuis deux pays distants, téléchargement massif de documents sensibles.",
+            "Révocation dynamique des permissions : rétrogradation immédiate des droits ou demande d'un défi d'authentification renforcé.",
+            "Intégration avec les solutions de détection et réponse étendues (XDR / SIEM)."
+          ],
+          securityControls: [
+            "Calcul d'un score de risque dynamique par session",
+            "Isolement automatisé du terminal en cas de signal critique",
+            "Analyse continue des métadonnées réseau et télémétrie EDR",
+            "Réduction du temps moyen de détection (MTTD)"
+          ],
+          technologies: ["UEBA Machine Learning", "XDR Telemetry", "SIEM Splunk / Elastic", "Score de Risque Dynamique", "SOAR"],
+          evidenceIcon: "🧠",
+          evidenceTitle: "Architecture d'Évaluation Dynamique du Risque",
+          evidenceDesc: "Fiche de synthèse de l'intégration UEBA au sein d'une passerelle ZTNA moderne."
+        }
+      ];
+
+      // 3. State Management
+      let currentTab = 'projects';
+      let currentModalType = 'project'; // 'project' or 'veille'
+      let currentModalIndex = 0;
+      let sidebarCollapsed = false;
+
+      // 4. Tab Switching Logic
+      const tabBtnProjects = document.getElementById('tab-btn-projects');
+      const tabBtnVeille = document.getElementById('tab-btn-veille');
+      const sectionProjects = document.getElementById('section-projects');
+      const sectionVeille = document.getElementById('section-veille');
+
+      function switchTab(tabName) {
+        if (tabName === 'projects') {
+          currentTab = 'projects';
+          // Button styles
+          tabBtnProjects.classList.remove('bg-white/10', 'text-white/80', 'border', 'border-white/15');
+          tabBtnProjects.classList.add('bg-white', 'text-black', 'shadow-md');
+          tabBtnProjects.setAttribute('aria-selected', 'true');
+
+          tabBtnVeille.classList.remove('bg-white', 'text-black', 'shadow-md');
+          tabBtnVeille.classList.add('bg-white/10', 'text-white/80', 'border', 'border-white/15');
+          tabBtnVeille.setAttribute('aria-selected', 'false');
+
+          // Sections visibility
+          sectionProjects.classList.remove('hidden');
+          sectionVeille.classList.add('hidden');
+        } else if (tabName === 'veille') {
+          currentTab = 'veille';
+          // Button styles
+          tabBtnVeille.classList.remove('bg-white/10', 'text-white/80', 'border', 'border-white/15');
+          tabBtnVeille.classList.add('bg-white', 'text-black', 'shadow-md');
+          tabBtnVeille.setAttribute('aria-selected', 'true');
+
+          tabBtnProjects.classList.remove('bg-white', 'text-black', 'shadow-md');
+          tabBtnProjects.classList.add('bg-white/10', 'text-white/80', 'border', 'border-white/15');
+          tabBtnProjects.setAttribute('aria-selected', 'false');
+
+          // Sections visibility
+          sectionVeille.classList.remove('hidden');
+          sectionProjects.classList.add('hidden');
+        }
+      }
+
+      // Tab switcher click delegation
+      const tabSwitcher = document.getElementById('tab-switcher');
+      if (tabSwitcher) {
+        tabSwitcher.addEventListener('click', (e) => {
+          const btn = e.target.closest('.tab-btn');
+          if (!btn) return;
+          const tab = btn.getAttribute('data-tab');
+          if (tab) {
+            switchTab(tab);
+          }
+        });
+      }
+
+      // 5. Sidebar Toggle Collapse/Expand
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const toggleIcon = document.getElementById('toggleIcon');
+
+      function toggleSidebar() {
+        sidebarCollapsed = !sidebarCollapsed;
+        if (sidebarCollapsed) {
+          sidebar.classList.add('collapsed');
+          sidebar.setAttribute('aria-expanded', 'false');
+          toggleIcon.textContent = '›';
+          sidebarToggle.title = "Agrandir la barre latérale";
+        } else {
+          sidebar.classList.remove('collapsed');
+          sidebar.setAttribute('aria-expanded', 'true');
+          toggleIcon.textContent = '‹';
+          sidebarToggle.title = "Réduire la barre latérale";
+        }
+      }
+
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+      }
+
+      // Sidebar item click navigation
+      const sidebarNav = document.getElementById('sidebar-nav');
+      if (sidebarNav) {
+        sidebarNav.addEventListener('click', (e) => {
+          const btn = e.target.closest('.sidebar-jump-btn');
+          if (!btn) return;
+          const tab = btn.getAttribute('data-tab');
+          const modalType = btn.getAttribute('data-modal-type');
+          const index = parseInt(btn.getAttribute('data-index'), 10);
+          const targetId = btn.getAttribute('data-sidebar-target');
+
+          // Ensure appropriate tab is active
+          if (tab && tab !== currentTab) {
+            switchTab(tab);
+          }
+
+          // Open detail modal directly for the corresponding module
+          if (modalType && !isNaN(index)) {
+            openE6Modal(modalType, index);
+          } else if (targetId) {
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
+        });
+      }
+
+      // 6. Interactive Detail Modal Logic
+      const modal = document.getElementById('e6Modal');
+      const btnCloseModal = document.getElementById('btn-close-modal');
+      const btnPrevModalItem = document.getElementById('btn-prev-modal-item');
+      const btnNextModalItem = document.getElementById('btn-next-modal-item');
+
+      const modalCategoryBadge = document.getElementById('modal-category-badge');
+      const modalStatusBadge = document.getElementById('modal-status-badge');
+      const modalTitle = document.getElementById('modal-e6-title');
+      const modalSubtitle = document.getElementById('modal-e6-subtitle');
+      const modalContext = document.getElementById('modal-context');
+      const modalSteps = document.getElementById('modal-steps');
+      const modalSecurityControls = document.getElementById('modal-security-controls');
+      const modalTechTags = document.getElementById('modal-tech-tags');
+      const modalEvidenceIcon = document.getElementById('modal-evidence-icon');
+      const modalEvidenceTitle = document.getElementById('modal-evidence-title');
+      const modalEvidenceDesc = document.getElementById('modal-evidence-desc');
+      const modalCounter = document.getElementById('modal-item-counter');
+
+      function openE6Modal(type, index) {
+        currentModalType = type;
+        currentModalIndex = index;
+        const dataList = (type === 'project') ? projectsData : veilleData;
+
+        if (index < 0 || index >= dataList.length) return;
+        const item = dataList[index];
+
+        // Populate modal fields
+        modalCategoryBadge.textContent = item.category;
+        modalStatusBadge.textContent = item.status;
+        modalTitle.textContent = item.title;
+        modalSubtitle.textContent = item.subtitle;
+        modalContext.textContent = item.context;
+
+        // Steps
+        modalSteps.innerHTML = item.steps.map((step, idx) => `
+          <div class="flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-[#7A553A]/40 text-amber-200 border border-[#7A553A]/50 flex items-center justify-center text-xs font-mono font-bold shrink-0 mt-0.5">
+              ${idx + 1}
+            </span>
+            <p class="text-white/80">${step}</p>
+          </div>
+        `).join('');
+
+        // Security controls
+        modalSecurityControls.innerHTML = item.securityControls.map(ctrl => `
+          <div class="p-2 rounded-xl bg-white/5 border border-white/10 flex items-center gap-2">
+            <span class="text-emerald-400 font-bold shrink-0">✓</span>
+            <span class="truncate">${ctrl}</span>
+          </div>
+        `).join('');
+
+        // Tech badges
+        modalTechTags.innerHTML = item.technologies.map(tag => `
+          <span class="px-2.5 py-1 rounded-lg bg-white/10 text-white/90 text-xs font-mono">
+            ${tag}
+          </span>
+        `).join('');
+
+        // Evidence preview box
+        modalEvidenceIcon.textContent = item.evidenceIcon;
+        modalEvidenceTitle.textContent = item.evidenceTitle;
+        modalEvidenceDesc.textContent = item.evidenceDesc;
+
+        // Counter
+        modalCounter.textContent = `${index + 1} / ${dataList.length}`;
+
+        // Show modal & prevent background scroll
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeE6Modal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      if (btnCloseModal) {
+        btnCloseModal.addEventListener('click', closeE6Modal);
+      }
+
+      // Close modal on background overlay click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeE6Modal();
+        }
+      });
+
+      // Escape key to close modal
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeE6Modal();
+        }
+      });
+
+      // Modal Prev/Next Navigation
+      btnPrevModalItem.addEventListener('click', () => {
+        const dataList = (currentModalType === 'project') ? projectsData : veilleData;
+        const newIndex = (currentModalIndex - 1 + dataList.length) % dataList.length;
+        openE6Modal(currentModalType, newIndex);
+      });
+
+      btnNextModalItem.addEventListener('click', () => {
+        const dataList = (currentModalType === 'project') ? projectsData : veilleData;
+        const newIndex = (currentModalIndex + 1) % dataList.length;
+        openE6Modal(currentModalType, newIndex);
+      });
+
+      // 7. Grid Event Delegation for Project Cards
+      const projectsGrid = document.getElementById('projects-grid');
+      if (projectsGrid) {
+        projectsGrid.addEventListener('click', (e) => {
+          const card = e.target.closest('article[data-project-index]');
+          if (card) {
+            const index = parseInt(card.getAttribute('data-project-index'), 10);
+            if (!isNaN(index)) {
+              openE6Modal('project', index);
+            }
+          }
+        });
+      }
+
+      // 8. Grid Event Delegation for Veille Cards
+      const veilleArticlesGrid = document.getElementById('veille-articles-grid');
+      if (veilleArticlesGrid) {
+        veilleArticlesGrid.addEventListener('click', (e) => {
+          const card = e.target.closest('article[data-veille-index]');
+          if (card) {
+            const index = parseInt(card.getAttribute('data-veille-index'), 10);
+            if (!isNaN(index)) {
+              openE6Modal('veille', index);
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

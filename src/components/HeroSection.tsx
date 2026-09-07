@@ -5,9 +5,9 @@ export function HeroSection() {
   const [copied, setCopied] = useState(false);
 
   const { displayed, done } = useTypewriter(
-    'Welcome to my porfolio, hope you will enjoy it !',
-    38,
-    600
+    "Bienvenue sur mon portfolio, j'espère qu'il vous plaira !",
+    25,
+    200
   );
 
   const handleCopyEmail = async () => {
@@ -79,11 +79,11 @@ export function HeroSection() {
           id="copy-email-pill"
           type="button"
           onClick={handleCopyEmail}
-          title={copied ? 'Copied to clipboard!' : 'Click to copy email'}
+          title={copied ? 'Email copié !' : "Cliquer pour copier l'email"}
           className="group flex items-center gap-3 border border-white text-white bg-transparent px-5 py-2.5 rounded-full text-[15px] sm:text-[16px] hover:bg-white hover:text-black transition-colors duration-200 whitespace-nowrap cursor-pointer relative backdrop-blur-xs"
         >
           <span className="underline underline-offset-2">
-            Reach me : maxencefontainegros@ik.me
+            Me contacter : maxencefontainegros@ik.me
           </span>
 
           {/* Copy icon */}
@@ -117,7 +117,7 @@ export function HeroSection() {
           {/* Subtle "Copied!" floating indicator */}
           {copied && (
             <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2.5 py-1 text-[11px] bg-white text-black rounded font-medium shadow-lg pointer-events-none transition-opacity duration-200">
-              Copied!
+              Email copié !
             </span>
           )}
         </button>

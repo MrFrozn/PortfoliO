@@ -16,6 +16,10 @@ export default defineConfig(() => {
         input: {
           main: path.resolve(__dirname, 'index.html'),
           btsSio: path.resolve(__dirname, 'bts-sio.html'),
+          e5: path.resolve(__dirname, 'e5.html'),
+          e6: path.resolve(__dirname, 'e6.html'),
+          portfolio: path.resolve(__dirname, 'projets/portfolio/portfolio.html'),
+          holazyv: path.resolve(__dirname, 'projets/holazyv/holazyv.html'),
         },
       },
     },

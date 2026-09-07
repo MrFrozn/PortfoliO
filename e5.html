@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Épreuve E5 — Portefeuille de Compétences BTS SIO SISR — Maxence FONTAINE GROS</title>
+    <meta
+      name="description"
+      content="Dossier d'épreuve E5 du BTS SIO SISR : Fiches de situations professionnelles, compétences validées, justificatifs et réalisations techniques."
+    />
+
+    <!-- Preconnect origins and Preload critical background image for LCP -->
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind configuration & Non-blocking deferred CDN script -->
+    <script>
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              warmMuted: '#121110',
+            },
+            keyframes: {
+              fadeInPage: {
+                '0%': { opacity: '0', transform: 'translateY(14px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-in': 'fadeInPage 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts matching portfolio -->
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+      type="text/css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+      }
+      body {
+        font-family: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+        background-color: #0b0a09;
+        color: #ffffff;
+        -webkit-overflow-scrolling: touch;
+      }
+      .font-heading {
+        font-family: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0b0a09;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.32);
+      }
+      /* =========================================================================
+         SIDEBAR STYLES: COLLAPSED & EXPANDED STATES
+         ========================================================================= */
+      #sidebar {
+        transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Collapsed State (#sidebar.collapsed or #sidebar.w-16 / #sidebar.w-20) */
+      #sidebar.collapsed,
+      #sidebar.w-16,
+      #sidebar.w-20 {
+        width: 4.5rem !important;
+        min-width: 4.5rem !important;
+        max-width: 4.5rem !important;
+      }
+      @media (min-width: 1024px) {
+        #sidebar.collapsed,
+        #sidebar.lg\:w-16,
+        #sidebar.lg\:w-20 {
+          width: 4.5rem !important;
+          min-width: 4.5rem !important;
+          max-width: 4.5rem !important;
+        }
+      }
+
+      /* When collapsed: hide ALL text, subtitles, headers, badges, footers */
+      #sidebar.collapsed .sidebar-text,
+      #sidebar.collapsed #sidebar-expanded-title,
+      #sidebar.collapsed #sidebar-count,
+      #sidebar.collapsed #sidebar-footer {
+        display: none !important;
+      }
+
+      /* Header in collapsed state: center the toggle button */
+      #sidebar.collapsed #sidebar-header {
+        justify-content: center !important;
+        padding-bottom: 0.75rem;
+      }
+
+      /* Inner container padding in collapsed state */
+      #sidebar.collapsed #sidebar-inner {
+        padding: 1.25rem 0.5rem !important;
+        overflow: hidden;
+      }
+
+      /* Task list container in collapsed state */
+      #sidebar.collapsed #sidebar-task-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      /* Circular icon buttons when collapsed */
+      #sidebar.collapsed .sidebar-jump-btn {
+        width: 2.5rem !important; /* 40px = w-10 */
+        height: 2.5rem !important; /* 40px = h-10 */
+        min-width: 2.5rem !important;
+        max-width: 2.5rem !important;
+        border-radius: 9999px !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 0 !important;
+        margin: 0.35rem auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: none !important;
+      }
+
+      #sidebar.collapsed .sidebar-jump-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+      }
+
+      #sidebar.collapsed .sidebar-jump-btn .task-badge {
+        width: 100% !important;
+        height: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        font-size: 0.875rem !important; /* text-sm */
+        font-weight: 700 !important; /* font-bold */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #ffffff !important;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#0b0a09] text-white selection:bg-white selection:text-black antialiased relative">
+    <!-- Dark warm muted backdrop & background matching hero and about sections -->
+    <div
+      class="fixed inset-0 z-0 bg-cover bg-center opacity-25 pointer-events-none"
+      style="background-image: url('/bg%20site2.png');"
+    ></div>
+
+    <!-- Radial soft vignette overlay -->
+    <div class="fixed inset-0 z-0 bg-radial from-transparent via-black/40 to-black/90 pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- =========================================================================
+           1. TOP NAVBAR
+           ========================================================================= -->
+      <!-- =========================================================================
+           1. TOP NAVBAR (SIMPLIFIED FOR DEDICATED PAGE)
+           ========================================================================= -->
+      <header
+        id="navbar-e5"
+        class="sticky top-0 z-40 w-full px-6 sm:px-10 md:px-14 py-4 flex items-center justify-between backdrop-blur-sm md:backdrop-blur-md bg-black/40 border-b border-white/10 select-none"
+      >
+        <!-- Logo Brand -->
+        <a href="index.html#home" class="flex items-center gap-2 group cursor-pointer" title="Retour à l'accueil">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading">
+            Mainframe®
+          </span>
+          <span class="text-2xl text-white opacity-80 leading-none group-hover:rotate-45 transition-transform duration-300">
+            ✳︎
+          </span>
+        </a>
+
+        <!-- Back to Portfolio Pill-Button pointing directly to #exams -->
+        <a
+          id="btn-back-portfolio-top"
+          href="index.html#exams"
+          class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md cursor-pointer group"
+        >
+          <svg class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Retour portfolio</span>
+        </a>
+      </header>
+
+      <!-- =========================================================================
+           2. MAIN TWO-COLUMN DASHBOARD LAYOUT
+           ========================================================================= -->
+      <main class="w-full max-w-[94rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-12 flex-1">
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start transition-all duration-300">
+          
+          <!-- ===================================================================
+               LEFT SIDEBAR ("Tableau de bord" - Collapsible w-72 <-> w-16/w-20)
+               =================================================================== -->
+          <aside
+            id="sidebar"
+            class="w-full lg:w-72 shrink-0 transition-all duration-300 ease-in-out lg:sticky lg:top-24 space-y-6 select-none"
+            aria-expanded="true"
+          >
+            <div id="sidebar-inner" class="rounded-3xl bg-neutral-900/40 backdrop-blur-sm md:backdrop-blur-xl border border-white/20 p-5 shadow-2xl space-y-4 transition-all duration-300">
+              
+              <!-- Sidebar Header -->
+              <div id="sidebar-header" class="flex items-center justify-between pb-4 border-b border-white/10 gap-2">
+                <div id="sidebar-expanded-title" class="flex items-center gap-2 min-w-0">
+                  <h2 class="text-base font-bold text-white font-heading whitespace-nowrap">Tableau de bord</h2>
+                  <span id="sidebar-count" class="px-2 py-0.5 text-xs bg-white/10 text-white/90 rounded-full font-mono shrink-0">
+                    4 fiches
+                  </span>
+                </div>
+
+                <!-- Sidebar Toggle Button -->
+                <button
+                  type="button"
+                  id="sidebarToggle"
+                  class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white font-bold transition-all duration-200 active:scale-95 cursor-pointer shadow-sm shrink-0"
+                  title="Réduire / Agrandir la barre latérale"
+                  aria-label="Basculer la barre latérale"
+                >
+                  <span id="toggleIcon" class="leading-none select-none text-base">‹</span>
+                </button>
+              </div>
+
+              <!-- Quick Jump List / Tasks list (with ample horizontal padding) -->
+              <div class="space-y-2.5" id="sidebar-task-list">
+                <!-- Injected via JavaScript with px-4 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all -->
+              </div>
+
+              <!-- Simplified Footer Block -->
+              <div id="sidebar-footer" class="sidebar-text pt-4 border-t border-white/10">
+                <a
+                  href="#competencies-legend"
+                  class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-full bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-semibold text-white/90 transition-all duration-200 active:scale-[0.98] whitespace-nowrap group"
+                >
+                  <span>Consulter le référentiel</span>
+                  <span class="text-white/50 group-hover:text-white transition-colors">↗</span>
+                </a>
+              </div>
+
+            </div>
+          </aside>
+
+          <!-- ===================================================================
+               RIGHT MAIN CONTENT AREA (flex-1 automatic expansion)
+               =================================================================== -->
+          <section id="mainContent" class="flex-1 w-full min-w-0 space-y-8 sm:space-y-10 transition-all duration-300">
+
+            <!-- Header Section & Action Button -->
+            <div class="rounded-3xl bg-neutral-900/40 backdrop-blur-sm md:backdrop-blur-xl border border-white/20 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              
+              <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div class="space-y-3 max-w-2xl">
+                  <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-300 text-xs font-mono uppercase tracking-wider shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    Épreuve E5 · SISR
+                  </div>
+                  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-heading">
+                    Épreuve E5
+                  </h1>
+                  <p class="text-white/80 text-sm sm:text-base leading-relaxed">
+                    Présentation de mon épreuve E5 — Portefeuille de compétences professionnelles. Retrouvez l’ensemble des fiches descriptives de réalisations techniques, topologies réseaux et scénarios d'administration.
+                  </p>
+                </div>
+
+                <!-- Prominent Pill-Style Action Button: Download E5 Matrix PDF -->
+                <div class="shrink-0">
+                  <a
+                    id="btn-download-e5-pdf"
+                    href="tableau-e5.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-[0_0_25px_rgba(255,255,255,0.25)] select-none"
+                  >
+                    <span>Télécharger le tableau E5 (PDF)</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===================================================================
+                 COMPETENCY LEGEND BANNER (6 BTS SIO Domains)
+                 =================================================================== -->
+            <div id="competencies-legend" class="rounded-3xl bg-neutral-900/40 backdrop-blur-sm md:backdrop-blur-xl border border-white/20 p-6 sm:p-8 space-y-6 mb-8 sm:mb-10 shadow-xl">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-widest text-white/60 font-semibold">
+                  Domaines de compétences du référentiel BTS SIO (D1 à D6)
+                </span>
+                <span class="text-xs text-white/50 font-mono">6 blocs validés</span>
+              </div>
+
+              <!-- Horizontal Grid of 6 Competency Badges (Refined, lighter, spacious) -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+                <!-- C1: Bleu -->
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-blue-500/30 hover:border-blue-500/60 transition-all shadow-[0_0_15px_rgba(59,130,246,0.08)]">
+                  <span class="w-3 h-3 rounded-full bg-blue-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(59,130,246,0.8)]"></span>
+                  <div class="text-xs space-y-1">
+                    <strong class="text-blue-300 block font-mono text-xs tracking-wide">D1 · Gérer le patrimoine</strong>
+                    <span class="text-white/80 leading-relaxed block">Gérer le patrimoine informatique (parc, serveurs, licences, configurations)</span>
+                  </div>
+                </div>
+
+                <!-- C2: Rouge / Orange -->
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-orange-500/30 hover:border-orange-500/60 transition-all shadow-[0_0_15px_rgba(249,115,22,0.08)]">
+                  <span class="w-3 h-3 rounded-full bg-orange-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
+                  <div class="text-xs space-y-1">
+                    <strong class="text-orange-300 block font-mono text-xs tracking-wide">D2 · Répondre aux incidents</strong>
+                    <span class="text-white/80 leading-relaxed block">Assistance utilisateurs, traitement des tickets ITIL & résolutions</span>
+                  </div>
+                </div>
+
+                <!-- C3: Vert -->
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-emerald-500/30 hover:border-emerald-500/60 transition-all shadow-[0_0_15px_rgba(16,185,129,0.08)]">
+                  <span class="w-3 h-3 rounded-full bg-emerald-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span>
+                  <div class="text-xs space-y-1">
+                    <strong class="text-emerald-300 block font-mono text-xs tracking-wide">D3 · Présence en ligne</strong>
+                    <span class="text-white/80 leading-relaxed block">Développer et valoriser la présence web de l’organisation</span>
+                  </div>
+                </div>
+
+                <!-- C4: Jaune / Ambre -->
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-yellow-500/30 hover:border-yellow-500/60 transition-all shadow-[0_0_15px_rgba(250,204,21,0.08)]">
+                  <span class="w-3 h-3 rounded-full bg-yellow-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(250,204,21,0.8)]"></span>
+                  <div class="text-xs space-y-1">
+                    <strong class="text-yellow-300 block font-mono text-xs tracking-wide">D4 · Mode projet</strong>
+                    <span class="text-white/80 leading-relaxed block">Planification, cahier des charges, jalons & revues d'étape</span>
+                  </div>
+                </div>
+
+                <!-- C5: Violet / Indigo -->
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-purple-500/30 hover:border-purple-500/60 transition-all shadow-[0_0_15px_rgba(168,85,247,0.08)]">
+                  <span class="w-3 h-3 rounded-full bg-purple-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+                  <div class="text-xs space-y-1">
+                    <strong class="text-purple-300 block font-mono text-xs tracking-wide">D5 · Service informatique</strong>
+                    <span class="text-white/80 leading-relaxed block">Mettre à disposition des utilisateurs un service IT opérationnel</span>
+                  </div>
+                </div>
+
+                <!-- C6: Rose -->
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.04] hover:bg-white/[0.08] border border-pink-500/30 hover:border-pink-500/60 transition-all shadow-[0_0_15px_rgba(236,72,153,0.08)]">
+                  <span class="w-3 h-3 rounded-full bg-pink-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(236,72,153,0.8)]"></span>
+                  <div class="text-xs space-y-1">
+                    <strong class="text-pink-300 block font-mono text-xs tracking-wide">D6 · Développement pro</strong>
+                    <span class="text-white/80 leading-relaxed block">Organiser son développement professionnel & veilles technologiques</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===================================================================
+                 INTERACTIVE FILTERING BAR (z-40 stacking context, no overflow clip)
+                 =================================================================== -->
+            <div
+              id="filterBar"
+              class="relative z-40 rounded-3xl bg-neutral-900/40 backdrop-blur-sm md:backdrop-blur-xl border border-white/20 p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-5 shadow-xl select-none mb-8 sm:mb-10"
+            >
+              <!-- Context filter buttons (Toutes, Scolaire, Professionnel) -->
+              <div id="context-filter-group" class="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+                <button
+                  type="button"
+                  data-filter-context="all"
+                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-black shadow-md"
+                >
+                  Toutes les fiches
+                </button>
+                <button
+                  type="button"
+                  data-filter-context="scolaire"
+                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white/10 text-white/80 hover:bg-white/15 border border-white/15"
+                >
+                  En milieu Scolaire
+                </button>
+                <button
+                  type="button"
+                  data-filter-context="professionnel"
+                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white/10 text-white/80 hover:bg-white/15 border border-white/15"
+                >
+                  En milieu Professionnel
+                </button>
+              </div>
+
+              <!-- Competency Dropdown Menu (Fixed Stacking & Above Grid) -->
+              <div class="relative w-full md:w-auto">
+                <button
+                  id="btn-competency-dropdown"
+                  type="button"
+                  class="inline-flex items-center justify-between gap-2.5 w-full md:w-72 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition-all cursor-pointer shadow-sm"
+                  aria-expanded="false"
+                >
+                  <span id="dropdown-selected-label" class="truncate">Filtrer par compétence ▾</span>
+                  <svg class="w-3.5 h-3.5 text-white/70 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+
+                <!-- Dropdown options panel (position absolute, top: 100%, right: 0, z-index: 50) -->
+                <div
+                  id="competenceDropdown"
+                  class="hidden absolute right-0 top-full mt-2 w-full md:w-80 rounded-2xl bg-neutral-900/95 backdrop-blur-md md:backdrop-blur-2xl border border-white/20 shadow-2xl p-2.5 z-50 space-y-1"
+                >
+                  <button
+                    type="button"
+                    data-filter-competency="all"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-white shadow-sm"></span>
+                    <span>Toutes les compétences</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-filter-competency="D1"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
+                    <span>D1 · Gérer le patrimoine informatique</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-filter-competency="D2"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]"></span>
+                    <span>D2 · Répondre aux incidents & demandes</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-filter-competency="D3"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
+                    <span>D3 · Développer la présence en ligne</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-filter-competency="D4"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]"></span>
+                    <span>D4 · Travailler en mode projet</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-filter-competency="D5"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></span>
+                    <span>D5 · Mettre à disposition un service IT</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-filter-competency="D6"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                  >
+                    <span class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.8)]"></span>
+                    <span>D6 · Organiser son développement pro</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ===================================================================
+                 3. IT TASK CARDS GRID (Generous spacing and lighter cards)
+                 =================================================================== -->
+            <div id="tasks-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              <!-- Dynamically populated / fallback cards injected below -->
+            </div>
+
+            <!-- Empty State if no tasks match -->
+            <div id="empty-state" class="hidden text-center py-16 rounded-3xl bg-neutral-900/40 border border-white/20 p-8 space-y-3">
+              <p class="text-white/70 text-sm">Aucune réalisation ne correspond aux filtres sélectionnés.</p>
+              <button
+                type="button"
+                id="btn-reset-filters"
+                class="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition-colors"
+              >
+                Réinitialiser les filtres
+              </button>
+            </div>
+
+          </section>
+
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="mt-auto w-full py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-mono">
+        <p>© 2026 Maxence FONTAINE GROS · Portefeuille E5 BTS SIO SISR · Institution des Chartreux, Lyon.</p>
+      </footer>
+    </div>
+
+    <!-- =========================================================================
+         INTERACTIVE TASK DETAIL MODAL (AT DOCUMENT ROOT / BODY LEVEL)
+         ========================================================================= -->
+    <div
+      id="taskModal"
+      class="hidden fixed inset-0 z-[9999] backdrop-blur-sm md:backdrop-blur-md bg-black/80 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-task-title"
+    >
+      <div
+        id="taskModalBackdrop"
+        class="absolute inset-0 bg-transparent"
+      ></div>
+
+      <div
+        id="taskModalContent"
+        class="relative z-10 w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-neutral-900/95 border border-white/15 shadow-2xl p-6 sm:p-10 text-white space-y-6"
+      >
+        <!-- Modal Top Bar -->
+        <div class="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
+          <div class="space-y-2">
+            <!-- Context & Number Badges -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="modal-badge-context" class="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-white/10 border border-white/15 text-white">
+                Scolaire
+              </span>
+              <span id="modal-badge-id" class="text-xs font-mono text-white/50">
+                Fiche #1
+              </span>
+            </div>
+            <h2
+              id="modal-task-title"
+              class="text-2xl sm:text-3xl font-bold tracking-tight text-white font-heading"
+            >
+              Titre de l'activité
+            </h2>
+          </div>
+
+          <!-- Close Modal Button -->
+          <button
+            type="button"
+            id="btn-close-modal"
+            class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition-all duration-200 active:scale-90 shrink-0 cursor-pointer"
+            aria-label="Fermer la fenêtre"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <!-- Validated Competencies Badges Row -->
+        <div class="space-y-2">
+          <span class="text-xs font-mono uppercase tracking-widest text-white/50">Compétences validées :</span>
+          <div id="modal-competencies-badges" class="flex flex-wrap gap-2">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Context & Objective -->
+        <div class="p-5 rounded-2xl bg-black/30 border border-white/5 space-y-2">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-amber-300 font-semibold">Contexte & Objectif</h3>
+          <p id="modal-task-context" class="text-sm sm:text-base text-white/80 leading-relaxed">
+            Description du contexte...
+          </p>
+        </div>
+
+        <!-- Technical Justification / Steps applied -->
+        <div class="space-y-3">
+          <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+            Démarche & Justification Technique
+          </h3>
+          <div id="modal-technical-steps" class="space-y-3 text-sm sm:text-base text-white/75 leading-relaxed">
+            <!-- Dynamic steps -->
+          </div>
+        </div>
+
+        <!-- Technologies Used Tags -->
+        <div class="space-y-2 pt-2">
+          <span class="text-xs font-mono uppercase tracking-widest text-white/50">Environnement & Outils :</span>
+          <div id="modal-tech-tags" class="flex flex-wrap gap-2">
+            <!-- Dynamic tech tags -->
+          </div>
+        </div>
+
+        <!-- Screenshot Gallery / Evidence Previews -->
+        <div class="space-y-3 pt-2">
+          <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+            Preuves & Captures d'Écran
+          </h3>
+          <div id="modal-screenshots" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Dynamic screenshots / evidence -->
+          </div>
+        </div>
+
+        <!-- Modal Bottom Navigation (Prev / Next & Close) -->
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+          <button
+            type="button"
+            id="btn-prev-modal-task"
+            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-xs sm:text-sm font-medium text-white transition-colors active:scale-95"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Activité précédente</span>
+          </button>
+
+          <span id="modal-pagination-counter" class="text-xs font-mono text-white/50">
+            1 / 4
+          </span>
+
+          <button
+            type="button"
+            id="btn-next-modal-task"
+            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-xs sm:text-sm font-medium text-white transition-colors active:scale-95"
+          >
+            <span>Activité suivante</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         JAVASCRIPT DATA & INTERACTIVITY ENGINE
+         ========================================================================= -->
+    <script>
+      // 1. Data Store for BTS SIO SISR E5 Activities
+      const tasksData = [
+        {
+          id: 'task-glpi-agent',
+          number: 1,
+          title: "Ajout d'ordinateurs sur GLPI Agent",
+          contextType: 'professionnel',
+          contextLabel: 'En milieu Professionnel',
+          competencies: [
+            { code: 'D1', label: 'Gérer le patrimoine informatique', color: 'blue' },
+            { code: 'D5', label: 'Mettre à disposition un service informatique', color: 'purple' }
+          ],
+          primaryColor: 'blue',
+          summary: "Déploiement automatisé et télé-inventaire des postes clients via l'agent GLPI et communication sécurisée HTTPS vers le serveur de gestion de parc.",
+          fullContext: "Dans le cadre de l'audit et de la maintenance de l'infrastructure informatique d'entreprise, modernisation du recensement de l'ensemble des matériels (PC fixes, ordinateurs portables, serveurs virtuels).",
+          steps: [
+            "Configuration du serveur GLPI : paramétrage de l'entité racine, des règles d'importation automatique et des certificats SSL/TLS.",
+            "Création du script d'installation automatisée PowerShell/Bash pour déployer silencieusement GLPI-Agent sur le parc Windows et Linux.",
+            "Paramétrage du fichier agent.cfg (définition de l'URL serveur, balise tag et périodicité des inventaires matériels et logiciels).",
+            "Vérification de la remontée d'inventaire : composants CPU, RAM, numéros de série, logiciels installés et volumétrie disque."
+          ],
+          technologies: ['GLPI 10', 'GLPI Agent', 'PowerShell', 'Windows 11', 'Debian Linux', 'SSL/TLS'],
+          previewImg: 'assets/glpi-preview.png',
+          evidence: [
+            { label: "Console d'administration GLPI avec ordinateurs inventoriés", hint: "Inventaire dynamique complet" },
+            { label: "Script de déploiement et logs d'exécution agent.log", hint: "Vérification de la conformité" }
+          ]
+        },
+        {
+          id: 'task-glpi-tickets',
+          number: 2,
+          title: "Création et résolution de tickets GLPI",
+          contextType: 'professionnel',
+          contextLabel: 'En milieu Professionnel',
+          competencies: [
+            { code: 'D2', label: "Répondre aux incidents & demandes d'assistance", color: 'orange' },
+            { code: 'D1', label: 'Gérer le patrimoine informatique', color: 'blue' }
+          ],
+          primaryColor: 'orange',
+          summary: "Gestion du cycle de vie des incidents utilisateurs, diagnostic de pannes niveau 1/2, catégorisation ITIL, SLA et base de connaissances (KB).",
+          fullContext: "Support informatique dédié aux collaborateurs d'une organisation : traitement des dysfonctionnements système, demandes de droits d'accès et pannes matérielles.",
+          steps: [
+            "Qualification de la demande utilisateur : niveau d'urgence, impact métier et attribution de priorité ITIL.",
+            "Investigation technique : reproduction du problème, consultation des journaux d'événements Windows/Linux et télémaintenance.",
+            "Résolution de l'incident : remplacement matériel ou ajustement des droits utilisateurs Active Directory.",
+            "Clôture du ticket avec rédaction d'une fiche de solution dans la base de connaissances interne pour accélérer les interventions futures."
+          ],
+          technologies: ['GLPI Helpdesk', 'ITIL v4', 'Active Directory', 'AnyDesk / RDP', 'Base de connaissances'],
+          previewImg: 'assets/tickets-preview.png',
+          evidence: [
+            { label: "Vue du tableau des incidents résolus avec temps d'intervention", hint: "Respect des indicateurs SLA" },
+            { label: "Fiche d'intervention et rapport de clôture utilisateur", hint: "Validation de satisfaction" }
+          ]
+        },
+        {
+          id: 'task-cisco-vlan',
+          number: 3,
+          title: "Configuration VLAN & Routeur Cisco",
+          contextType: 'scolaire',
+          contextLabel: 'En milieu Scolaire',
+          competencies: [
+            { code: 'D1', label: 'Gérer le patrimoine informatique', color: 'blue' },
+            { code: 'D5', label: 'Mettre à disposition un service informatique', color: 'purple' },
+            { code: 'D4', label: 'Travailler en mode projet', color: 'yellow' }
+          ],
+          primaryColor: 'purple',
+          summary: "Segmentation réseau par VLANs (Direction, Administratif, Invités), routage inter-VLANs sur switch L3 / routeur Cisco et sécurisation par ACL.",
+          fullContext: "Mise en œuvre d'une maquette d'infrastructure réseau sécurisée pour une PME multi-services au sein du laboratoire réseau de l'Institution des Chartreux.",
+          steps: [
+            "Conception du plan d'adressage IP (sous-réseaux /24 avec calcul des masques et passerelles).",
+            "Configuration des switches Cisco Catalyst : création des VLANs 10, 20 et 30, affectation des ports d'accès (switchport access vlan) et liaisons trunk 802.1Q.",
+            "Paramétrage du routage inter-VLANs (Router-on-a-Stick avec sous-interfaces encapsulation dot1Q).",
+            "Mise en place d'un serveur DHCP avec exclusion d'adresses et restrictions par Listes de Contrôle d'Accès (ACL étendues) pour isoler le réseau invité."
+          ],
+          technologies: ['Cisco Packet Tracer', 'Cisco Catalyst 2960/3560', 'Cisco 2911', 'VLAN 802.1Q', 'Inter-VLAN', 'ACL'],
+          previewImg: 'assets/cisco-preview.png',
+          evidence: [
+            { label: "Topologie réseau sous Packet Tracer avec segmentation par zones", hint: "Schéma d'architecture certifié" },
+            { label: "Extraits de configuration 'show running-config' et tests de ping inter-VLAN", hint: "Validation des tables de routage" }
+          ]
+        },
+        {
+          id: 'task-portfolio-bts',
+          number: 4,
+          title: "Création d'un portfolio BTS SIO",
+          contextType: 'scolaire',
+          contextLabel: 'En milieu Scolaire',
+          competencies: [
+            { code: 'D3', label: 'Développer la présence en ligne de l’organisation', color: 'emerald' },
+            { code: 'D4', label: 'Travailler en mode projet', color: 'yellow' },
+            { code: 'D6', label: 'Organiser son développement professionnel', color: 'pink' }
+          ],
+          primaryColor: 'emerald',
+          summary: "Conception, développement web responsive et publication d'un site vitrine valorisant les compétences, certifications et projets d'étudiant en BTS SIO SISR.",
+          fullContext: "Projet personnel et professionnel continu sur l'année scolaire visant à synthétiser les apprentissages et offrir un support d'évaluation interactif pour les épreuves E4 et E5.",
+          steps: [
+            "Rédaction du cahier des charges : personas, arborescence, charte graphique dark-mode et objectifs pédagogiques.",
+            "Prototypage UI/UX sous Figma et sélection des composants graphiques (glassmorphism, typographies équilibrées).",
+            "Développement front-end avec Tailwind CSS, React, TypeScript et intégration de la vidéo responsive scrubbable.",
+            "Mise en conformité RGPD (mentions légales), optimisation SEO, accessibilité et déploiement continu."
+          ],
+          technologies: ['HTML5 / CSS3', 'Tailwind CSS', 'TypeScript', 'Vite', 'Git / GitHub', 'Figma'],
+          previewImg: 'projets/portfolio/cover_portfolio.png',
+          evidence: [
+            { label: "Maquette d'interface Figma et cahier des charges fonctionnel", hint: "Documentation de cadrage" },
+            { label: "Aperçu de la structure du code et rendu responsive mobile/desktop", hint: "Qualité de réalisation" }
+          ]
+        }
+      ];
+
+      // 2. State
+      let currentContextFilter = 'all';
+      let currentCompetencyFilter = 'all';
+      let activeModalTaskIndex = 0;
+
+      // 3. Color Map Helper
+      function getCompetencyBadgeClasses(code) {
+        switch(code) {
+          case 'D1': return 'bg-blue-500/20 border-blue-500/30 text-blue-300';
+          case 'D2': return 'bg-orange-500/20 border-orange-500/30 text-orange-300';
+          case 'D3': return 'bg-emerald-500/20 border-emerald-500/30 text-emerald-300';
+          case 'D4': return 'bg-yellow-500/20 border-yellow-500/30 text-yellow-300';
+          case 'D5': return 'bg-purple-500/20 border-purple-500/30 text-purple-300';
+          case 'D6': return 'bg-pink-500/20 border-pink-500/30 text-pink-300';
+          default: return 'bg-white/10 border-white/20 text-white';
+        }
+      }
+
+      function getBorderColor(primaryColor) {
+        switch(primaryColor) {
+          case 'blue': return 'border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.06)]';
+          case 'orange': return 'border-orange-500/40 shadow-[0_0_20px_rgba(249,115,22,0.06)]';
+          case 'emerald': return 'border-emerald-500/40 shadow-[0_0_20px_rgba(16,185,129,0.06)]';
+          case 'yellow': return 'border-yellow-500/40 shadow-[0_0_20px_rgba(250,204,21,0.06)]';
+          case 'purple': return 'border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.06)]';
+          case 'pink': return 'border-pink-500/40 shadow-[0_0_20px_rgba(236,72,153,0.06)]';
+          default: return 'border-white/20';
+        }
+      }
+
+      // 4. Render Left Sidebar
+      function renderSidebar() {
+        const sidebarContainer = document.getElementById('sidebar-task-list');
+        if (!sidebarContainer) return;
+
+        sidebarContainer.innerHTML = tasksData.map((task, idx) => `
+          <button
+            type="button"
+            data-task-index="${idx}"
+            class="sidebar-jump-btn w-full text-left px-4 py-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all flex items-center justify-between gap-3 group select-none cursor-pointer shadow-sm hover:shadow-md active:scale-[0.99]"
+            title="${task.number}. ${task.title}"
+          >
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="task-badge w-7 h-7 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:bg-white group-hover:text-black transition-colors shrink-0">
+                ${task.number}
+              </span>
+              <span class="sidebar-text text-xs sm:text-sm font-medium text-white/90 group-hover:text-white truncate">
+                ${task.title}
+              </span>
+            </div>
+            <span class="sidebar-text text-xs text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0">↗</span>
+          </button>
+        `).join('');
+      }
+
+      // 5. Render Tasks Grid
+      function renderTasksGrid() {
+        const grid = document.getElementById('tasks-grid');
+        const emptyState = document.getElementById('empty-state');
+        if (!grid) return;
+
+        const filtered = tasksData.filter(task => {
+          const matchContext = currentContextFilter === 'all' || task.contextType === currentContextFilter;
+          const matchCompetency = currentCompetencyFilter === 'all' || task.competencies.some(c => c.code === currentCompetencyFilter);
+          return matchContext && matchCompetency;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '';
+          emptyState.classList.remove('hidden');
+          return;
+        }
+
+        emptyState.classList.add('hidden');
+
+        grid.innerHTML = filtered.map(task => {
+          const originalIndex = tasksData.findIndex(t => t.id === task.id);
+          const badgeBadges = task.competencies.map(c => `
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold border ${getCompetencyBadgeClasses(c.code)}">
+              ${c.code}
+            </span>
+          `).join('');
+
+          return `
+            <article
+              id="${task.id}"
+              data-task-index="${originalIndex}"
+              class="group relative rounded-3xl bg-neutral-900/40 backdrop-blur-sm md:backdrop-blur-xl border ${getBorderColor(task.primaryColor)} p-6 sm:p-8 shadow-xl flex flex-col justify-between hover:border-white/40 hover:bg-neutral-900/60 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+            >
+              <div class="space-y-4">
+                <!-- Top Row: Context Pill & Competency Badges -->
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-[11px] font-mono uppercase tracking-wider text-white/90">
+                    ${task.contextLabel}
+                  </span>
+                  <div class="flex items-center gap-1.5">
+                    ${badgeBadges}
+                  </div>
+                </div>
+
+                <!-- Title & Summary -->
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight font-heading group-hover:text-white transition-colors">
+                    ${task.title}
+                  </h3>
+                  <p class="text-white/80 text-xs sm:text-sm mt-2 leading-relaxed">
+                    ${task.summary}
+                  </p>
+                </div>
+
+                <!-- Screenshot Preview Card (Lighter glassmorphism container with explicit aspect ratio) -->
+                <div class="relative w-full h-44 aspect-video rounded-2xl bg-neutral-800/40 border border-white/15 overflow-hidden flex items-center justify-center">
+                  <img
+                    src="${task.previewImg}"
+                    alt="${task.title}"
+                    loading="lazy"
+                    decoding="async"
+                    width="480"
+                    height="176"
+                    class="w-full h-full object-cover object-center aspect-video opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    onerror="this.style.display='none'; this.parentElement.classList.add('p-4','text-center'); this.parentElement.innerHTML='<div class=\\'text-xs text-white/60 font-mono space-y-1.5\\'><div>🖥️ Environnement vérifié</div><div class=\\'text-[11px] text-white/40\\'>Capture disponible dans le dossier de preuves</div></div>';"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                  <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-[11px] text-white/90 font-mono pointer-events-none">
+                    <span>Fiche descriptive #${task.number}</span>
+                    <span class="text-xs">Consulter ↗</span>
+                  </div>
+                </div>
+
+                <!-- Technologies preview pills -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${task.technologies.slice(0, 4).map(tech => `
+                    <span class="px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-white/80 text-[11px] font-mono">
+                      ${tech}
+                    </span>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Action button: Voir plus -->
+              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between">
+                <button
+                  type="button"
+                  data-task-index="${originalIndex}"
+                  class="btn-open-task-modal inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95 shadow-md cursor-pointer select-none"
+                >
+                  <span>Voir plus...</span>
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+                <span class="text-xs text-white/50 font-mono">BTS SISR</span>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // 6. Interactive Task Detail Modal Logic
+      const modal = document.getElementById('taskModal');
+      const modalBackdrop = document.getElementById('taskModalBackdrop');
+      const btnCloseModal = document.getElementById('btn-close-modal');
+      const btnPrevModal = document.getElementById('btn-prev-modal-task');
+      const btnNextModal = document.getElementById('btn-next-modal-task');
+
+      function openTaskModal(index) {
+        if (index < 0 || index >= tasksData.length) return;
+        activeModalTaskIndex = index;
+        const task = tasksData[index];
+
+        // Populate fields
+        document.getElementById('modal-badge-context').textContent = task.contextLabel;
+        document.getElementById('modal-badge-id').textContent = `Fiche #${task.number} / ${tasksData.length}`;
+        document.getElementById('modal-task-title').textContent = task.title;
+        document.getElementById('modal-task-context').textContent = task.fullContext;
+        document.getElementById('modal-pagination-counter').textContent = `${index + 1} / ${tasksData.length}`;
+
+        // Competencies badges
+        const compContainer = document.getElementById('modal-competencies-badges');
+        compContainer.innerHTML = task.competencies.map(c => `
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border ${getCompetencyBadgeClasses(c.code)}">
+            <span class="font-bold">${c.code}</span>
+            <span>·</span>
+            <span>${c.label}</span>
+          </div>
+        `).join('');
+
+        // Steps (Lighter styling)
+        const stepsContainer = document.getElementById('modal-technical-steps');
+        stepsContainer.innerHTML = task.steps.map((step, sIdx) => `
+          <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-xs font-mono text-white font-bold shrink-0 mt-0.5">
+              ${sIdx + 1}
+            </span>
+            <p class="text-xs sm:text-sm text-white/80 leading-relaxed">${step}</p>
+          </div>
+        `).join('');
+
+        // Tech tags
+        const techContainer = document.getElementById('modal-tech-tags');
+        techContainer.innerHTML = task.technologies.map(tech => `
+          <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs text-white/90 font-mono">
+            ${tech}
+          </span>
+        `).join('');
+
+        // Evidence / Screenshots (Lighter styling)
+        const screenshotsContainer = document.getElementById('modal-screenshots');
+        screenshotsContainer.innerHTML = task.evidence.map((ev, eIdx) => `
+          <div class="rounded-2xl bg-neutral-800/40 border border-white/15 p-4 space-y-2.5">
+            <div class="h-28 rounded-xl bg-white/[0.06] border border-white/15 flex flex-col items-center justify-center text-center p-3">
+              <svg class="w-6 h-6 text-white/60 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+              <span class="text-[11px] text-white/70 font-mono">${ev.label}</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-white/60 font-mono">
+              <span>Justificatif #${eIdx + 1}</span>
+              <span class="text-emerald-400">✓ Validé</span>
+            </div>
+          </div>
+        `).join('');
+
+        // Show modal and lock body scroll
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeTaskModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+
+      btnCloseModal.addEventListener('click', closeTaskModal);
+      modalBackdrop.addEventListener('click', closeTaskModal);
+
+      // Keyboard escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeTaskModal();
+        }
+      });
+
+      // Modal navigation arrows
+      btnPrevModal.addEventListener('click', () => {
+        const newIndex = (activeModalTaskIndex - 1 + tasksData.length) % tasksData.length;
+        openTaskModal(newIndex);
+      });
+
+      btnNextModal.addEventListener('click', () => {
+        const newIndex = (activeModalTaskIndex + 1) % tasksData.length;
+        openTaskModal(newIndex);
+      });
+
+      // Delegated Sidebar Task Click Listener
+      const sidebarContainer = document.getElementById('sidebar-task-list');
+      if (sidebarContainer) {
+        sidebarContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('.sidebar-jump-btn');
+          if (!btn) return;
+          const index = parseInt(btn.getAttribute('data-task-index'), 10);
+          if (!isNaN(index)) {
+            openTaskModal(index);
+          }
+        });
+      }
+
+      // Delegated Tasks Grid Click Listener
+      const tasksGrid = document.getElementById('tasks-grid');
+      if (tasksGrid) {
+        tasksGrid.addEventListener('click', (e) => {
+          const modalBtn = e.target.closest('.btn-open-task-modal');
+          if (modalBtn) {
+            const index = parseInt(modalBtn.getAttribute('data-task-index'), 10);
+            if (!isNaN(index)) {
+              openTaskModal(index);
+            }
+            return;
+          }
+          const card = e.target.closest('article[data-task-index]');
+          if (card) {
+            const index = parseInt(card.getAttribute('data-task-index'), 10);
+            if (!isNaN(index)) {
+              openTaskModal(index);
+            }
+          }
+        });
+      }
+
+      // 7. Context Filter Buttons with Event Delegation
+      const contextFilterGroup = document.getElementById('context-filter-group');
+      if (contextFilterGroup) {
+        contextFilterGroup.addEventListener('click', (e) => {
+          const btn = e.target.closest('.filter-context-btn');
+          if (!btn) return;
+          const allButtons = contextFilterGroup.querySelectorAll('.filter-context-btn');
+          allButtons.forEach(b => {
+            b.classList.remove('bg-white', 'text-black');
+            b.classList.add('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/15');
+          });
+          btn.classList.remove('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/15');
+          btn.classList.add('bg-white', 'text-black');
+
+          currentContextFilter = btn.getAttribute('data-filter-context') || 'all';
+          renderTasksGrid();
+        });
+      }
+
+      // 8. Competency Dropdown Toggle
+      const btnCompDropdown = document.getElementById('btn-competency-dropdown');
+      const compDropdownMenu = document.getElementById('competenceDropdown') || document.getElementById('competency-dropdown-menu');
+      const dropdownSelectedLabel = document.getElementById('dropdown-selected-label');
+
+      btnCompDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !compDropdownMenu.classList.contains('hidden');
+        if (isOpen) {
+          compDropdownMenu.classList.add('hidden');
+          btnCompDropdown.setAttribute('aria-expanded', 'false');
+        } else {
+          compDropdownMenu.classList.remove('hidden');
+          btnCompDropdown.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!compDropdownMenu.contains(e.target) && !btnCompDropdown.contains(e.target)) {
+          compDropdownMenu.classList.add('hidden');
+          btnCompDropdown.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Delegated Filter by Competency on Menu Parent
+      if (compDropdownMenu) {
+        compDropdownMenu.addEventListener('click', (e) => {
+          const item = e.target.closest('.filter-comp-item');
+          if (!item) return;
+          const compCode = item.getAttribute('data-filter-competency');
+          if (!compCode) return;
+          currentCompetencyFilter = compCode;
+          if (compCode === 'all') {
+            dropdownSelectedLabel.textContent = "Filtrer par compétence ▾";
+          } else {
+            dropdownSelectedLabel.textContent = `Compétence : ${compCode} ▾`;
+          }
+          compDropdownMenu.classList.add('hidden');
+          btnCompDropdown.setAttribute('aria-expanded', 'false');
+          renderTasksGrid();
+        });
+      }
+
+      // Reset filters button in empty state
+      const btnResetFilters = document.getElementById('btn-reset-filters');
+      if (btnResetFilters) {
+        btnResetFilters.addEventListener('click', () => {
+          currentContextFilter = 'all';
+          currentCompetencyFilter = 'all';
+          dropdownSelectedLabel.textContent = "Filtrer par compétence ▾";
+          if (contextFilterGroup) {
+            const contextButtons = contextFilterGroup.querySelectorAll('.filter-context-btn');
+            contextButtons.forEach((b, idx) => {
+              if (idx === 0) {
+                b.classList.remove('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/10');
+                b.classList.add('bg-white', 'text-black');
+              } else {
+                b.classList.remove('bg-white', 'text-black');
+                b.classList.add('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/10');
+              }
+            });
+          }
+          renderTasksGrid();
+        });
+      }
+
+      // 8. Sidebar Toggle Logic
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const toggleIcon = document.getElementById('toggleIcon');
+
+      if (sidebarToggle && sidebar && toggleIcon) {
+        sidebarToggle.addEventListener('click', () => {
+          const isCollapsed = sidebar.classList.toggle('collapsed');
+
+          if (isCollapsed) {
+            sidebar.classList.remove('lg:w-72', 'w-full');
+            sidebar.classList.add('w-20', 'lg:w-20');
+            toggleIcon.textContent = '›';
+            sidebar.setAttribute('aria-expanded', 'false');
+          } else {
+            sidebar.classList.remove('w-20', 'lg:w-20');
+            sidebar.classList.add('w-full', 'lg:w-72');
+            toggleIcon.textContent = '‹';
+            sidebar.setAttribute('aria-expanded', 'true');
+          }
+        });
+      }
+
+      // 9. Initial Execution
+      renderSidebar();
+      renderTasksGrid();
+    </script>
+  </body>
+</html>

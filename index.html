@@ -1,21 +1,1859 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mainframe</title>
-    <meta name="description" content="Full-screen hero landing page for creative agency Mainframe featuring mouse-scrubbed video and conversational interface." />
-    <meta property="og:title" content="Mainframe" />
-    <meta property="og:description" content="Full-screen hero landing page for creative agency Mainframe featuring mouse-scrubbed video and conversational interface." />
+    <title>Maxence FONTAINE GROS — Portfolio BTS SIO SISR</title>
+    <meta
+      name="description"
+      content="Portfolio de Maxence FONTAINE GROS, étudiant en BTS SIO option SISR. Systèmes, réseaux, cybersécurité, virtualisation et projets informatiques."
+    />
+    <meta property="og:title" content="Maxence FONTAINE GROS — Portfolio BTS SIO SISR" />
+    <meta
+      property="og:description"
+      content="Portfolio BTS SIO option SISR : Infrastructures, systèmes, réseaux, cybersécurité et épreuves E5/E6."
+    />
     <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preconnect origins & Preload critical hero assets -->
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preload" as="video" href="/hero%20animation.mp4" type="video/mp4" />
+    <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind Configuration & CDN Script -->
+    <script>
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              warmPrimary: '#7A553A',
+              warmDark: '#382A22',
+            },
+            keyframes: {
+              fadeInSection: {
+                '0%': { opacity: '0', transform: 'translateY(16px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              blink: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0' },
+              },
+            },
+            animation: {
+              'fade-in': 'fadeInSection 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'cursor-blink': 'blink 1s step-end infinite',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Project Stylesheet for Local Vite Builds -->
+    <link rel="stylesheet" href="/src/index.css" />
+
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium" type="text/css" />
-    <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+      type="text/css"
+    />
+
+    <style>
+      :root {
+        --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+        --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+      }
+      body {
+        font-family: var(--font-body);
+        background-color: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+      .font-heading {
+        font-family: var(--font-heading);
+      }
+      .glass-card {
+        background-color: rgba(56, 42, 34, 0.4);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(122, 85, 58, 0.2);
+        border-radius: 1.5rem;
+      }
+      .glass-card:hover {
+        border-color: rgba(122, 85, 58, 0.4);
+      }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="relative bg-black text-white selection:bg-[#7A553A]/40 selection:text-white">
+    <!-- Background Video (Mouse-Scrub Controlled) -->
+    <video
+      id="hero-background-video"
+      src="/hero%20animation.mp4"
+      muted
+      playsinline
+      preload="auto"
+      class="fixed inset-0 z-0 w-full h-full object-cover opacity-60 pointer-events-none"
+      style="position: fixed; inset: 0; z-index: 0; object-fit: cover; object-position: 70% center;"
+    ></video>
+
+    <!-- Global Subtle Ambient Overlay -->
+    <div class="fixed inset-0 z-0 bg-black/30 pointer-events-none"></div>
+
+    <!-- =========================================================================
+         2. HEADER & NAVIGATION (#home)
+         ========================================================================= -->
+    <nav
+      id="main-navbar"
+      class="fixed top-0 left-0 right-0 z-[100] px-5 sm:px-8 py-4 flex flex-row justify-between items-center transition-all duration-300 bg-transparent border-b border-transparent"
+      aria-label="Navigation Principale"
+    >
+      <!-- Logo: Left -->
+      <a
+        id="navbar-logo"
+        href="#home"
+        class="flex items-center gap-2 cursor-pointer select-none transition-opacity hover:opacity-80 group focus:outline-none"
+        aria-label="Retour en haut"
+      >
+        <span class="text-[21px] sm:text-[26px] font-bold tracking-tight text-white font-heading">
+          Mainframe®
+        </span>
+        <span class="text-[21px] sm:text-[26px] font-bold text-white leading-none opacity-90 transition-transform duration-300 group-hover:rotate-45" aria-hidden="true">
+          ✳︎
+        </span>
+      </a>
+
+      <!-- Desktop Nav Links: Center (Strict relative hashes) -->
+      <div
+        id="desktop-nav-links"
+        class="hidden md:flex flex-row items-center gap-1 text-[17px] lg:text-[19px] xl:text-[21px] text-white"
+        role="navigation"
+        aria-label="Liens navigation"
+      >
+        <span class="inline-flex items-center">
+          <a href="#home" class="hover:opacity-60 transition-opacity">Accueil</a>
+          <span class="opacity-40">,&nbsp;</span>
+        </span>
+        <span class="inline-flex items-center">
+          <a href="#about" class="hover:opacity-60 transition-opacity">À propos</a>
+          <span class="opacity-40">,&nbsp;</span>
+        </span>
+        <span class="inline-flex items-center">
+          <a href="#experiences" class="hover:opacity-60 transition-opacity">Parcours</a>
+          <span class="opacity-40">,&nbsp;</span>
+        </span>
+        <span class="inline-flex items-center">
+          <a href="#skills" class="hover:opacity-60 transition-opacity">Compétences</a>
+          <span class="opacity-40">,&nbsp;</span>
+        </span>
+        <span class="inline-flex items-center">
+          <a href="#projects" class="hover:opacity-60 transition-opacity">Projets</a>
+          <span class="opacity-40">,&nbsp;</span>
+        </span>
+        <span class="inline-flex items-center">
+          <a href="#exams" class="hover:opacity-60 transition-opacity">Épreuves BTS</a>
+        </span>
+      </div>
+
+      <!-- Desktop Right Pill CTA -->
+      <div class="hidden md:block">
+        <a
+          id="desktop-cta-link"
+          href="#contact"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm lg:text-base font-medium transition-all duration-200 active:scale-95 shadow-md shadow-[#7A553A]/30 select-none"
+        >
+          <span>Me contacter</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        id="mobile-hamburger-btn"
+        type="button"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] z-[105] cursor-pointer focus:outline-none"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+      >
+        <span class="burger-line w-6 h-[2px] bg-white transition-all duration-300 origin-center"></span>
+        <span class="burger-line w-6 h-[2px] bg-white transition-all duration-300"></span>
+        <span class="burger-line w-6 h-[2px] bg-white transition-all duration-300 origin-center"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobileMenu"
+      class="fixed inset-0 z-[95] bg-[#382A22]/95 backdrop-blur-2xl md:hidden flex flex-col justify-start items-start pt-20 pb-10 px-8 overflow-y-auto transition-all duration-300 opacity-0 pointer-events-none"
+      aria-hidden="true"
+    >
+      <div class="flex flex-col gap-3 w-full max-w-sm mt-4">
+        <a href="#home" class="mobile-nav-link text-xl font-medium text-white/90 hover:text-white py-2 px-3 -mx-3 rounded-xl hover:bg-white/10 transition-colors block">
+          Accueil
+        </a>
+        <a href="#about" class="mobile-nav-link text-xl font-medium text-white/90 hover:text-white py-2 px-3 -mx-3 rounded-xl hover:bg-white/10 transition-colors block">
+          À propos
+        </a>
+        <a href="#experiences" class="mobile-nav-link text-xl font-medium text-white/90 hover:text-white py-2 px-3 -mx-3 rounded-xl hover:bg-white/10 transition-colors block">
+          Parcours
+        </a>
+        <a href="#skills" class="mobile-nav-link text-xl font-medium text-white/90 hover:text-white py-2 px-3 -mx-3 rounded-xl hover:bg-white/10 transition-colors block">
+          Compétences
+        </a>
+        <a href="#projects" class="mobile-nav-link text-xl font-medium text-white/90 hover:text-white py-2 px-3 -mx-3 rounded-xl hover:bg-white/10 transition-colors block">
+          Projets
+        </a>
+        <a href="#exams" class="mobile-nav-link text-xl font-medium text-white/90 hover:text-white py-2 px-3 -mx-3 rounded-xl hover:bg-white/10 transition-colors block">
+          Épreuves BTS
+        </a>
+        <div class="pt-4 border-t border-white/15 mt-2">
+          <a href="#contact" class="mobile-nav-link inline-flex items-center justify-center w-full px-6 py-3 rounded-full bg-[#7A553A] text-white font-medium text-center shadow-lg">
+            Me contacter
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         3. HERO SECTION (#home)
+         ========================================================================= -->
+    <section
+      id="home"
+      class="relative z-10 min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-32 pb-10 sm:pb-12 px-5 sm:px-8 md:px-12 lg:px-16 overflow-hidden animate-fade-in"
+    >
+      <div id="hero-content-container" class="max-w-3xl relative z-10 my-auto">
+        <h1
+          id="hero-author-name"
+          class="text-white font-medium tracking-tight mb-4 sm:mb-6 select-none font-heading"
+          style="font-size: clamp(36px, 6.5vw, 68px); line-height: 1.05; letter-spacing: -0.03em;"
+        >
+          Maxence <span class="whitespace-nowrap">FONTAINE&nbsp;GROS</span>
+        </h1>
+
+        <!-- Typewriter Container -->
+        <div class="min-h-[50px] sm:min-h-[70px]">
+          <p
+            id="hero-typewriter-text"
+            class="text-white/90 text-[20px] sm:text-[26px] leading-[1.35] inline font-normal"
+          ></p>
+          <span
+            id="typewriter-cursor"
+            class="inline-block w-[2px] h-[1.1em] bg-white align-middle ml-[2px] animate-cursor-blink"
+            aria-hidden="true"
+          ></span>
+        </div>
+      </div>
+
+      <!-- Bottom Pill Button: Copy email -->
+      <div id="hero-bottom-bar" class="relative z-10 flex justify-start items-center">
+        <button
+          id="copy-email-pill"
+          type="button"
+          class="group flex items-center gap-3 border border-white/40 text-white bg-black/40 px-5 py-2.5 rounded-full text-[14px] sm:text-[16px] hover:bg-white hover:text-black transition-all duration-200 whitespace-nowrap cursor-pointer backdrop-blur-md"
+          title="Cliquer pour copier l'email"
+        >
+          <span id="copy-email-label" class="underline underline-offset-2">
+            Me contacter : maxencefontainegros@ik.me
+          </span>
+          <svg class="w-4 h-4 shrink-0 transition-transform group-active:scale-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         ABOUT SECTION (#about)
+         ========================================================================= -->
+    <section
+      id="about"
+      class="relative z-10 w-full min-h-screen flex flex-col justify-center py-20 sm:py-28 md:py-36 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden animate-fade-in bg-cover bg-center bg-no-repeat"
+      style="background-image: url('/bg%20site2.png');"
+    >
+      <div class="absolute inset-0 bg-black/40 pointer-events-none"></div>
+
+      <div
+        id="about-container"
+        class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-16 items-start select-none"
+      >
+        <!-- LEFT COLUMN: Presentation -->
+        <div id="about-left-column" class="lg:col-span-7 flex flex-col items-start text-left">
+          <span class="text-xs sm:text-sm font-medium tracking-widest text-white/50 uppercase mb-3">
+            PROFIL & PRÉSENTATION
+          </span>
+
+          <h2
+            id="about-title"
+            class="text-white text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 sm:mb-8 font-heading"
+            style="line-height: 1.08;"
+          >
+            À propos
+          </h2>
+
+          <p id="about-bio" class="text-white/90 text-lg sm:text-xl md:text-[21px] leading-relaxed font-normal mb-6 max-w-2xl">
+            Je suis étudiant en
+            <a
+              href="bts-sio.html"
+              id="bts-sio-link"
+              title="Découvrir le BTS SIO"
+              class="inline-flex items-center gap-1 font-semibold text-white underline underline-offset-4 decoration-[#7A553A] hover:decoration-white transition-all duration-200 group"
+            >
+              <span>BTS SIO SISR</span>
+              <svg class="w-4 h-4 inline-block text-white/70 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+            (Solutions d'Infrastructure, Systèmes et Réseaux), spécialisé dans la gestion d'infrastructures, l'administration système, les réseaux et la cybersécurité.
+          </p>
+
+          <p class="text-white/70 text-base sm:text-lg leading-relaxed font-normal mb-8 max-w-2xl">
+            Passionné par la création d'architectures informatiques fiables et sécurisées, j'allie enseignements académiques et compétences pratiques à travers mes projets et mes expériences sur le terrain.
+          </p>
+
+          <a
+            href="bts-sio.html"
+            class="inline-flex items-center gap-2 text-sm sm:text-base text-[#D4A373] hover:text-white transition-colors duration-200"
+          >
+            <span>En savoir plus sur le diplôme BTS SIO & ses options</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- RIGHT COLUMN: CV Summary Card -->
+        <div id="about-right-column" class="lg:col-span-5 flex flex-col items-start text-left pt-2 lg:pt-14 w-full">
+          <div class="glass-card p-6 sm:p-8 w-full shadow-2xl transition-all duration-300 hover:scale-[1.015] hover:brightness-110 group">
+            <h3 id="cv-summary-heading" class="text-white text-2xl sm:text-3xl font-semibold tracking-tight mb-5 font-heading">
+              Résumé du CV
+            </h3>
+
+            <div class="w-full space-y-4 mb-8 text-sm sm:text-base border-t border-b border-white/10 py-5">
+              <div class="flex flex-row justify-between items-baseline gap-4">
+                <span class="text-white/50 text-xs sm:text-sm uppercase tracking-wider font-medium">Formation</span>
+                <span class="text-white font-medium text-right">BTS SIO SISR (Bac +2)</span>
+              </div>
+              <div class="flex flex-row justify-between items-baseline gap-4">
+                <span class="text-white/50 text-xs sm:text-sm uppercase tracking-wider font-medium">Spécialisation</span>
+                <span class="text-white/90 text-right">Infrastructures, Systèmes & Réseaux</span>
+              </div>
+              <div class="flex flex-row justify-between items-baseline gap-4">
+                <span class="text-white/50 text-xs sm:text-sm uppercase tracking-wider font-medium">Compétences Clés</span>
+                <span class="text-white/90 text-right">Linux, Windows Server, Cisco, Sécurité</span>
+              </div>
+              <div class="flex flex-row justify-between items-baseline gap-4">
+                <span class="text-white/50 text-xs sm:text-sm uppercase tracking-wider font-medium">Langues</span>
+                <span class="text-white/90 text-right">Français (Natif), Anglais (B2+)</span>
+              </div>
+            </div>
+
+            <a
+              id="download-cv-btn"
+              href="/cv.pdf"
+              download="CV_Maxence_FONTAINE_GROS.pdf"
+              class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-base font-semibold transition-all duration-200 active:scale-95 shadow-lg shadow-[#7A553A]/40"
+            >
+              <span>Télécharger mon CV ⬇</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         EXPERIENCES SECTION (#experiences)
+         ========================================================================= -->
+    <section
+      id="experiences"
+      class="relative z-10 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-16 bg-transparent text-white overflow-hidden animate-fade-in select-none"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl mb-14 sm:mb-20 text-left">
+          <span class="text-xs sm:text-sm font-medium tracking-widest text-white/50 uppercase mb-3 block">
+            Parcours & Expérience
+          </span>
+          <h2 id="experiences-title" class="text-white text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-5 font-heading">
+            Parcours <span class="text-white/40 text-2xl sm:text-3xl font-normal">/ Path</span>
+          </h2>
+          <p class="text-white/80 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal">
+            Découvrez mon cheminement académique et mes expériences pratiques dans les systèmes, réseaux et infrastructures informatiques.
+          </p>
+        </div>
+
+        <!-- 2-Column Timeline: Education vs Experience -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
+          <!-- COLUMN 1: Education -->
+          <div id="education-column" class="flex flex-col">
+            <div class="flex items-center gap-3.5 mb-8 pb-4 border-b border-white/10">
+              <div class="w-10 h-10 rounded-full bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-amber-300">
+                🎓
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-white font-heading">
+                Education <span class="text-white/40 text-lg font-normal">/ Formation</span>
+              </h3>
+            </div>
+
+            <div class="space-y-6 sm:space-y-8 relative pl-6 sm:pl-8">
+              <!-- Vertical Connector Line -->
+              <div class="absolute left-2 sm:left-3 top-6 bottom-6 w-[2px] bg-[#7A553A] opacity-80"></div>
+
+              <!-- Item 1: BTS SIO -->
+              <article class="glass-card relative p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.015] hover:brightness-110 group">
+                <span class="absolute -left-[23px] sm:-left-[27px] top-8 w-4 h-4 rounded-full bg-[#7A553A] border-2 border-white/60 shadow-md z-10"></span>
+                <div>
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="px-3 py-1 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/50 text-white text-xs font-semibold">
+                      Bac +2 • En cours
+                    </span>
+                    <span class="text-xs sm:text-sm text-white/50 font-mono">2025 - 2027</span>
+                  </div>
+                  <h4 class="text-xl sm:text-2xl font-bold text-white mb-1.5 font-heading">BTS - SIO SISR</h4>
+                  <p class="text-sm sm:text-base text-white/70 font-medium mb-4">Institution des Chartreux, Lyon</p>
+                  <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
+                    Spécialisation en Solutions d’Infrastructure, Systèmes, Réseaux et Sécurité informatique.
+                  </p>
+                </div>
+                <div class="pt-2">
+                  <button
+                    type="button"
+                    class="btn-open-parcours inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all active:scale-95 cursor-pointer"
+                    data-id="bts-sio"
+                  >
+                    <span>En savoir plus...</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Item 2: Bac Général -->
+              <article class="glass-card relative p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.015] hover:brightness-110 group">
+                <span class="absolute -left-[23px] sm:-left-[27px] top-8 w-4 h-4 rounded-full bg-[#7A553A] border-2 border-white/60 shadow-md z-10"></span>
+                <div>
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold">
+                      Baccalauréat Général
+                    </span>
+                    <span class="text-xs sm:text-sm text-white/50 font-mono">2025</span>
+                  </div>
+                  <h4 class="text-xl sm:text-2xl font-bold text-white mb-1.5 font-heading">Bac Général</h4>
+                  <p class="text-sm sm:text-base text-white/70 font-medium mb-4">Lycée La Favorite - Lyon</p>
+                  <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
+                    Spécialités Mathématiques et LLCERAMC avec option Mathématiques Expertes.
+                  </p>
+                </div>
+                <div class="pt-2">
+                  <button
+                    type="button"
+                    class="btn-open-parcours inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all active:scale-95 cursor-pointer"
+                    data-id="bac-general"
+                  >
+                    <span>En savoir plus...</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- COLUMN 2: Experience -->
+          <div id="experience-column" class="flex flex-col">
+            <div class="flex items-center gap-3.5 mb-8 pb-4 border-b border-white/10">
+              <div class="w-10 h-10 rounded-full bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-amber-300">
+                💼
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight text-white font-heading">
+                Experience <span class="text-white/40 text-lg font-normal">/ Expérience</span>
+              </h3>
+            </div>
+
+            <div class="space-y-6 sm:space-y-8 relative pl-6 sm:pl-8">
+              <!-- Vertical Connector Line -->
+              <div class="absolute left-2 sm:left-3 top-6 bottom-6 w-[2px] bg-[#7A553A] opacity-80"></div>
+
+              <!-- Item 1: Chubb Delta -->
+              <article class="glass-card relative p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.015] hover:brightness-110 group">
+                <span class="absolute -left-[23px] sm:-left-[27px] top-8 w-4 h-4 rounded-full bg-[#7A553A] border-2 border-white/60 shadow-md z-10"></span>
+                <div>
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="px-3 py-1 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/50 text-white text-xs font-semibold">
+                      Stage Professionnel • 2026
+                    </span>
+                    <span class="text-xs sm:text-sm text-white/50 font-mono">2026</span>
+                  </div>
+                  <h4 class="text-xl sm:text-2xl font-bold text-white mb-1.5 font-heading">Stagiaire Systèmes, Réseaux &amp; Sécurité</h4>
+                  <p class="text-sm sm:text-base text-white/70 font-medium mb-4">Chubb Delta — Siège / Agence</p>
+                  <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
+                    Maintenance et mise à jour des équipements réseau, supervision de la sécurité via FortiAnalyzer et déploiement de serveurs virtuels Windows Server.
+                  </p>
+                </div>
+                <div class="pt-2">
+                  <button
+                    type="button"
+                    class="btn-open-parcours inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all active:scale-95 cursor-pointer"
+                    data-id="chubb-delta"
+                  >
+                    <span>En savoir plus...</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </article>
+
+              <!-- Item 2: Nomios -->
+              <article class="glass-card relative p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:scale-[1.015] hover:brightness-110 group">
+                <span class="absolute -left-[23px] sm:-left-[27px] top-8 w-4 h-4 rounded-full bg-[#7A553A] border-2 border-white/60 shadow-md z-10"></span>
+                <div>
+                  <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-semibold">
+                      Stage Professionnel
+                    </span>
+                    <span class="text-xs sm:text-sm text-white/50 font-mono">2023</span>
+                  </div>
+                  <h4 class="text-xl sm:text-2xl font-bold text-white mb-1.5 font-heading">Stagiaire Réseau &amp; Cybersécurité</h4>
+                  <p class="text-sm sm:text-base text-white/70 font-medium mb-4">Nomios</p>
+                  <p class="text-sm sm:text-base text-white/80 leading-relaxed mb-6 font-normal">
+                    Immersion au sein d'un expert intégrateur en réseaux et cybersécurité. Découverte de l'architecture pare-feu entreprise, audit et solutions de protection.
+                  </p>
+                </div>
+                <div class="pt-2">
+                  <button
+                    type="button"
+                    class="btn-open-parcours inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all active:scale-95 cursor-pointer"
+                    data-id="nomios"
+                  >
+                    <span>En savoir plus...</span>
+                    <span aria-hidden="true">→</span>
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SKILLS SECTION (#skills)
+         ========================================================================= -->
+    <section
+      id="skills"
+      class="relative z-10 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-16 bg-transparent text-white overflow-hidden animate-fade-in select-none"
+    >
+      <div class="max-w-7xl mx-auto space-y-20 sm:space-y-28">
+        <!-- 1. CERTIFICATIONS SLIDER -->
+        <div id="certifications-part" class="flex flex-col">
+          <div class="max-w-3xl mb-8 sm:mb-12 text-left">
+            <span class="text-xs sm:text-sm font-medium tracking-widest text-white/50 uppercase mb-3 block">
+              Validation & Diplômes
+            </span>
+            <h2 id="certifications-title" class="text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight font-heading">
+              Certifications
+            </h2>
+          </div>
+
+          <!-- Carousel Container -->
+          <div id="cert-carousel" class="relative w-full overflow-hidden rounded-3xl">
+            <div id="cert-track" class="flex transition-transform duration-500 ease-out">
+              <!-- Slide 1: MOOC ANSSI -->
+              <div class="w-full flex-shrink-0 px-1 sm:px-2">
+                <article class="glass-card p-8 sm:p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center justify-between transition-all duration-300 hover:scale-[1.01] hover:brightness-110 group">
+                  <div class="flex-1 text-left">
+                    <span class="px-3.5 py-1 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/50 text-white text-xs font-semibold uppercase tracking-wider mb-3 inline-block">
+                      SecNumacadémie
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-heading">MOOC ANSSI</h3>
+                    <p class="text-sm text-white/60 font-medium mb-4">ANSSI (Agence Nationale de la Sécurité des Systèmes d’Information)</p>
+                    <p class="text-white/80 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl font-normal">
+                      SecNumacadémie - Initiation approfondie à la cybersécurité, aux bonnes pratiques de protection numérique et à la sécurité des infrastructures.
+                    </p>
+                    <a
+                      href="/certifications/anssi.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all shadow-md cursor-pointer"
+                    >
+                      <span>Voir l'attestation</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                  <div class="w-full md:w-80 flex-shrink-0 p-6 rounded-2xl bg-black/40 border border-white/10 text-center">
+                    <span class="text-3xl mb-2 block">🛡️</span>
+                    <span class="text-sm font-semibold text-white block">Certifié ANSSI</span>
+                    <span class="text-xs text-white/50 block mt-1">SecNumacadémie 2024</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 2: Red Hat RH124 -->
+              <div class="w-full flex-shrink-0 px-1 sm:px-2">
+                <article class="glass-card p-8 sm:p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center justify-between transition-all duration-300 hover:scale-[1.01] hover:brightness-110 group">
+                  <div class="flex-1 text-left">
+                    <span class="px-3.5 py-1 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/50 text-white text-xs font-semibold uppercase tracking-wider mb-3 inline-block">
+                      Linux Enterprise
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-heading">Red Hat RH124</h3>
+                    <p class="text-sm text-white/60 font-medium mb-4">Red Hat Training & Certification</p>
+                    <p class="text-white/80 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl font-normal">
+                      Red Hat System Administration I (RH124) - Administration système Linux Enterprise, gestion des utilisateurs, stockage et services réseau.
+                    </p>
+                    <a
+                      href="/certifications/rh124.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all shadow-md cursor-pointer"
+                    >
+                      <span>Voir l'attestation</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                  <div class="w-full md:w-80 flex-shrink-0 p-6 rounded-2xl bg-black/40 border border-white/10 text-center">
+                    <span class="text-3xl mb-2 block">🎩</span>
+                    <span class="text-sm font-semibold text-white block">Red Hat Linux</span>
+                    <span class="text-xs text-white/50 block mt-1">System Admin I 2024</span>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Slide 3: Fortinet NSE 1 -->
+              <div class="w-full flex-shrink-0 px-1 sm:px-2">
+                <article class="glass-card p-8 sm:p-10 md:p-12 flex flex-col md:flex-row gap-8 items-center justify-between transition-all duration-300 hover:scale-[1.01] hover:brightness-110 group">
+                  <div class="flex-1 text-left">
+                    <span class="px-3.5 py-1 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/50 text-white text-xs font-semibold uppercase tracking-wider mb-3 inline-block">
+                      Network Security
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 font-heading">Fortinet NSE 1</h3>
+                    <p class="text-sm text-white/60 font-medium mb-4">Fortinet Training Institute</p>
+                    <p class="text-white/80 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl font-normal">
+                      Fortinet Network Security Expert 1 - Notions fondamentales de cybersécurité, paysage des menaces et protection réseau.
+                    </p>
+                    <a
+                      href="/certifications/nse1.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all shadow-md cursor-pointer"
+                    >
+                      <span>Voir l'attestation</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                  <div class="w-full md:w-80 flex-shrink-0 p-6 rounded-2xl bg-black/40 border border-white/10 text-center">
+                    <span class="text-3xl mb-2 block">🔒</span>
+                    <span class="text-sm font-semibold text-white block">Fortinet NSE</span>
+                    <span class="text-xs text-white/50 block mt-1">Cybersecurity Associate 2024</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="flex items-center justify-between mt-6 px-2">
+            <div class="flex items-center gap-2" id="cert-dots">
+              <button type="button" class="cert-dot h-2.5 w-8 rounded-full bg-white transition-all" data-index="0" aria-label="Slide 1"></button>
+              <button type="button" class="cert-dot h-2.5 w-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all" data-index="1" aria-label="Slide 2"></button>
+              <button type="button" class="cert-dot h-2.5 w-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-all" data-index="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" id="cert-prev" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white cursor-pointer transition-all" aria-label="Précédent">
+                ‹
+              </button>
+              <span id="cert-counter" class="text-xs text-white/50 font-mono">1 / 3</span>
+              <button type="button" id="cert-next" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white cursor-pointer transition-all" aria-label="Suivant">
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. SKILLS GRID (9 Cards) -->
+        <div id="skills-part" class="flex flex-col">
+          <div class="max-w-3xl mb-10 sm:mb-14 text-left">
+            <span class="text-xs sm:text-sm font-medium tracking-widest text-white/50 uppercase mb-3 block">
+              Savoir-faire technique
+            </span>
+            <h3 id="skills-heading" class="text-white text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 font-heading">
+              Compétences <span class="text-white/40 text-2xl sm:text-3xl font-normal">/ Skills</span>
+            </h3>
+            <p class="text-white/80 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+              Environnements, protocoles et outils maîtrisés au cours de mes projets et de mon apprentissage.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- 1. Ticketing -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🎫</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Support & Helpdesk</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">Ticketing</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Gestion des incidents, suivi des demandes et respect des SLA utilisateurs.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="ticketing">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 2. Virtualisation -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🖥️</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Infrastructure</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">Virtualisation</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Déploiement et gestion d’hyperviseurs et machines virtuelles.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="virtualisation">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 3. Active Directory -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">👥</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Système d’annuaire</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">Active Directory</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Gestion des identités, forêts, GPO et droits d’accès centralisés.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="active-directory">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 4. TCP/IP & Réseaux -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🌐</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Architecture Réseau</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">TCP/IP & Réseaux</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Protocoles, adressage IPv4/IPv6, sous-réseaux et routage inter-VLAN.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="tcpip-reseaux">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 5. Cisco Packet Tracer -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🔀</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Simulation Réseau</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">Cisco Packet Tracer</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Modélisation de topologies d’entreprise et configuration CLI Cisco IOS.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="cisco-packet-tracer">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 6. IA -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🧠</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Productivité</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">IA</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Ingénierie de prompt, scripting et assistance au diagnostic technique.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="ia">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 7. Windows Server -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🪟</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Système Serveur</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">Windows Server</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Rôles serveurs (AD, DNS, DHCP), services réseau et administration.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="windows-server">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 8. Linux -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">🐧</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Système Open Source</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">Linux (Debian/Alma)</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Administration en CLI, paquets, SSH, pare-feu et services web.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="linux">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+
+            <!-- 9. VS Code -->
+            <article class="glass-card p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:brightness-110 group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl">💻</span>
+                  <span class="text-xs text-white/40 uppercase tracking-wider font-mono">Environnement & Code</span>
+                </div>
+                <h4 class="text-xl font-bold text-white mb-2 font-heading">VS Code</h4>
+                <p class="text-sm text-white/70 leading-relaxed font-normal mb-6">
+                  Éditeur de code, scripting PowerShell/Bash, gestion Git et snippets.
+                </p>
+              </div>
+              <button type="button" class="btn-open-skill inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all self-start cursor-pointer" data-skill="vs-code">
+                <span>En savoir plus...</span> →
+              </button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         PROJECTS SECTION (#projects)
+         ========================================================================= -->
+    <section
+      id="projects"
+      class="relative z-10 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-16 bg-transparent text-white overflow-hidden animate-fade-in select-none"
+    >
+      <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2 text-white/50 text-xs sm:text-sm font-mono uppercase tracking-widest mb-3">
+              📁 <span>Réalisations & Projets</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-heading">
+              Projets <span class="text-white/40 text-xl sm:text-2xl md:text-3xl font-normal">/ Projects</span>
+            </h2>
+          </div>
+          <p class="text-white/60 text-sm sm:text-base max-w-md leading-relaxed">
+            Découvrez une sélection de projets majeurs réalisés dans le cadre de mes études en BTS SIO SISR et de mes travaux personnels.
+          </p>
+        </div>
+
+        <!-- 2 Centered Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <!-- Card 1: Portfolio BTS SIO SISR -->
+          <article class="glass-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:brightness-110">
+            <div class="relative w-full aspect-video overflow-hidden bg-black/50 border-b border-white/10">
+              <img
+                src="/projets/portfolio/cover_portfolio.png"
+                alt="Aperçu du projet Portfolio"
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              />
+              <div class="hidden absolute inset-0 flex items-center justify-center bg-[#382A22]/80 text-amber-200/80 font-mono text-xs p-4 text-center">
+                Portfolio BTS SIO SISR
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-white text-xs font-semibold">
+                  Personnel & Professionnel
+                </span>
+              </div>
+            </div>
+            <div class="p-6 sm:p-8 flex flex-col flex-1 justify-between gap-6 transition-all duration-300 group-hover:brightness-105">
+              <div class="space-y-3">
+                <h3 class="text-2xl sm:text-3xl font-bold text-white font-heading">
+                  Portfolio BTS SIO SISR
+                </h3>
+                <p class="text-white/70 text-sm sm:text-base leading-relaxed">
+                  Conception et développement complet de mon portfolio d’étudiant en BTS SIO SISR. Architecture responsive, animations interactives, design glassmorphism soigné et documentation technique détaillée pour les épreuves.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">Tailwind CSS</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">HTML / JS</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">UI/UX</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">SISR</span>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                <a
+                  href="projets/portfolio/portfolio.html"
+                  class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all shadow-md"
+                >
+                  <span>Découvrir le projet</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: HoLazyV -->
+          <article class="glass-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:brightness-110">
+            <div class="relative w-full aspect-video overflow-hidden bg-black/50 border-b border-white/10">
+              <img
+                src="/projets/holazyv/cover_holazyv.png"
+                alt="Aperçu du projet HoLazyV"
+                loading="lazy"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+              />
+              <div class="hidden absolute inset-0 flex items-center justify-center bg-[#382A22]/80 text-amber-200/80 font-mono text-xs p-4 text-center">
+                HoLazyV
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-white text-xs font-semibold">
+                  Branding & E-Commerce
+                </span>
+              </div>
+            </div>
+            <div class="p-6 sm:p-8 flex flex-col flex-1 justify-between gap-6 transition-all duration-300 group-hover:brightness-105">
+              <div class="space-y-3">
+                <h3 class="text-2xl sm:text-3xl font-bold text-white font-heading">
+                  HoLazyV
+                </h3>
+                <p class="text-white/70 text-sm sm:text-base leading-relaxed">
+                  Création globale d’une identité de marque et d’une boutique en ligne. Direction artistique complète, conception de logo vectoriel, effets visuels et ergonomie d’achat e-commerce.
+                </p>
+                <div class="flex flex-wrap gap-2 pt-2">
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">Branding</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">Graphic Design</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs">E-Commerce</span>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                <a
+                  href="projets/holazyv/holazyv.html"
+                  class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all shadow-md"
+                >
+                  <span>Découvrir le projet</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         EXAMS SECTION (#exams)
+         ========================================================================= -->
+    <section
+      id="exams"
+      class="relative z-10 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-16 bg-transparent text-white overflow-hidden animate-fade-in select-none scroll-mt-20"
+    >
+      <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2 text-amber-300/80 text-xs sm:text-sm font-mono uppercase tracking-widest mb-3">
+              🎓 <span>Certification & Diplôme</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-heading">
+              Épreuves BTS <span class="text-white/40 text-xl sm:text-2xl md:text-3xl font-normal">/ Exams</span>
+            </h2>
+            <p class="text-white/70 text-sm sm:text-base mt-2 font-medium">
+              Portefeuille de compétences professionnelles
+            </p>
+          </div>
+          <p class="text-white/60 text-sm sm:text-base max-w-md leading-relaxed">
+            Accès aux dossiers officiels, fiches de situations professionnelles et grilles d’évaluation du référentiel BTS SIO option SISR.
+          </p>
+        </div>
+
+        <div id="exams-card-container" class="glass-card p-8 sm:p-12 md:p-14 shadow-2xl relative overflow-hidden text-center transition-all duration-300 hover:scale-[1.01] hover:brightness-110 group">
+          <div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7A553A]/30 border border-[#7A553A]/50 text-white text-xs font-mono uppercase tracking-wider">
+              <span>BTS SIO SISR · Session 2026</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-heading">
+              Dossiers d'Épreuves Pratiques & Orales
+            </h3>
+
+            <p class="text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Consultez les supports préparatoires, fiches d'activités techniques et documentations d’architecture nécessaires pour le passage des épreuves terminales.
+            </p>
+
+            <!-- 2 Prominent Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 w-full pt-4">
+              <!-- Button 1: E5 -->
+              <a
+                id="btn-epreuve-e5"
+                href="e5.html"
+                class="inline-flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-base font-semibold transition-all duration-300 active:scale-95 shadow-[0_0_25px_rgba(122,85,58,0.4)] hover:shadow-[0_0_35px_rgba(122,85,58,0.6)] cursor-pointer select-none"
+              >
+                <span>Accéder à l'épreuve E5 ↗</span>
+              </a>
+
+              <!-- Button 2: E6 Coming Soon -->
+              <button
+                id="btn-epreuve-e6"
+                type="button"
+                class="btn-epreuve-e6-trigger inline-flex items-center justify-center gap-2.5 bg-[#382A22]/50 border border-[#7A553A]/30 text-white/70 hover:text-white/90 cursor-pointer rounded-full px-7 py-4 w-full sm:w-auto text-base font-medium transition-all duration-300 hover:border-[#7A553A]/60 active:scale-95 shadow-md select-none"
+                title="Dossier en cours de préparation"
+              >
+                <span>Épreuve E6 (Dossier en cours) 🔒</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         CONTACT SECTION (#contact)
+         ========================================================================= -->
+    <section
+      id="contact"
+      class="relative z-10 w-full py-24 sm:py-32 px-6 sm:px-10 md:px-14 lg:px-16 bg-transparent text-white overflow-hidden animate-fade-in select-none"
+    >
+      <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+          <div>
+            <div class="flex items-center gap-2 text-white/50 text-xs sm:text-sm font-mono uppercase tracking-widest mb-3">
+              ✉️ <span>Prise de contact</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-heading">
+              Me Contacter <span class="text-white/40 text-xl sm:text-2xl md:text-3xl font-normal">/ Get in touch</span>
+            </h2>
+            <p class="text-white/70 text-sm sm:text-base mt-2 font-medium">
+              Une demande d'information ou une opportunité de collaboration ? Contactez-moi directement.
+            </p>
+          </div>
+          <p class="text-white/60 text-sm sm:text-base max-w-md leading-relaxed">
+            Disponible pour échanger sur des opportunités professionnelles, projets d’infrastructure ou questions relatives à mon parcours.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <!-- Email Card -->
+          <a
+            id="contact-card-email"
+            href="mailto:maxencefontainegros@ik.me"
+            class="glass-card p-8 sm:p-10 flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:scale-[1.015] hover:brightness-110"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <div class="w-14 h-14 rounded-2xl bg-[#7A553A]/30 border border-[#7A553A]/50 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                  ✉️
+                </div>
+                <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 group-hover:text-white">
+                  ↗
+                </div>
+              </div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-300 font-semibold">Messagerie Directe</span>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-3 font-heading">Email</h3>
+              <p class="text-white/70 text-sm sm:text-base leading-relaxed mb-6">
+                Envoyez-moi un message pour toute demande d'information, proposition de stage, alternance ou collaboration technique.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-sm sm:text-base font-mono text-white/90 truncate">maxencefontainegros@ik.me</span>
+              <span class="hidden sm:inline-flex items-center px-4 py-1.5 rounded-full bg-white text-black text-xs font-semibold">Écrire</span>
+            </div>
+          </a>
+
+          <!-- LinkedIn Card -->
+          <a
+            id="contact-card-linkedin"
+            href="https://www.linkedin.com/in/maxence-fontaine-gros/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-card p-8 sm:p-10 flex flex-col justify-between group cursor-pointer transition-all duration-300 hover:scale-[1.015] hover:brightness-110"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <div class="w-14 h-14 rounded-2xl bg-[#7A553A]/30 border border-[#7A553A]/50 flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                  💼
+                </div>
+                <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 group-hover:text-white">
+                  ↗
+                </div>
+              </div>
+              <span class="text-xs font-mono uppercase tracking-widest text-amber-300 font-semibold">Réseau Professionnel</span>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white mt-2 mb-3 font-heading">LinkedIn</h3>
+              <p class="text-white/70 text-sm sm:text-base leading-relaxed mb-6">
+                Retrouvez mon parcours actualisé, mes certifications et connectons-nous sur mon profil professionnel.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-sm sm:text-base font-mono text-white/90 truncate">linkedin.com/in/maxence-fontaine-gros</span>
+              <span class="hidden sm:inline-flex items-center px-4 py-1.5 rounded-full bg-white text-black text-xs font-semibold">Connecter ↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FOOTER (#footer)
+         ========================================================================= -->
+    <footer
+      id="footer"
+      class="relative z-10 w-full bg-[#120e0c]/90 backdrop-blur-xl border-t border-[#7A553A]/20 text-white select-none"
+    >
+      <div class="max-w-7xl mx-auto px-6 sm:px-10 md:px-14 lg:px-16 pt-16 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 pb-12 border-b border-white/10">
+          <div class="md:col-span-5 space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl sm:text-3xl font-bold tracking-tight text-white font-heading">
+                Mainframe®
+              </span>
+              <span class="text-2xl sm:text-3xl text-white opacity-80">✳︎</span>
+            </div>
+            <p class="text-white/70 text-sm sm:text-base leading-relaxed max-w-sm">
+              Étudiant en BTS SIO (option SISR — Solutions d'Infrastructure, Systèmes et Réseaux). Passionné par l’architecture réseau, l'automatisation et l'administration système.
+            </p>
+            <div class="flex items-center gap-3 pt-2">
+              <a href="mailto:maxencefontainegros@ik.me" class="w-11 h-11 rounded-full bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-white hover:bg-[#7A553A] transition-all">
+                ✉️
+              </a>
+              <a href="https://www.linkedin.com/in/maxence-fontaine-gros/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-white hover:bg-[#7A553A] transition-all">
+                💼
+              </a>
+            </div>
+          </div>
+
+          <div class="md:col-span-4 space-y-4">
+            <h3 class="text-xs font-mono uppercase tracking-widest text-[#7A553A] font-semibold">Liens Rapides</h3>
+            <ul class="grid grid-cols-2 gap-y-2.5 gap-x-4 text-sm text-white/75">
+              <li><a href="#home" class="hover:text-white transition-colors">Accueil</a></li>
+              <li><a href="#about" class="hover:text-white transition-colors">À propos</a></li>
+              <li><a href="#experiences" class="hover:text-white transition-colors">Parcours</a></li>
+              <li><a href="#skills" class="hover:text-white transition-colors">Compétences</a></li>
+              <li><a href="#projects" class="hover:text-white transition-colors">Projets</a></li>
+              <li><a href="#exams" class="hover:text-white transition-colors">Épreuves BTS</a></li>
+              <li><a href="e5.html" class="hover:text-white transition-colors">Portfolio E5</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="mentionslegales.html" class="hover:text-white transition-colors">Mentions Légales</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-3 space-y-4">
+            <h3 class="text-xs font-mono uppercase tracking-widest text-[#7A553A] font-semibold">Contact</h3>
+            <ul class="space-y-3 text-sm text-white/75">
+              <li class="break-all"><a href="mailto:maxencefontainegros@ik.me" class="hover:text-white">maxencefontainegros@ik.me</a></li>
+              <li class="text-white/60 font-mono">+33 (0)6 •• •• •• ••</li>
+              <li>Sainte-Foy-lès-Lyon, France</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-white/50 font-mono">
+          <p>© 2026 Maxence FONTAINE GROS. Tous droits réservés.</p>
+          <button type="button" id="btn-scroll-top" class="hover:text-white transition-colors cursor-pointer">
+            Haut de page ↑
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =========================================================================
+         4. MODAL OVERLAYS (Root Level before </body>)
+         ========================================================================= -->
+
+    <!-- PARCOURS MODAL (#parcoursModal) -->
+    <div
+      id="parcoursModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="parcoursModalTitle"
+      class="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-hidden"
+    >
+      <div
+        id="parcoursModalCard"
+        class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-xl my-auto text-left"
+      >
+        <button
+          type="button"
+          id="closeParcoursModalBtn"
+          class="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
+          aria-label="Fermer"
+        >
+          ✕
+        </button>
+
+        <div class="flex items-center gap-3 mb-4 pr-12">
+          <span id="parcoursModalBadge" class="px-3.5 py-1 rounded-full bg-[#7A553A]/40 text-amber-200 text-xs font-semibold uppercase tracking-wider">
+            Diplôme
+          </span>
+          <span id="parcoursModalPeriod" class="text-sm text-white/50 font-mono">2025 - 2027</span>
+        </div>
+
+        <h3 id="parcoursModalTitle" class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-2 font-heading">
+          Titre du parcours
+        </h3>
+
+        <p id="parcoursModalSubtitle" class="text-base sm:text-lg text-white/70 font-medium mb-6">
+          Établissement / Entreprise
+        </p>
+
+        <div class="mb-6 space-y-2">
+          <h5 class="text-xs uppercase tracking-wider text-white/40 font-semibold">Description détaillée</h5>
+          <p id="parcoursModalDescription" class="text-white/85 text-base sm:text-lg leading-relaxed font-normal">
+            Détails du parcours...
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <h5 class="text-xs uppercase tracking-wider text-white/40 font-semibold mb-2.5">Compétences associées</h5>
+          <div id="parcoursModalSkills" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <button type="button" id="prevParcoursBtn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">‹</button>
+            <span id="parcoursModalIndex" class="text-xs text-white/40 px-1 font-mono">1 / 4</span>
+            <button type="button" id="nextParcoursBtn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">›</button>
+          </div>
+          <a id="parcoursModalLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all">
+            <span>Visiter le site ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILL MODAL (#skillModal) -->
+    <div
+      id="skillModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="skillModalTitle"
+      class="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-hidden"
+    >
+      <div
+        id="skillModalCard"
+        class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-xl my-auto text-left"
+      >
+        <button
+          type="button"
+          id="closeSkillModalBtn"
+          class="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
+          aria-label="Fermer"
+        >
+          ✕
+        </button>
+
+        <div class="flex items-center gap-3 mb-4 pr-12">
+          <span id="skillModalCategory" class="px-3 py-1 rounded-full bg-[#7A553A]/40 text-amber-200 text-xs font-semibold uppercase tracking-wider">
+            Catégorie
+          </span>
+        </div>
+
+        <h3 id="skillModalTitle" class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4 font-heading">
+          Compétence
+        </h3>
+
+        <div class="mb-6 space-y-2">
+          <h5 class="text-xs uppercase tracking-wider text-white/40 font-semibold">Détail technique & Mise en pratique</h5>
+          <p id="skillModalDescription" class="text-white/85 text-base sm:text-lg leading-relaxed font-normal">
+            Description complète...
+          </p>
+        </div>
+
+        <div class="mb-8">
+          <h5 class="text-xs uppercase tracking-wider text-white/40 font-semibold mb-2.5">Outils & Technologies associés</h5>
+          <div id="skillModalTools" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <button type="button" id="prevSkillBtn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">‹</button>
+            <span id="skillModalIndex" class="text-xs text-white/40 px-1 font-mono">1 / 9</span>
+            <button type="button" id="nextSkillBtn" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white">›</button>
+          </div>
+          <a id="skillModalDocLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-all">
+            <span>Documentation officielle ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT MODAL (#projectModal) -->
+    <div
+      id="projectModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="projectModalTitle"
+      class="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-hidden"
+    >
+      <div
+        id="projectModalCard"
+        class="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-xl my-auto text-left"
+      >
+        <button
+          type="button"
+          id="closeProjectModalBtn"
+          class="absolute top-5 right-5 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all cursor-pointer"
+          aria-label="Fermer"
+        >
+          ✕
+        </button>
+
+        <span id="projectModalCategory" class="px-3.5 py-1 rounded-full bg-[#7A553A]/40 text-amber-200 text-xs font-semibold uppercase tracking-wider mb-4 inline-block">
+          Projet
+        </span>
+
+        <h3 id="projectModalTitle" class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4 font-heading">
+          Titre du projet
+        </h3>
+
+        <p id="projectModalSummary" class="text-white/85 text-base sm:text-lg leading-relaxed mb-6 font-normal">
+          Détails et présentation du projet...
+        </p>
+
+        <div class="mb-8">
+          <h5 class="text-xs uppercase tracking-wider text-white/40 font-semibold mb-2.5">Technologies</h5>
+          <div id="projectModalTags" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex justify-end">
+          <a id="projectModalLink" href="#" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#7A553A] text-white text-sm font-semibold hover:bg-[#8C6345] transition-all">
+            <span>Accéder à la page du projet →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION FOR E6 -->
+    <div
+      id="toast-e6"
+      role="status"
+      aria-live="polite"
+      class="fixed bottom-6 right-6 z-[99999] max-w-md p-4 rounded-2xl bg-[#382A22]/95 border border-[#7A553A]/50 text-white shadow-2xl backdrop-blur-xl hidden flex items-start gap-3 transition-all duration-300 transform translate-y-4 opacity-0 pointer-events-auto"
+    >
+      <div class="p-1.5 rounded-full bg-[#7A553A]/40 text-amber-300 shrink-0 mt-0.5">
+        🔒
+      </div>
+      <div class="flex-1 text-xs sm:text-sm text-white/90 leading-snug pt-0.5">
+        Le dossier d'épreuve E6 est actuellement en cours de préparation selon les consignes académiques.
+      </div>
+      <button
+        type="button"
+        id="toast-e6-close"
+        class="text-white/50 hover:text-white p-1 transition-colors rounded-lg hover:bg-white/10 shrink-0 cursor-pointer"
+        aria-label="Fermer"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- =========================================================================
+         5. EMBEDDED VANILLA JAVASCRIPT
+         ========================================================================= -->
+    <script>
+      /* --- PARCOURS DATA --- */
+      const PARCOURS_ITEMS = [
+        {
+          id: 'bts-sio',
+          badge: 'Bac +2 • En cours',
+          period: '2025 - 2027',
+          title: 'BTS - SIO SISR',
+          subtitle: 'Institution des Chartreux, Lyon',
+          description: 'Formation supérieure spécialisée dans l’administration d’infrastructures informatiques, le déploiement d’architectures réseaux résilientes, la virtualisation de serveurs et la mise en œuvre de politiques de cybersécurité en entreprise. Apprentissage approfondi des environnements Windows Server, Linux (Debian, Ubuntu), switching/routing Cisco, firewalling et gestion de parcs informatiques.',
+          skills: ['Windows Server', 'Linux Admin', 'Réseaux & VLANs', 'Cybersécurité', 'Virtualisation'],
+          link: 'https://www.leschartreux.com'
+        },
+        {
+          id: 'bac-general',
+          badge: 'Baccalauréat Général',
+          period: '2025',
+          title: 'Bac Général',
+          subtitle: 'Lycée La Favorite - Lyon',
+          description: 'Formation au Lycée La Favorite (Lyon) avec spécialités Mathématiques et LLCERAMC (option Mathématiques Expertes). Développement d’un raisonnement analytique rigoureux, de compétences en modélisation et logique appliquées aux technologies informatiques.',
+          skills: ['Mathématiques', 'Logique Algorithmique', 'Anglais Technique', 'Raisonnement'],
+          link: 'https://www.lafavorite-lyon.org'
+        },
+        {
+          id: 'chubb-delta',
+          badge: 'STAGE PROFESSIONNEL • 2026',
+          period: '2026',
+          title: 'Stagiaire Systèmes, Réseaux & Sécurité — Chubb Delta',
+          subtitle: 'Chubb Delta — Siège / Agence',
+          description: "Réalisation d'un stage technique axé sur la gestion d'infrastructure et la cybersécurité. Audit et suivi des règles de pare-feu, analyse des journaux d'événements sur FortiAnalyzer, mise à jour de commutateurs réseau Cisco et déploiement de machines virtuelles sous Windows Server pour des besoins d'administration.",
+          skills: ['FortiAnalyzer', 'Switchs Cisco', 'Windows Server', 'Virtualisation', 'Supervision'],
+          link: 'https://www.chubb.com/fr-fr/'
+        },
+        {
+          id: 'nomios',
+          badge: 'STAGE PROFESSIONNEL',
+          period: '2023',
+          title: 'Stagiaire Réseau & Cybersécurité — Nomios',
+          subtitle: 'Nomios',
+          description: "Immersion professionnelle chez Nomios, intégrateur spécialisé en architectures réseau et cybersécurité de pointe. Observation des méthodologies d'audit de sécurité, découverte de solutions pare-feu d'entreprise (Palo Alto, Fortinet) et sensibilisation au fonctionnement des centres d'opérations de sécurité (SOC).",
+          skills: ['Nomios', 'Réseaux & Sécurité', 'Firewalling', 'Audit Architecture', 'Cybersécurité'],
+          link: 'https://www.nomios.fr'
+        }
+      ];
+
+      /* --- SKILLS DATA --- */
+      const SKILLS_ITEMS = [
+        {
+          id: 'ticketing',
+          category: 'Support & Helpdesk',
+          title: 'Ticketing',
+          description: 'Prise en charge et qualification des incidents informatiques (niveaux 1 et 2), création et suivi rigoureux des tickets avec respect des SLA (Service Level Agreements). Documentation des procédures de résolution dans une base de connaissances (Knowledge Base) et communication proactive avec les utilisateurs.',
+          tools: ['ServiceNow', 'Jira Service Management', 'GLPI', 'Freshdesk'],
+          link: 'https://www.servicenow.com/'
+        },
+        {
+          id: 'virtualisation',
+          category: 'Infrastructure',
+          title: 'Virtualisation',
+          description: 'Conception et administration d’architectures virtualisées. Création, clonage et configuration de machines virtuelles (VMs) sous VMware Workstation, allocation dynamique des ressources CPU/RAM/Stockage, gestion des snapshots, cartes réseaux virtuelles (Host-only, NAT, Bridged) et tests d’infrastructures.',
+          tools: ['VMware Workstation Pro', 'VMware ESXi', 'Proxmox VE', 'Hyper-V'],
+          link: 'https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion'
+        },
+        {
+          id: 'active-directory',
+          category: 'Système d’annuaire',
+          title: 'Active Directory',
+          description: 'Gestion centralisée des identités et des accès sous Windows Server. Création et maintenance des comptes utilisateurs, ordinateurs et groupes de sécurité. Conception et application de stratégies de groupe (GPO) pour durcir les postes clients et automatiser le déploiement d’environnements de travail.',
+          tools: ['AD DS', 'Group Policy (GPO)', 'DNS', 'DHCP', 'Microsoft Entra ID'],
+          link: 'https://learn.microsoft.com/fr-fr/windows-server/identity/ad-ds/active-directory-domain-services'
+        },
+        {
+          id: 'tcpip-reseaux',
+          category: 'Architecture Réseau',
+          title: 'TCP/IP & Réseaux',
+          description: 'Maîtrise approfondie des couches du modèle OSI et de la pile TCP/IP. Calcul de masques et découpage en sous-réseaux (VLSM), configuration de tables de routage statiques et dynamiques, segmentation logique par VLANs, gestion des protocoles DHCP, DNS, NAT/PAT et analyse de trames avec Wireshark.',
+          tools: ['Wireshark', 'VLAN 802.1Q', 'Routage inter-VLAN', 'NAT / PAT', 'IPv4 / IPv6'],
+          link: 'https://www.wireshark.org/docs/'
+        },
+        {
+          id: 'cisco-packet-tracer',
+          category: 'Simulation & Configuration',
+          title: 'Cisco Packet Tracer',
+          description: 'Modélisation complète de topologies réseau d’entreprise avec commutateurs (switches Catalyst) et routeurs Cisco. Configuration en ligne de commande (CLI Cisco IOS) : configuration des interfaces, Trunking 802.1Q, VTP, Spanning Tree (STP), routage statique/OSPF, Access Control Lists (ACL) et sécurité des ports (Port Security).',
+          tools: ['Cisco IOS', 'Switch Catalyst', 'Routeurs Cisco', 'Spanning Tree', 'ACL'],
+          link: 'https://www.netacad.com/courses/packet-tracer'
+        },
+        {
+          id: 'ia',
+          category: 'Productivité & Automatisation',
+          title: 'IA',
+          description: 'Utilisation avancée des modèles d’intelligence artificielle générative pour accélérer la résolution d’incidents techniques, automatiser la rédaction de scripts PowerShell/Bash, analyser des journaux d’événements (logs) complexes et concevoir de la documentation technique synthétique.',
+          tools: ['LLMs (Gemini, Claude, GPT)', 'Automatisation scripts', 'Analyse de logs', 'Prompt Engineering'],
+          link: 'https://ai.google.dev/'
+        },
+        {
+          id: 'windows-server',
+          category: 'Système Serveur',
+          title: 'Windows Server',
+          description: 'Déploiement et administration de Windows Server (2019/2022). Installation et configuration des rôles clés : Active Directory Domain Services, serveur DNS, serveur d’adresses DHCP avec baux et réservations, serveur de fichiers avec permissions NTFS partagées, et gestionnaire de sauvegardes Windows.',
+          tools: ['Windows Server 2022', 'PowerShell', 'Gestionnaire de serveur', 'Partages SMB/NTFS'],
+          link: 'https://learn.microsoft.com/fr-fr/windows-server/'
+        },
+        {
+          id: 'linux',
+          category: 'Système Open Source',
+          title: 'Linux (Debian/Alma)',
+          description: 'Administration courante de serveurs Linux sous distributions Debian/Ubuntu et RHEL/AlmaLinux en ligne de commande pure (CLI). Gestion des droits et permissions (chown, chmod), gestion des processus et services systemd, configuration du pare-feu (UFW / firewalld / iptables), accès sécurisé SSH par clé et automatisation de tâches via cron.',
+          tools: ['Debian', 'AlmaLinux / RHEL', 'Bash', 'Systemd', 'SSH / Keys', 'UFW / Firewalld'],
+          link: 'https://www.debian.org/doc/'
+        },
+        {
+          id: 'vs-code',
+          category: 'Environnement & Code',
+          title: 'VS Code',
+          description: 'Utilisation quotidienne de Visual Studio Code comme environnement principal de travail pour le développement de scripts d’administration système (PowerShell, Bash, Python), l’édition de fichiers de configuration (JSON, YAML), et le versionnement collaboratif avec Git et GitHub.',
+          tools: ['Git / GitHub', 'Extensions PowerShell & Bash', 'Terminal intégré', 'Remote SSH'],
+          link: 'https://code.visualstudio.com/docs'
+        }
+      ];
+
+      document.addEventListener('DOMContentLoaded', () => {
+        /* 1. NAVBAR SCROLL BACKGROUND TOGGLE */
+        const navbar = document.getElementById('main-navbar');
+        const handleNavbarScroll = () => {
+          if (window.scrollY > 20) {
+            navbar.classList.add('bg-[#382A22]/80', 'backdrop-blur-xl', 'border-b', 'border-[#7A553A]/30', 'py-3', 'shadow-2xl');
+            navbar.classList.remove('bg-transparent', 'border-transparent', 'py-4', 'sm:py-5');
+          } else {
+            navbar.classList.remove('bg-[#382A22]/80', 'backdrop-blur-xl', 'border-b', 'border-[#7A553A]/30', 'py-3', 'shadow-2xl');
+            navbar.classList.add('bg-transparent', 'border-transparent', 'py-4', 'sm:py-5');
+          }
+        };
+        window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+        handleNavbarScroll();
+
+        /* 2. HASH URL SMOOTH AUTO-SCROLL ON PAGE LOAD */
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            setTimeout(() => {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 200);
+          }
+        }
+
+        /* 3. MOBILE MENU TOGGLE */
+        const hamburgerBtn = document.getElementById('mobile-hamburger-btn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const burgerLines = hamburgerBtn.querySelectorAll('.burger-line');
+
+        function toggleMobileMenu(open) {
+          const isOpen = open !== undefined ? open : mobileMenu.classList.contains('pointer-events-none');
+          if (isOpen) {
+            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+            if (burgerLines.length === 3) {
+              burgerLines[0].classList.add('rotate-45', 'translate-y-[7px]');
+              burgerLines[1].classList.add('opacity-0');
+              burgerLines[2].classList.add('-rotate-45', '-translate-y-[7px]');
+            }
+          } else {
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            if (burgerLines.length === 3) {
+              burgerLines[0].classList.remove('rotate-45', 'translate-y-[7px]');
+              burgerLines[1].classList.remove('opacity-0');
+              burgerLines[2].classList.remove('-rotate-45', '-translate-y-[7px]');
+            }
+          }
+        }
+
+        hamburgerBtn.addEventListener('click', () => toggleMobileMenu());
+
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => toggleMobileMenu(false));
+        });
+
+        /* 4. CERTIFICATIONS CAROUSEL CONTROLS */
+        let currentCertIdx = 0;
+        const totalCerts = 3;
+        const certTrack = document.getElementById('cert-track');
+        const certDots = document.querySelectorAll('.cert-dot');
+        const certCounter = document.getElementById('cert-counter');
+
+        function updateCertSlide(idx) {
+          currentCertIdx = (idx + totalCerts) % totalCerts;
+          if (certTrack) {
+            certTrack.style.transform = `translateX(-${currentCertIdx * 100}%)`;
+          }
+          certDots.forEach((dot, dIdx) => {
+            if (dIdx === currentCertIdx) {
+              dot.classList.add('w-8', 'bg-white');
+              dot.classList.remove('w-2.5', 'bg-white/20');
+            } else {
+              dot.classList.remove('w-8', 'bg-white');
+              dot.classList.add('w-2.5', 'bg-white/20');
+            }
+          });
+          if (certCounter) {
+            certCounter.textContent = `${currentCertIdx + 1} / ${totalCerts}`;
+          }
+        }
+
+        document.getElementById('cert-prev')?.addEventListener('click', () => updateCertSlide(currentCertIdx - 1));
+        document.getElementById('cert-next')?.addEventListener('click', () => updateCertSlide(currentCertIdx + 1));
+        certDots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const index = parseInt(dot.getAttribute('data-index') || '0', 10);
+            updateCertSlide(index);
+          });
+        });
+
+        /* 5. MODAL LOGIC (PARCOURS & SKILLS) */
+        const parcoursModal = document.getElementById('parcoursModal');
+        let currentParcoursIdx = 0;
+
+        function openParcoursModal(id) {
+          const idx = PARCOURS_ITEMS.findIndex(
+            (i) => i.id === id || (id === 'tech-support' && i.id === 'chubb-delta') || (id === 'stagiaire' && i.id === 'nomios')
+          );
+          currentParcoursIdx = idx >= 0 ? idx : 0;
+          renderParcoursModalContent();
+          parcoursModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeParcoursModal() {
+          parcoursModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        function renderParcoursModalContent() {
+          const item = PARCOURS_ITEMS[currentParcoursIdx];
+          if (!item) return;
+          document.getElementById('parcoursModalBadge').textContent = item.badge;
+          document.getElementById('parcoursModalPeriod').textContent = item.period;
+          document.getElementById('parcoursModalTitle').textContent = item.title;
+          document.getElementById('parcoursModalSubtitle').textContent = item.subtitle;
+          document.getElementById('parcoursModalDescription').textContent = item.description;
+          document.getElementById('parcoursModalIndex').textContent = `${currentParcoursIdx + 1} / ${PARCOURS_ITEMS.length}`;
+          document.getElementById('parcoursModalLink').href = item.link;
+
+          const skillsContainer = document.getElementById('parcoursModalSkills');
+          skillsContainer.innerHTML = item.skills
+            .map((s) => `<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">${s}</span>`)
+            .join('');
+        }
+
+        document.querySelectorAll('.btn-open-parcours').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            if (id) openParcoursModal(id);
+          });
+        });
+
+        document.getElementById('closeParcoursModalBtn')?.addEventListener('click', closeParcoursModal);
+        document.getElementById('prevParcoursBtn')?.addEventListener('click', () => {
+          currentParcoursIdx = (currentParcoursIdx - 1 + PARCOURS_ITEMS.length) % PARCOURS_ITEMS.length;
+          renderParcoursModalContent();
+        });
+        document.getElementById('nextParcoursBtn')?.addEventListener('click', () => {
+          currentParcoursIdx = (currentParcoursIdx + 1) % PARCOURS_ITEMS.length;
+          renderParcoursModalContent();
+        });
+        parcoursModal?.addEventListener('click', (e) => {
+          if (e.target === parcoursModal) closeParcoursModal();
+        });
+
+        /* SKILL MODAL */
+        const skillModal = document.getElementById('skillModal');
+        let currentSkillIdx = 0;
+
+        function openSkillModal(id) {
+          const idx = SKILLS_ITEMS.findIndex((s) => s.id === id);
+          currentSkillIdx = idx >= 0 ? idx : 0;
+          renderSkillModalContent();
+          skillModal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeSkillModal() {
+          skillModal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+
+        function renderSkillModalContent() {
+          const skill = SKILLS_ITEMS[currentSkillIdx];
+          if (!skill) return;
+          document.getElementById('skillModalCategory').textContent = skill.category;
+          document.getElementById('skillModalTitle').textContent = skill.title;
+          document.getElementById('skillModalDescription').textContent = skill.description;
+          document.getElementById('skillModalIndex').textContent = `${currentSkillIdx + 1} / ${SKILLS_ITEMS.length}`;
+          document.getElementById('skillModalDocLink').href = skill.link;
+
+          const toolsContainer = document.getElementById('skillModalTools');
+          toolsContainer.innerHTML = skill.tools
+            .map((t) => `<span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">${t}</span>`)
+            .join('');
+        }
+
+        document.querySelectorAll('.btn-open-skill').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-skill');
+            if (id) openSkillModal(id);
+          });
+        });
+
+        document.getElementById('closeSkillModalBtn')?.addEventListener('click', closeSkillModal);
+        document.getElementById('prevSkillBtn')?.addEventListener('click', () => {
+          currentSkillIdx = (currentSkillIdx - 1 + SKILLS_ITEMS.length) % SKILLS_ITEMS.length;
+          renderSkillModalContent();
+        });
+        document.getElementById('nextSkillBtn')?.addEventListener('click', () => {
+          currentSkillIdx = (currentSkillIdx + 1) % SKILLS_ITEMS.length;
+          renderSkillModalContent();
+        });
+        skillModal?.addEventListener('click', (e) => {
+          if (e.target === skillModal) closeSkillModal();
+        });
+
+        /* ESCAPE KEY LISTENER FOR ALL MODALS */
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeParcoursModal();
+            closeSkillModal();
+            document.getElementById('projectModal')?.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+
+        /* 6. E6 COMING-SOON TOAST NOTIFICATION */
+        const toastE6 = document.getElementById('toast-e6');
+        let toastTimeout = null;
+
+        function showE6Toast() {
+          if (!toastE6) return;
+          toastE6.classList.remove('hidden');
+          void toastE6.offsetWidth;
+          toastE6.classList.remove('translate-y-4', 'opacity-0');
+          toastE6.classList.add('translate-y-0', 'opacity-100');
+
+          if (toastTimeout) clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(hideE6Toast, 4500);
+        }
+
+        function hideE6Toast() {
+          if (!toastE6) return;
+          toastE6.classList.remove('translate-y-0', 'opacity-100');
+          toastE6.classList.add('translate-y-4', 'opacity-0');
+          setTimeout(() => {
+            toastE6.classList.add('hidden');
+          }, 300);
+        }
+
+        document.addEventListener('click', (e) => {
+          if (e.target.closest('.btn-epreuve-e6-trigger, #btn-epreuve-e6')) {
+            e.preventDefault();
+            showE6Toast();
+          }
+          if (e.target.closest('#toast-e6-close')) {
+            hideE6Toast();
+          }
+        });
+
+        /* 7. TYPEWRITER EFFECT IN HERO (FAST ANIMATION) */
+        const typewriterEl = document.getElementById('hero-typewriter-text');
+        const cursorEl = document.getElementById('typewriter-cursor');
+        const textToType = "Bienvenue sur mon portfolio, j'espère qu'il vous plaira !";
+        let charIdx = 0;
+        if (typewriterEl) {
+          setTimeout(() => {
+            const typeInterval = setInterval(() => {
+              typewriterEl.textContent = textToType.slice(0, charIdx + 1);
+              charIdx++;
+              if (charIdx >= textToType.length) {
+                clearInterval(typeInterval);
+                if (cursorEl) {
+                  cursorEl.remove();
+                }
+              }
+            }, 25);
+          }, 200);
+        }
+
+        /* 8. COPY EMAIL BUTTON */
+        const copyEmailBtn = document.getElementById('copy-email-pill');
+        const copyEmailLabel = document.getElementById('copy-email-label');
+        if (copyEmailBtn && copyEmailLabel) {
+          copyEmailBtn.addEventListener('click', async () => {
+            const email = 'maxencefontainegros@ik.me';
+            try {
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(email);
+              } else {
+                const ta = document.createElement('textarea');
+                ta.value = email;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+              }
+              copyEmailLabel.textContent = 'Email copié dans le presse-papier !';
+              setTimeout(() => {
+                copyEmailLabel.textContent = 'Me contacter : maxencefontainegros@ik.me';
+              }, 2500);
+            } catch (err) {
+              console.error(err);
+            }
+          });
+        }
+
+        /* 9. SCROLL TO TOP IN FOOTER */
+        document.getElementById('btn-scroll-top')?.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* 10. BACKGROUND VIDEO MOUSE-SCRUB CONTROL (EXACT ALGORITHM) */
+        (function initVideoMouseScrubbing() {
+          const bgVideo = document.getElementById('hero-background-video');
+          if (!bgVideo) return;
+
+          let prevX = null;
+          let targetTime = 0;
+          let isSeeking = false;
+          const SENSITIVITY = 0.8;
+
+          // Touch / Mobile guard: on screens under 768px, disable active scrubbing
+          const isTouchOrMobile = () => {
+            return (
+              window.innerWidth < 768 ||
+              'ontouchstart' in window ||
+              navigator.maxTouchPoints > 0
+            );
+          };
+
+          const handleMouseMove = (e) => {
+            if (isTouchOrMobile()) return;
+            if (!Number.isFinite(bgVideo.duration) || bgVideo.duration <= 0) return;
+
+            const currentX = e.clientX;
+            if (prevX === null) {
+              prevX = currentX;
+              return;
+            }
+
+            const delta = currentX - prevX;
+            prevX = currentX;
+
+            const timeOffset = (delta / window.innerWidth) * SENSITIVITY * bgVideo.duration;
+            targetTime = Math.max(0, Math.min(bgVideo.duration, targetTime + timeOffset));
+
+            if (!isSeeking) {
+              isSeeking = true;
+              bgVideo.currentTime = targetTime;
+            }
+          };
+
+          const handleSeeked = () => {
+            if (!bgVideo) return;
+            if (Math.abs(bgVideo.currentTime - targetTime) > 0.01) {
+              bgVideo.currentTime = targetTime;
+            } else {
+              isSeeking = false;
+            }
+          };
+
+          const handleMouseLeave = () => {
+            prevX = null;
+          };
+
+          bgVideo.addEventListener('loadedmetadata', () => {
+            targetTime = bgVideo.currentTime || 0;
+          });
+
+          bgVideo.addEventListener('seeked', handleSeeked);
+          window.addEventListener('mousemove', handleMouseMove, { passive: true });
+          window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+        })();
+      });
+    </script>
   </body>
 </html>
-

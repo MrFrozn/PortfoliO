@@ -22,55 +22,57 @@ const EXPERIENCES_DATA: ExperienceItem[] = [
     category: 'education',
     badge: 'Bac +2 • En cours',
     title: 'BTS - SIO SISR',
-    period: '2024 - 2026',
-    subtitle: 'AFTEC Rennes',
+    period: '2025 - 2027',
+    subtitle: 'Institution des Chartreux, Lyon',
     shortDesc: 'Spécialisation en Solutions d’Infrastructure, Systèmes, Réseaux et Sécurité informatique.',
     fullDesc:
       'Formation supérieure spécialisée dans l’administration d’infrastructures informatiques, le déploiement d’architectures réseaux résilientes, la virtualisation de serveurs et la mise en œuvre de politiques de cybersécurité en entreprise. Apprentissage approfondi des environnements Windows Server, Linux (Debian, Ubuntu), switching/routing Cisco, firewalling et gestion de parcs informatiques.',
     skills: ['Windows Server', 'Linux Admin', 'Réseaux & VLANs', 'Cybersécurité', 'Virtualisation'],
-    externalUrl: 'https://www.aftec.fr/',
+    externalUrl: 'https://www.leschartreux.com',
     externalLabel: "Site de l'école ↗",
   },
   {
     id: 'bac-sti2d',
     category: 'education',
     badge: 'Baccalauréat Technologique',
-    title: 'Bac STI2D option SIN',
-    period: '2024',
-    subtitle: 'Lycée Joliot Curie - Rennes',
-    shortDesc: "Sciences et Technologies de l'Industrie et du Développement Durable (Systèmes d'Information et Numérique).",
+    title: 'Bac Général',
+    period: '2025',
+    subtitle: 'Lycée La Favorite - Lyon',
+    shortDesc: "Spécialités Mathématiques et LLCERAMC avec option Mathématiques Expertes",
     fullDesc:
-      "Acquisition des fondamentaux de l'informatique, de l'algorithmique, des réseaux locaux, du traitement des données et des architectures matérielles. Conception et développement de projets techniques intégrés associant électronique, programmation et communication réseau.",
-    skills: ['Systèmes Numériques', 'Bases Réseau', 'Algorithmique', 'Projets Techniques'],
+      "Formation au Lycée La Favorite (Lyon) avec spécialités Mathématiques et LLCERAMC (option Mathématiques Expertes). Développement d'un raisonnement analytique rigoureux, de compétences en modélisation et logique appliquées aux technologies informatiques.",
+    skills: ['Mathématiques', 'Logique Algorithmique', 'Anglais Technique', 'Raisonnement'],
     externalUrl: 'https://www.lyceejoliotcurie-rennes.fr/',
     externalLabel: "Site du lycée ↗",
   },
   {
-    id: 'tech-support',
+    id: 'chubb-delta',
     category: 'experience',
-    badge: 'Alternance • 2 ans',
-    title: 'Technicien Support',
-    period: '2024 - 2026',
-    subtitle: 'Work-study / Alternance',
-    shortDesc: 'Technicien support IT, maintenance des équipements réseau et assistance aux utilisateurs.',
+    badge: 'Stage Professionnel • 2026',
+    title: 'Stagiaire Systèmes, Réseaux & Sécurité',
+    period: '2026',
+    subtitle: 'Chubb Delta — Siège / Agence',
+    shortDesc:
+      'Maintenance et mise à jour des équipements réseau, supervision de la sécurité via FortiAnalyzer et déploiement de serveurs virtuels Windows Server.',
     fullDesc:
-      'Prise en charge des incidents informatiques de niveaux 1 et 2, déploiement et masterisation de postes de travail, gestion des comptes utilisateurs Active Directory / Microsoft 365, supervision des liaisons réseaux et maintenance préventive du matériel informatique.',
-    skills: ['Support N1/N2', 'Active Directory', 'Déploiement Postes', 'Helpdesk', 'Ticketing'],
-    externalUrl: 'https://www.linkedin.com',
+      "Réalisation d'un stage technique axé sur la gestion d'infrastructure et la cybersécurité. Audit et suivi des règles de pare-feu, analyse des journaux d'événements sur FortiAnalyzer, mise à jour de commutateurs réseau Cisco et déploiement de machines virtuelles sous Windows Server pour des besoins d'administration.",
+    skills: ['FortiAnalyzer', 'Switchs Cisco', 'Windows Server', 'Virtualisation', 'Supervision'],
+    externalUrl: 'https://www.chubb.com/fr-fr/',
     externalLabel: "Site de l'entreprise ↗",
   },
   {
-    id: 'stagiaire',
+    id: 'nomios',
     category: 'experience',
     badge: 'Stage Professionnel',
-    title: 'Stagiaire Découverte',
-    period: '2020',
-    subtitle: 'Discovery Internship',
-    shortDesc: 'Découverte des environnements informatiques professionnels et de l’administration de systèmes.',
+    title: 'Stagiaire Réseau & Cybersécurité',
+    period: '2023',
+    subtitle: 'Nomios',
+    shortDesc:
+      "Immersion au sein d'un expert intégrateur en réseaux et cybersécurité. Découverte de l'architecture pare-feu entreprise, audit et solutions de protection.",
     fullDesc:
-      'Immersion au sein d’un service informatique en entreprise. Observation de l’organisation d’une infrastructure réseau, participation au diagnostic de pannes matérielles, câblage réseau et sensibilisation aux bonnes pratiques de sécurité informatique.',
-    skills: ['Découverte SI', 'Diagnostic Matériel', 'Câblage & Brassage', 'Bonnes Pratiques'],
-    externalUrl: 'https://www.linkedin.com',
+      "Immersion professionnelle chez Nomios, intégrateur spécialisé en architectures réseau et cybersécurité de pointe. Observation des méthodologies d'audit de sécurité, découverte de solutions pare-feu d'entreprise (Palo Alto, Fortinet) et sensibilisation au fonctionnement des centres d'opérations de sécurité (SOC).",
+    skills: ['Nomios', 'Réseaux & Sécurité', 'Firewalling', 'Audit Architecture', 'Cybersécurité'],
+    externalUrl: 'https://www.nomios.fr',
     externalLabel: "Site de l'entreprise ↗",
   },
 ];
@@ -164,7 +166,7 @@ export function ExperiencesSection() {
                 <article
                   key={item.id}
                   id={`card-${item.id}`}
-                  className="relative group ml-4 sm:ml-6 rounded-3xl bg-black/25 backdrop-blur-md border border-white/10 p-6 sm:p-8 transition-all duration-300 hover:border-white/25 hover:bg-black/35 shadow-xl flex flex-col justify-between"
+                  className="relative group ml-4 sm:ml-6 rounded-3xl bg-black/25 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 transition-all duration-300 hover:border-white/25 hover:bg-black/35 shadow-xl flex flex-col justify-between"
                 >
                   {/* Timeline Node Point */}
                   <span className="absolute -left-[27px] sm:-left-[35px] top-8 w-3.5 h-3.5 rounded-full bg-white border-4 border-black/80 shadow-md group-hover:scale-125 transition-transform duration-200" />
@@ -233,7 +235,7 @@ export function ExperiencesSection() {
                 <article
                   key={item.id}
                   id={`card-${item.id}`}
-                  className="relative group ml-4 sm:ml-6 rounded-3xl bg-black/25 backdrop-blur-md border border-white/10 p-6 sm:p-8 transition-all duration-300 hover:border-white/25 hover:bg-black/35 shadow-xl flex flex-col justify-between"
+                  className="relative group ml-4 sm:ml-6 rounded-3xl bg-black/25 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 transition-all duration-300 hover:border-white/25 hover:bg-black/35 shadow-xl flex flex-col justify-between"
                 >
                   {/* Timeline Node Point */}
                   <span className="absolute -left-[27px] sm:-left-[35px] top-8 w-3.5 h-3.5 rounded-full bg-white border-4 border-black/80 shadow-md group-hover:scale-125 transition-transform duration-200" />
@@ -292,14 +294,14 @@ export function ExperiencesSection() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="modalTitle"
-          className="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-hidden animate-fade-in"
+          className="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-sm md:backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-hidden animate-fade-in"
           style={{ top: 0, left: 0, position: 'fixed' }}
           onClick={handleCloseModal}
         >
           {/* Modal Container Card with Glassmorphism */}
           <div
             id="modalCard"
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl my-auto text-left select-text"
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm md:backdrop-blur-xl my-auto text-left select-text"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button at top-right */}

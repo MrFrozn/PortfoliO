@@ -1,6 +1,6 @@
 {
   "name": "Mainframe",
-  "description": "Full-screen hero landing page for creative agency Mainframe featuring mouse-scrubbed video and conversational interface.",
+  "description": "Portfolio BTS SIO option SISR de Maxence FONTAINE GROS : Infrastructures, systèmes, réseaux, cybersécurité et épreuves E5/E6.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

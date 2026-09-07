@@ -338,7 +338,7 @@ export function SkillsSection() {
                   key={cert.id}
                   className="w-full flex-shrink-0 px-1 sm:px-2"
                 >
-                  <article className="relative rounded-3xl bg-black/30 backdrop-blur-md border border-white/10 p-7 sm:p-10 md:p-12 transition-all duration-300 shadow-2xl flex flex-col md:flex-row gap-8 items-center justify-between">
+                  <article className="relative rounded-3xl bg-black/30 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-7 sm:p-10 md:p-12 transition-all duration-300 shadow-2xl flex flex-col md:flex-row gap-8 items-center justify-between">
                     
                     {/* Left details */}
                     <div className="flex-1 text-left">
@@ -382,13 +382,24 @@ export function SkillsSection() {
                     {/* Right Visual Certificate Thumbnail Card */}
                     <div className="w-full md:w-80 lg:w-96 flex-shrink-0">
                       <div className="relative aspect-[4/3] rounded-2xl bg-white/[0.04] border border-white/15 p-5 flex flex-col justify-between overflow-hidden shadow-inner group">
-                        <div className="flex justify-between items-start">
+                        {cert.thumbnailUrl ? (
+                          <img
+                            src={cert.thumbnailUrl}
+                            alt={cert.title}
+                            loading="lazy"
+                            decoding="async"
+                            width={384}
+                            height={288}
+                            className="absolute inset-0 w-full h-full object-cover aspect-[4/3]"
+                          />
+                        ) : null}
+                        <div className="flex justify-between items-start z-10">
                           <span className="text-xs uppercase tracking-widest text-white/40 font-mono">
                             OFFICIAL CERTIFICATE
                           </span>
                           <Award className="w-6 h-6 text-white/80" />
                         </div>
-                        <div className="my-auto text-center py-4">
+                        <div className="my-auto text-center py-4 z-10">
                           <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-white/10 flex items-center justify-center border border-white/15">
                             <span className="text-xl">📜</span>
                           </div>
@@ -399,7 +410,7 @@ export function SkillsSection() {
                             {cert.issuer}
                           </span>
                         </div>
-                        <div className="pt-2 border-t border-white/10 flex justify-between items-center text-[11px] text-white/40 font-mono">
+                        <div className="pt-2 border-t border-white/10 flex justify-between items-center text-[11px] text-white/40 font-mono z-10">
                           <span>VERIFIED</span>
                           <span>PDF DOCUMENT</span>
                         </div>
@@ -483,7 +494,7 @@ export function SkillsSection() {
               <article
                 key={skill.id}
                 id={`skill-card-${skill.id}`}
-                className="relative group rounded-3xl bg-black/25 backdrop-blur-md border border-white/10 p-6 sm:p-7 transition-all duration-300 hover:border-white/25 hover:bg-black/35 shadow-xl flex flex-col justify-between"
+                className="relative group rounded-3xl bg-black/25 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-7 transition-all duration-300 hover:border-white/25 hover:bg-black/35 shadow-xl flex flex-col justify-between"
               >
                 <div>
                   {/* Icon & Category */}
@@ -538,13 +549,13 @@ export function SkillsSection() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="skillModalTitle"
-          className="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-hidden animate-fade-in"
+          className="fixed inset-0 z-[9999] w-screen h-screen bg-black/75 backdrop-blur-sm md:backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-hidden animate-fade-in"
           style={{ top: 0, left: 0, position: 'fixed' }}
           onClick={handleCloseSkillModal}
         >
           <div
             id="skillModalCard"
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl my-auto text-left select-text"
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900/95 border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm md:backdrop-blur-xl my-auto text-left select-text"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet Portfolio BTS SIO SISR — Maxence FONTAINE GROS</title>
+    <meta
+      name="description"
+      content="Présentation complète de la démarche, des objectifs et de la réalisation de mon portfolio d'étudiant en BTS SIO SISR."
+    />
+    <!-- Preconnect origins and Preload critical background image for LCP -->
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind configuration & Non-blocking deferred CDN script -->
+    <script>
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              warmMuted: '#121110',
+            },
+            keyframes: {
+              fadeInPage: {
+                '0%': { opacity: '0', transform: 'translateY(16px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+            },
+            animation: {
+              'fade-in': 'fadeInPage 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+          },
+        },
+      };
+    </script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts matching portfolio -->
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+      type="text/css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+      }
+      body {
+        font-family: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+        background-color: #0b0a09;
+        color: #ffffff;
+        -webkit-overflow-scrolling: touch;
+      }
+      .font-heading {
+        font-family: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#0b0a09] text-white selection:bg-white selection:text-black antialiased relative">
+    <!-- Dark warm muted backdrop & background matching hero and about sections -->
+    <div
+      class="fixed inset-0 z-0 bg-cover bg-center opacity-25 pointer-events-none"
+      style="background-image: url('/bg%20site2.png');"
+    ></div>
+
+    <!-- Radial soft vignette overlay -->
+    <div class="fixed inset-0 z-0 bg-radial from-transparent via-black/40 to-black/85 pointer-events-none"></div>
+
+    <div class="relative z-10 flex flex-col min-h-screen">
+      <!-- =========================================================================
+           TOP NAVIGATION BAR
+           ========================================================================= -->
+      <header
+        id="project-navbar"
+        class="sticky top-0 z-40 w-full px-6 sm:px-12 py-5 flex items-center justify-between backdrop-blur-sm md:backdrop-blur-md bg-black/40 border-b border-white/10"
+      >
+        <!-- Logo Brand -->
+        <a href="../../index.html" class="flex items-center gap-2 group">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading">
+            Mainframe®
+          </span>
+          <span class="text-2xl text-white opacity-80 leading-none group-hover:rotate-45 transition-transform duration-300">
+            ✳︎
+          </span>
+        </a>
+
+        <!-- Back to Portfolio Pill-Button -->
+        <a
+          id="btn-back-portfolio"
+          href="../../index.html#projects"
+          class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Portfolio</span>
+        </a>
+      </header>
+
+      <!-- =========================================================================
+           HERO HEADER SECTION
+           ========================================================================= -->
+      <section class="w-full px-6 sm:px-12 pt-16 sm:pt-24 pb-16 sm:pb-20 max-w-6xl mx-auto animate-fade-in text-left">
+        <div class="space-y-6 max-w-3xl">
+          <!-- Small Category Eyebrow -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs font-mono uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Projet Phare · Web & Documentation
+          </div>
+
+          <!-- Hero Title -->
+          <h1
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] font-heading"
+          >
+            Mon Portfolio
+          </h1>
+
+          <!-- Intro Paragraph -->
+          <p class="text-lg sm:text-xl text-white/75 leading-relaxed font-normal">
+            Vous trouverez ici une présentation de la création de mon portfolio. Conçu comme une vitrine vivante de mes compétences en administration systèmes, réseaux et technologies web modernes.
+          </p>
+
+          <!-- Button Group -->
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <!-- Button 1: Cahier des charges PDF (Opens in new tab without forced download) -->
+            <a
+              id="btn-cahier-des-charges"
+              href="cahier-des-charges.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-xl select-none"
+            >
+              <span>Voir le cahier des charges</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+
+            <!-- Button 2: Smooth scroll link to #details -->
+            <a
+              id="btn-en-savoir-plus"
+              href="#details"
+              class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm sm:text-base font-medium transition-all duration-200 active:scale-95 select-none"
+            >
+              <span>En savoir plus</span>
+              <svg class="w-4 h-4 text-white/70 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content Container -->
+      <main class="w-full px-6 sm:px-12 pb-24 sm:pb-32 max-w-6xl mx-auto space-y-20 sm:space-y-28">
+
+        <!-- =====================================================================
+             SECTION 1: "Pourquoi un Portfolio en BTS SIO ?" (#details)
+             ===================================================================== -->
+        <section id="details" class="space-y-8 scroll-mt-28">
+          <div class="space-y-3 pb-4 border-b border-white/10">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading">
+              Pourquoi un Portfolio en BTS SIO ?
+            </h2>
+            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+              Dans le cadre du diplôme BTS SIO (option SISR — Solutions d'Infrastructure, Systèmes et Réseaux), le portfolio représente bien plus qu'un simple curriculum vitae : il constitue la synthèse vivante des compétences acquises, des architectures réseau déployées, des travaux pratiques d'administration et des résolutions d'incidents informatiques.
+            </p>
+          </div>
+
+          <!-- 2-Column Grid Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <!-- Card 1: Évaluation (Clipboard Icon) -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <!-- Icon Header -->
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Clipboard Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <path d="m9 14 2 2 4-4"></path>
+                  </svg>
+                </div>
+
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">Objectif Pédagogique</span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                  Évaluation & Suivi des Compétences
+                </h3>
+
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                  Le portfolio est l'outil indispensable pour présenter l'ensemble de mes réalisations techniques devant les examinateurs lors des épreuves professionnelles du BTS SIO (notamment les épreuves E4 et E5). Il conserve un historique précis de mes fiches de situations professionnelles, documentations techniques, scripts d'automatisation et topologies réseau.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono flex items-center gap-2">
+                <span>Épreuves E4 / E5 · Fiches d'activités</span>
+              </div>
+            </article>
+
+            <!-- Card 2: Référence Professionnelle (Briefcase Icon) -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <!-- Icon Header -->
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Briefcase Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  </svg>
+                </div>
+
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs font-mono uppercase tracking-widest text-blue-400">Carrière & Insertion</span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                  Référence Professionnelle
+                </h3>
+
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                  Au-delà du cadre scolaire, ce site web sert de support professionnel direct auprès des recruteurs, maîtres d'apprentissage et tuteurs de stage. Il valorise concrètement ma rigueur documentaire, ma veille technologique continue et mon approche méthodique de la résolution d'incidents.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono flex items-center gap-2">
+                <span>Alternance · Stages · Insertion professionnelle</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             SECTION 2: "Comment j'ai réalisé mon Portfolio"
+             ===================================================================== -->
+        <section class="space-y-8">
+          <div class="space-y-3 pb-4 border-b border-white/10">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading">
+              Comment j'ai réalisé mon Portfolio
+            </h2>
+            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+              La conception de cette plateforme s'est étalée sur un cycle complet d'une année scolaire, en parallèle de mes cours et de mes projets en entreprise, combinant exigence ergonomique, esthétique épurée et technologies modernes.
+            </p>
+          </div>
+
+          <!-- 2-Column Grid Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <!-- Card 1: Outils Utilisés (Tools Icon) -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <!-- Icon Header -->
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Wrench / Tools Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                  </svg>
+                </div>
+
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs font-mono uppercase tracking-widest text-amber-400">Stack & Ingénierie</span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                  Outils Utilisés
+                </h3>
+
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed mb-4">
+                  Développé au moyen de <strong>VS Code</strong>, avec l'assistance d'intelligence artificielle avancée (<strong>Google Gemini</strong>) et de modèles LLM locaux pour accélérer le prototypage. Le design s'appuie sur <strong>Tailwind CSS</strong>, une suite de composants réactifs et des éléments visuels 3D sur-mesure.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">VS Code</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">Gemini AI</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">Tailwind CSS</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">Vanilla JS / React</span>
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-medium">3D Claymation Assets</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                Architecture modulaire · Accessibilité · Performance
+              </div>
+            </article>
+
+            <!-- Card 2: Temps de Réalisation (Clock Icon) -->
+            <article class="relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-6 sm:p-8 shadow-xl hover:border-white/20 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <!-- Icon Header -->
+                <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white mb-5 shadow-inner">
+                  <!-- Clock Icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs font-mono uppercase tracking-widest text-purple-400">Chronologie & Rigueur</span>
+                </div>
+
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                  Temps de Réalisation
+                </h3>
+
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed mb-4">
+                  Développé en continu sur une <strong>durée d'environ 1 an</strong>, ce portfolio a fait l'objet de multiples itérations : affinement des palettes chromatiques (tons terre chaude et taupe), intégration de la vidéo scrubbing réactive à la souris, optimisation des fenêtres modales avec centrage absolu viewport et vérification constante de la lisibilité.
+                </p>
+
+                <div class="space-y-2 text-xs sm:text-sm text-white/70">
+                  <div class="flex items-center justify-between py-1 border-b border-white/5">
+                    <span>Phase 1 : Cadrage & Cahier des charges</span>
+                    <span class="font-mono text-white/50">Mois 1 - 2</span>
+                  </div>
+                  <div class="flex items-center justify-between py-1 border-b border-white/5">
+                    <span>Phase 2 : Intégration UI/UX & Vidéo Scrub</span>
+                    <span class="font-mono text-white/50">Mois 3 - 6</span>
+                  </div>
+                  <div class="flex items-center justify-between py-1">
+                    <span>Phase 3 : Modularisation & Sections BTS</span>
+                    <span class="font-mono text-white/50">Mois 7 - 12</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+                Itérations continues · Qualité de code certifiée
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="mt-auto w-full py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-mono">
+        <p>© 2026 - 2027 Maxence FONTAINE GROS · Portfolio BTS SIO SISR · Tous droits réservés.</p>
+      </footer>
+    </div>
+  </body>
+</html>

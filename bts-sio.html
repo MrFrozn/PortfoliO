@@ -8,10 +8,14 @@
       name="description"
       content="Présentation complète du BTS SIO (Services Informatiques aux Organisations) et de ses deux options : SISR et SLAM."
     />
-    <!-- Tailwind CSS CDN for standalone HTML delivery -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnect origins and Preload critical background image for LCP -->
+    <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind configuration & Non-blocking deferred CDN script -->
     <script>
-      tailwind.config = {
+      window.tailwind = {
         theme: {
           extend: {
             colors: {
@@ -30,6 +34,7 @@
         },
       };
     </script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
     <!-- Fonts matching portfolio -->
     <link
       rel="stylesheet"
@@ -42,10 +47,15 @@
       type="text/css"
     />
     <style>
+      html {
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+      }
       body {
         font-family: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
         background-color: #0b0a09;
         color: #ffffff;
+        -webkit-overflow-scrolling: touch;
       }
       .font-heading {
         font-family: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
@@ -63,30 +73,37 @@
     <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 md:px-12 py-10 sm:py-16 animate-fade-in flex flex-col justify-between min-h-screen">
       
       <!-- Top Bar with Back to Portfolio Button -->
-      <header class="flex items-center justify-between pb-10 sm:pb-14 border-b border-white/10">
+      <header class="flex items-center justify-between pb-8 sm:pb-12 border-b border-white/10 select-none">
+        <!-- Logo Brand -->
+        <a href="index.html#home" class="flex items-center gap-2 group cursor-pointer" title="Retour à l'accueil">
+          <span class="text-xl sm:text-2xl font-bold tracking-tight text-white font-heading">
+            Mainframe®
+          </span>
+          <span class="text-2xl text-white opacity-80 leading-none group-hover:rotate-45 transition-transform duration-300">
+            ✳︎
+          </span>
+        </a>
+
+        <!-- Right: Single Pill-Style Button: Retour portfolio -->
         <a
-          href="/#about"
-          class="group inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 rounded-full bg-white text-black text-sm sm:text-base font-medium transition-all duration-200 hover:bg-neutral-200 active:scale-95 border border-white/20 shadow-lg cursor-pointer"
+          href="index.html#about"
+          class="group inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md cursor-pointer"
         >
           <svg
-            class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
+            class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
             aria-hidden="true"
           >
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
-          <span>Back to Portfolio</span>
+          <span>Retour portfolio</span>
         </a>
-
-        <span class="text-sm sm:text-base text-white/50 tracking-wider uppercase font-medium">
-          Cursus & Diplôme
-        </span>
       </header>
 
       <!-- Main Presentation Content -->
@@ -112,7 +129,7 @@
           
           <!-- Option 1: SISR (Highlighted / Specialization) -->
           <article
-            class="relative rounded-3xl bg-white/[0.04] backdrop-blur-md border border-white/10 p-8 sm:p-10 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] flex flex-col justify-between"
+            class="relative rounded-3xl bg-white/[0.04] backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-8 sm:p-10 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] flex flex-col justify-between"
           >
             <div class="absolute -top-3.5 left-8 px-3.5 py-1 rounded-full bg-white text-black text-xs font-semibold uppercase tracking-wider shadow-sm">
               Mon option
@@ -159,7 +176,7 @@
 
           <!-- Option 2: SLAM -->
           <article
-            class="relative rounded-3xl bg-white/[0.04] backdrop-blur-md border border-white/10 p-8 sm:p-10 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] flex flex-col justify-between"
+            class="relative rounded-3xl bg-white/[0.04] backdrop-blur-sm md:backdrop-blur-md border border-white/10 p-8 sm:p-10 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06] flex flex-col justify-between"
           >
             <div>
               <div class="flex items-center gap-3 mb-4 mt-1">
