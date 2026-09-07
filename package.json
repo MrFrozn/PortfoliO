@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "vite build",
+    "build:css": "npx @tailwindcss/cli -i src/index.css -o public/css/output.css && cp public/css/output.css css/output.css",
+    "build": "npx @tailwindcss/cli -i src/index.css -o public/css/output.css && cp public/css/output.css css/output.css && vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"

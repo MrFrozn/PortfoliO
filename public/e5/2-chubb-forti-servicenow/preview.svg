@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="50%" stop-color="#292524" />
+      <stop offset="100%" stop-color="#0c0a09" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-grad-2)" />
+  
+  <!-- Subtle Grid -->
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90" />
+    <line x1="0" y1="180" x2="800" y2="180" />
+    <line x1="0" y1="270" x2="800" y2="270" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="200" y1="0" x2="200" y2="450" />
+    <line x1="400" y1="0" x2="400" y2="450" />
+    <line x1="600" y1="0" x2="600" y2="450" />
+  </g>
+
+  <!-- Container -->
+  <rect x="100" y="60" width="600" height="330" rx="16" fill="#18181b" stroke="#f97316" stroke-width="2" stroke-opacity="0.35" />
+  
+  <!-- Top Bar -->
+  <rect x="100" y="60" width="600" height="42" rx="16" fill="#27272a" />
+  <circle cx="130" cy="81" r="5" fill="#ef4444" />
+  <circle cx="148" cy="81" r="5" fill="#f59e0b" />
+  <circle cx="166" cy="81" r="5" fill="#10b981" />
+  <text x="190" y="86" fill="#fb923c" font-family="monospace" font-size="12">FortiAnalyzer SIEM Logs · ServiceNow Incident Management</text>
+
+  <!-- Split View: Fortinet on left, ServiceNow on right -->
+  <!-- Left Side: FortiAnalyzer -->
+  <g transform="translate(130, 125)">
+    <rect x="0" y="0" width="250" height="150" rx="10" fill="#0c0a09" stroke="#ea580c" stroke-width="1" />
+    <text x="15" y="25" fill="#fb923c" font-family="sans-serif" font-weight="bold" font-size="12">FORTIANALYZER MONITORING</text>
+    
+    <!-- Mini charts -->
+    <rect x="15" y="45" width="220" height="18" rx="4" fill="#27272a" />
+    <rect x="15" y="45" width="165" height="18" rx="4" fill="#ea580c" />
+    <text x="25" y="58" fill="#ffffff" font-family="monospace" font-size="10">Traffic Allowed (75%)</text>
+
+    <rect x="15" y="70" width="220" height="18" rx="4" fill="#27272a" />
+    <rect x="15" y="70" width="55" height="18" rx="4" fill="#ef4444" />
+    <text x="25" y="83" fill="#ffffff" font-family="monospace" font-size="10">Threats Blocked (25%)</text>
+
+    <text x="15" y="112" fill="#a1a1aa" font-family="monospace" font-size="10">Log Event ID: #FA-98421</text>
+    <text x="15" y="130" fill="#22c55e" font-family="monospace" font-size="10">Status: Anomaly Cleared</text>
+  </g>
+
+  <!-- Right Side: ServiceNow -->
+  <g transform="translate(420, 125)">
+    <rect x="0" y="0" width="250" height="150" rx="10" fill="#0c0a09" stroke="#38bdf8" stroke-width="1" />
+    <text x="15" y="25" fill="#38bdf8" font-family="sans-serif" font-weight="bold" font-size="12">SERVICENOW ITIL TICKETS</text>
+    
+    <!-- Ticket Card -->
+    <rect x="15" y="40" width="220" height="95" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1" />
+    <text x="25" y="60" fill="#e2e8f0" font-family="monospace" font-size="10">INC0049182 · VPN Client</text>
+    <text x="25" y="78" fill="#94a3b8" font-family="monospace" font-size="9">Priorité: P2 · Assigné: SISR Chubb</text>
+    <rect x="25" y="90" width="80" height="18" rx="9" fill="#15803d" />
+    <text x="35" y="103" fill="#ffffff" font-family="sans-serif" font-weight="bold" font-size="9">RÉSOLU (ITIL)</text>
+    <text x="115" y="103" fill="#64748b" font-family="monospace" font-size="9">SLA respecté</text>
+  </g>
+
+  <!-- Bottom Log Bar -->
+  <g transform="translate(130, 295)">
+    <rect x="0" y="0" width="540" height="75" rx="8" fill="#0c0a09" stroke="#27272a" stroke-width="1" />
+    <text x="15" y="24" fill="#a1a1aa" font-family="monospace" font-size="11">[SERVICE DESK] Escalade et clôture de ticket selon référentiel ITIL</text>
+    <text x="15" y="44" fill="#fb923c" font-family="monospace" font-size="11">[SUPERVISION] Détection proactive des anomalies de flux réseau</text>
+    <text x="15" y="64" fill="#34d399" font-family="monospace" font-size="11">Compétences validées : D1 Patrimoine &amp; D2 Incidents &amp; Demandes</text>
+  </g>
+
+  <text x="400" y="420" text-anchor="middle" fill="#71717a" font-family="sans-serif" font-size="12">Déposez votre capture dans /public/e5/2-chubb-forti-servicenow/preview.png</text>
+</svg>

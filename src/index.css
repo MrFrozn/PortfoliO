@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --color-warm-muted: #121110;
+  --color-warm-dark: #382a22;
+  --color-warm-primary: #7a553a;
+  --color-warm-gold: #d4a373;
+}
+
 :root {
   --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;

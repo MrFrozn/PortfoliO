@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="accent-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg-grad-1)" />
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90" />
+    <line x1="0" y1="180" x2="800" y2="180" />
+    <line x1="0" y1="270" x2="800" y2="270" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="160" y1="0" x2="160" y2="450" />
+    <line x1="320" y1="0" x2="320" y2="450" />
+    <line x1="480" y1="0" x2="480" y2="450" />
+    <line x1="640" y1="0" x2="640" y2="450" />
+  </g>
+
+  <!-- Central Card UI -->
+  <rect x="120" y="70" width="560" height="310" rx="16" fill="#18181b" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.4" />
+  
+  <!-- Header Bar -->
+  <rect x="120" y="70" width="560" height="42" rx="16" fill="#27272a" />
+  <circle cx="150" cy="91" r="5" fill="#ef4444" />
+  <circle cx="168" cy="91" r="5" fill="#f59e0b" />
+  <circle cx="186" cy="91" r="5" fill="#10b981" />
+  <text x="210" y="96" fill="#94a3b8" font-family="monospace" font-size="12">cisco-ios-switch# show vlan brief | windows-vm-hyperv</text>
+
+  <!-- Graphic Elements: Server & Switch -->
+  <g transform="translate(160, 140)">
+    <!-- Switch Box -->
+    <rect x="0" y="0" width="220" height="70" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="15" y="25" fill="#60a5fa" font-family="sans-serif" font-weight="bold" font-size="12">CISCO CATALYST SWITCH</text>
+    <text x="15" y="45" fill="#94a3b8" font-family="monospace" font-size="10">VLAN 10, 20, 99 (Trunk 802.1Q)</text>
+    <!-- RJ45 Ports -->
+    <rect x="15" y="52" width="12" height="8" fill="#22c55e" rx="1" />
+    <rect x="32" y="52" width="12" height="8" fill="#22c55e" rx="1" />
+    <rect x="49" y="52" width="12" height="8" fill="#22c55e" rx="1" />
+    <rect x="66" y="52" width="12" height="8" fill="#eab308" rx="1" />
+    <rect x="83" y="52" width="12" height="8" fill="#3b82f6" rx="1" />
+    <rect x="100" y="52" width="12" height="8" fill="#3b82f6" rx="1" />
+  </g>
+
+  <g transform="translate(420, 140)">
+    <!-- Server Box -->
+    <rect x="0" y="0" width="220" height="70" rx="8" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5" />
+    <text x="15" y="25" fill="#c084fc" font-family="sans-serif" font-weight="bold" font-size="12">WINDOWS SERVER 2022</text>
+    <text x="15" y="45" fill="#94a3b8" font-family="monospace" font-size="10">VM Hyper-V / Active Directory</text>
+    <circle cx="20" cy="56" r="3" fill="#22c55e" />
+    <text x="30" y="60" fill="#22c55e" font-family="monospace" font-size="9">STATUS: OPERATIONAL</text>
+  </g>
+
+  <!-- Connecting Link -->
+  <line x1="380" y1="175" x2="420" y2="175" stroke="#60a5fa" stroke-width="2" stroke-dasharray="4" />
+
+  <!-- Terminal Output -->
+  <rect x="160" y="235" width="480" height="120" rx="8" fill="#09090b" stroke="#27272a" stroke-width="1" />
+  <text x="175" y="260" fill="#22c55e" font-family="monospace" font-size="11">admin@chubb-mgmt:~$ Connect-VM -Name "SRV-ADMIN-01" -State Running</text>
+  <text x="175" y="280" fill="#94a3b8" font-family="monospace" font-size="11">Switch(config)# interface GigabitEthernet0/1</text>
+  <text x="175" y="300" fill="#94a3b8" font-family="monospace" font-size="11">Switch(config-if)# switchport mode trunk &amp;&amp; switchport trunk allowed vlan 10,20</text>
+  <text x="175" y="325" fill="#38bdf8" font-family="monospace" font-size="11">[OK] Qualification réussie · D1 Gérer le patrimoine &amp; D5 Service IT</text>
+  
+  <text x="400" y="420" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="12">Déposez votre capture dans /public/e5/1-chubb-vm-cisco/preview.png</text>
+</svg>
