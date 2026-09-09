@@ -7,67 +7,51 @@ export function BackgroundVideo() {
     const video = videoRef.current;
     if (!video) return;
 
-    let prevX: number | null = null;
-    let targetTime = 0;
-    let isSeeking = false;
-    const SENSITIVITY = 0.8;
+    // 1. Performance optimizations: preload and mute
+    video.preload = 'auto';
+    video.muted = true;
 
-    const isTouchOrMobile = () => {
-      return (
-        window.innerWidth < 768 ||
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0
-      );
-    };
+    // 2. Check for fine mouse pointers (desktop/laptop) - fallback gracefully on touch/mobile
+    const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    if (!isFinePointer) return;
 
+    let targetProgress = 0;
+    let currentProgress = 0;
+    const lerpFactor = 0.08; // Easing smoothness (0.05 to 0.1 for silky smooth movement)
+    let rafId: number | null = null;
+
+    const hero = document.getElementById('home') || document.body;
+
+    // Event listener ONLY computes and stores targetProgress normalized between 0 and 1
     const handleMouseMove = (e: MouseEvent) => {
-      if (isTouchOrMobile()) return;
-      if (!Number.isFinite(video.duration) || video.duration <= 0) return;
-
-      const currentX = e.clientX;
-      if (prevX === null) {
-        prevX = currentX;
-        return;
-      }
-
-      const delta = currentX - prevX;
-      prevX = currentX;
-
-      const timeOffset = (delta / window.innerWidth) * SENSITIVITY * video.duration;
-      targetTime = Math.max(0, Math.min(video.duration, targetTime + timeOffset));
-
-      if (!isSeeking) {
-        isSeeking = true;
-        video.currentTime = targetTime;
+      const rect = hero.getBoundingClientRect();
+      if (rect.width > 0) {
+        targetProgress = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
       }
     };
 
-    const handleSeeked = () => {
-      if (Math.abs(video.currentTime - targetTime) > 0.01) {
-        video.currentTime = targetTime;
-      } else {
-        isSeeking = false;
+    // Continuous requestAnimationFrame loop with Linear Interpolation (LERP)
+    function animateScrub() {
+      // Smoothly transition currentProgress towards targetProgress
+      currentProgress += (targetProgress - currentProgress) * lerpFactor;
+
+      if (video && Number.isFinite(video.duration) && video.duration > 0) {
+        const targetTime = currentProgress * video.duration;
+        // Only update video currentTime if difference is noticeable to avoid thread lock
+        if (Math.abs(video.currentTime - targetTime) > 0.01) {
+          video.currentTime = targetTime;
+        }
       }
-    };
 
-    const handleMouseLeave = () => {
-      prevX = null;
-    };
+      rafId = requestAnimationFrame(animateScrub);
+    }
 
-    const handleLoadedMetadata = () => {
-      targetTime = video.currentTime || 0;
-    };
-
-    video.addEventListener('loadedmetadata', handleLoadedMetadata);
-    video.addEventListener('seeked', handleSeeked);
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+    rafId = requestAnimationFrame(animateScrub);
 
     return () => {
-      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      video.removeEventListener('seeked', handleSeeked);
+      if (rafId !== null) cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 

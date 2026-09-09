@@ -152,10 +152,11 @@
           
           <!-- ===================================================================
                LEFT SIDEBAR ("Tableau de bord — E5" - Collapsible layout)
+               Hidden on screens < 1024px, sticky & collapsible on desktop
                =================================================================== -->
           <aside
             id="sidebar"
-            class="w-full lg:w-80 flex-shrink-0 lg:sticky lg:top-28 space-y-6 select-none transition-all duration-300 ease-in-out"
+            class="hidden lg:block lg:w-80 flex-shrink-0 lg:sticky lg:top-28 space-y-6 select-none transition-all duration-300 ease-in-out"
             aria-expanded="true"
           >
             <div id="sidebar-inner" class="rounded-3xl bg-neutral-900/50 backdrop-blur-xl border border-white/15 p-5 shadow-2xl space-y-5 transition-all duration-300">
@@ -399,6 +400,121 @@
             </div>
 
             <!-- ===================================================================
+                 MOBILE & TABLET COMPETENCY ACCORDION (< 1024px)
+                 Lightweight, collapsible accordion default-collapsed for clean view
+                 =================================================================== -->
+            <div class="block lg:hidden w-full space-y-3">
+              <button
+                type="button"
+                id="mobileSidebarToggle"
+                aria-expanded="false"
+                aria-controls="mobileSidebarContent"
+                class="w-full flex items-center justify-between gap-3 px-5 py-3.5 rounded-2xl bg-neutral-900/60 backdrop-blur-xl border border-white/15 text-white text-sm font-semibold hover:bg-neutral-900/80 transition-all shadow-lg active:scale-[0.99] select-none cursor-pointer"
+              >
+                <div class="flex items-center gap-2.5">
+                  <span class="text-base">📊</span>
+                  <span>Statut des compétences E5</span>
+                  <span class="px-2 py-0.5 text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full font-mono font-medium">5/6</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-white/60">
+                  <span id="mobileSidebarToggleText">Afficher</span>
+                  <svg id="mobileSidebarToggleIcon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                  </svg>
+                </div>
+              </button>
+
+              <!-- Collapsible Content: Default Collapsed -->
+              <div
+                id="mobileSidebarContent"
+                class="hidden overflow-hidden rounded-3xl bg-neutral-900/70 backdrop-blur-xl border border-white/15 p-5 shadow-2xl space-y-4 transition-all duration-300"
+              >
+                <div class="flex items-center justify-between pb-3 border-b border-white/10 text-xs">
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-white/50 font-semibold">Statut Référentiel SISR</span>
+                  <span class="text-[11px] font-mono text-emerald-400 font-medium">5 validés / 1 en cours</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <!-- D1: En cours -->
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0"></span>
+                      <span class="text-white/90 truncate font-medium">D1 · Gérer le patrimoine</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">
+                      En cours
+                    </span>
+                  </div>
+
+                  <!-- D2: Validé -->
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2.5 h-2.5 rounded-full bg-orange-400 shrink-0"></span>
+                      <span class="text-white/90 truncate font-medium">D2 · Répondre aux incidents</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                      Validé
+                    </span>
+                  </div>
+
+                  <!-- D3: Validé -->
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
+                      <span class="text-white/90 truncate font-medium">D3 · Présence en ligne</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                      Validé
+                    </span>
+                  </div>
+
+                  <!-- D4: Validé -->
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shrink-0"></span>
+                      <span class="text-white/90 truncate font-medium">D4 · Mode projet</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                      Validé
+                    </span>
+                  </div>
+
+                  <!-- D5: Validé -->
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shrink-0"></span>
+                      <span class="text-white/90 truncate font-medium">D5 · Service informatique</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                      Validé
+                    </span>
+                  </div>
+
+                  <!-- D6: Validé -->
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2.5 h-2.5 rounded-full bg-pink-400 shrink-0"></span>
+                      <span class="text-white/90 truncate font-medium">D6 · Développement pro</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                      Validé
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Quick Jump Buttons on Mobile -->
+                <div class="pt-3 border-t border-white/10 space-y-2">
+                  <span class="text-[11px] font-mono uppercase tracking-wider text-white/50 font-semibold block">
+                    Accès rapide aux fiches
+                  </span>
+                  <div id="mobile-sidebar-task-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <!-- Populated dynamically -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===================================================================
                  INTERACTIVE FILTERING BAR
                  =================================================================== -->
             <div
@@ -599,27 +715,14 @@
           </div>
         </div>
 
-        <!-- Preview Image and Folder Location Banner -->
-        <div class="space-y-2">
-          <div class="relative w-full h-52 sm:h-72 aspect-video rounded-2xl bg-neutral-950 border border-white/15 overflow-hidden flex items-center justify-center shadow-inner">
-            <img
-              id="modal-task-image"
-              src=""
-              alt="Aperçu de la réalisation"
-              class="w-full h-full object-cover object-center aspect-video"
-            />
-          </div>
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3.5 rounded-2xl bg-white/[0.04] border border-white/10 text-xs">
-            <div class="flex items-center gap-2 min-w-0">
-              <span class="text-amber-300 font-mono font-semibold shrink-0">📁 Dossier des justificatifs :</span>
-              <code id="modal-folder-path" class="text-white font-mono bg-black/40 px-2 py-0.5 rounded border border-white/10 truncate select-all">
-                public/e5/...
-              </code>
-            </div>
-            <span class="text-white/60 text-[11px] shrink-0 font-mono">
-              Fichier attendu : <strong class="text-white">preview.png</strong>
-            </span>
-          </div>
+        <!-- Preview Image -->
+        <div class="relative w-full h-52 sm:h-72 aspect-video rounded-2xl bg-neutral-950 border border-white/15 overflow-hidden flex items-center justify-center shadow-inner">
+          <img
+            id="modal-task-image"
+            src=""
+            alt="Aperçu de la réalisation"
+            class="w-full h-full object-cover object-center aspect-video"
+          />
         </div>
 
         <!-- Summary & Context -->
@@ -650,15 +753,43 @@
           </div>
         </div>
 
-        <!-- Project link if available (e.g. HoLazyV) -->
-        <div id="modal-external-link-container" class="hidden pt-2">
+        <!-- Dedicated Action Links Bar in Modal (Accéder au dossier, Accéder au site, Page projet) -->
+        <div id="modal-action-buttons-bar" class="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
           <a
-            id="modal-external-link"
+            id="modal-btn-pdf"
             href="#"
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95 shadow-md cursor-pointer select-none"
           >
-            <span>Consulter la page dédiée du projet</span>
-            <span>↗</span>
+            <svg class="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <span>Accéder au dossier ↗</span>
+          </a>
+
+          <a
+            id="modal-btn-site"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7A553A]/40 hover:bg-[#7A553A]/60 border border-[#7A553A]/50 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 shadow-md cursor-pointer select-none"
+          >
+            <svg class="w-4 h-4 text-[#D4A373] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+              <line x1="2" y1="12" x2="22" y2="12" stroke-width="2"></line>
+              <path stroke-width="2" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>Accéder au site ↗</span>
+          </a>
+
+          <a
+            id="modal-btn-project-page"
+            href="#"
+            target="_blank"
+            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 shadow-sm cursor-pointer select-none"
+          >
+            <span>Consulter la page dédiée du projet ↗</span>
           </a>
         </div>
 
@@ -705,7 +836,8 @@
           domains: ["D1", "D5"],
           badges: ["Chubb Delta", "Windows Server", "Cisco IOS", "Virtualisation", "VLANs"],
           summary: "Déploiement de machines virtuelles d'administration sous Windows Server et qualification/mise à jour de commutateurs réseau Cisco.",
-          justification: "Durant mon stage chez Chubb Delta, j'ai participé à la modernisation et au maintien en condition opérationnelle de l'infrastructure d'entreprise. J'ai déployé des VM sous Windows Server pour l'administration interne, configuré des port-profiles et des VLANs sur des switchs Cisco, et procédé à des tests de connectivité sécurisée."
+          justification: "Durant mon stage chez Chubb Delta, j'ai participé à la modernisation et au maintien en condition opérationnelle de l'infrastructure d'entreprise. J'ai déployé des VM sous Windows Server pour l'administration interne, configuré des port-profiles et des VLANs sur des switchs Cisco, et procédé à des tests de connectivité sécurisée.",
+          imageUrl: "./e5/1-chubb-vm-cisco/preview.svg"
         },
         {
           id: "chubb-forti-servicenow",
@@ -716,7 +848,8 @@
           domains: ["D1", "D2"],
           badges: ["Chubb Delta", "FortiAnalyzer", "ServiceNow", "Supervision", "Cybersécurité"],
           summary: "Supervision des flux réseau, analyse des journaux d'événements de sécurité Fortinet et traitement des demandes d'assistance ITIL sous ServiceNow.",
-          justification: "Au pôle sécurité de Chubb Delta, j'ai analysé les logs de sécurité et le trafic réseau via FortiAnalyzer afin d'identifier d'éventuelles anomalies. En parallèle, j'ai assuré le suivi, le traitement et la résolution des tickets d'incidents informatiques de niveaux 1 et 2 attribués dans ServiceNow."
+          justification: "Au pôle sécurité de Chubb Delta, j'ai analysé les logs de sécurité et le trafic réseau via FortiAnalyzer afin d'identifier d'éventuelles anomalies. En parallèle, j'ai assuré le suivi, le traitement et la résolution des tickets d'incidents informatiques de niveaux 1 et 2 attribués dans ServiceNow.",
+          imageUrl: "./e5/2-chubb-forti-servicenow/preview.svg"
         },
         {
           id: "holazyv",
@@ -727,7 +860,10 @@
           domains: ["D3", "D4"],
           badges: ["HoLazyV", "Développement Web", "Identité Visuelle", "UI/UX", "SEO"],
           summary: "Création complète de l'identité visuelle et développement du site web pour structurer la présence en ligne de l'organisation.",
-          justification: "Conception graphique et technique du site web du projet HoLazyV. Travail sur la charte graphique, le choix de l'ergonomie, la structuration des contenus et l'optimisation de la visibilité numérique."
+          justification: "Conception graphique et technique du site web du projet HoLazyV. Travail sur la charte graphique, le choix de l'ergonomie, la structuration des contenus et l'optimisation de la visibilité numérique.",
+          imageUrl: "./e5/3-holazyv/preview%20HoLazyV.png",
+          pdfUrl: "./e5/3-holazyv/Dossier%20Pr%C3%A9sence%20en%20Ligne.pdf",
+          siteUrl: "https://holazyv.me" // Editable placeholder link
         },
         {
           id: "aegis",
@@ -738,7 +874,9 @@
           domains: ["D1", "D4", "D5"],
           badges: ["AlmaLinux 9", "BIND 9", "Docker", "Cisco Packet Tracer", "PAgP", "VLANs"],
           summary: "Conception d'une maquette réseau sécurisée avec segmentation VLAN/PAgP et déploiement conteneurisé d'un service DNS interne.",
-          justification: "Élaboration de la topologie réseau de l'entreprise fictive AEGIS sous Cisco Packet Tracer (intégration du protocole d'agrégation de liens PAgP et VLANs). Déploiement réel d'un service DNS BIND 9 dans un conteneur Docker hébergé sur une VM AlmaLinux 9."
+          justification: "Élaboration de la topologie réseau de l'entreprise fictive AEGIS sous Cisco Packet Tracer (intégration du protocole d'agrégation de liens PAgP et VLANs). Déploiement réel d'un service DNS BIND 9 dans un conteneur Docker hébergé sur une VM AlmaLinux 9.",
+          imageUrl: "./e5/4-aegis/preview%20AEGIS.png",
+          pdfUrl: "./e5/4-aegis/DOCUMENTATION%20ACI%202.pdf"
         },
         {
           id: "chefferie-projet",
@@ -749,7 +887,9 @@
           domains: ["D4", "D6"],
           badges: ["Chefferie de Projet", "Cahier des Charges", "Gantt", "Gestion des Risques", "ITIL"],
           summary: "Analyse des besoins, rédaction du cahier des charges, planification des jalons et évaluation des indicateurs de suivi de projet.",
-          justification: "Mise en œuvre des méthodes de gestion de projet informatique lors du TP de chefferie de projet. Définition des objectifs, découpage des tâches (WBS), planification des étapes sur diagramme de Gantt et identification des risques majeurs."
+          justification: "Mise en œuvre des méthodes de gestion de projet informatique lors du TP de chefferie de projet. Définition des objectifs, découpage des tâches (WBS), planification des étapes sur diagramme de Gantt et identification des risques majeurs.",
+          imageUrl: "./e5/5-chefferie-projet/chefferie-de-projet.png",
+          pdfUrl: "./e5/5-chefferie-projet/Dossier%20Chefferie%20de%20Projet.pdf"
         }
       ];
 
@@ -757,7 +897,7 @@
       const domainMeta = {
         'D1': { label: 'Gérer le patrimoine informatique', color: 'blue', border: 'border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.08)]' },
         'D2': { label: 'Répondre aux incidents & demandes d’assistance', color: 'orange', border: 'border-orange-500/40 shadow-[0_0_20px_rgba(249,115,22,0.08)]' },
-        'D3': { label: 'Développer la présence en ligne de l’organisation', color: 'emerald', border: 'border-emerald-500/40 shadow-[0_0_20px_rgba(16,185,129,0.08)]' },
+        'D3': { label: 'Développer la présence en ligne de l’organisation', color: 'emerald', border: 'border-emerald-500/40 shadow-[0_0_20px_rgba(168,85,247,0.08)]' },
         'D4': { label: 'Travailler en mode projet', color: 'yellow', border: 'border-yellow-500/40 shadow-[0_0_20px_rgba(250,204,21,0.08)]' },
         'D5': { label: 'Mettre à disposition un service informatique', color: 'purple', border: 'border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.08)]' },
         'D6': { label: 'Organiser son développement professionnel', color: 'pink', border: 'border-pink-500/40 shadow-[0_0_20px_rgba(236,72,153,0.08)]' }
@@ -768,36 +908,36 @@
         'chubb-vm-cisco': {
           number: 1,
           folder: 'public/e5/1-chubb-vm-cisco/',
-          previewImg: '/e5/1-chubb-vm-cisco/preview.svg',
-          fallbackImg: '/e5/1-chubb-vm-cisco/preview.svg',
+          previewImg: './e5/1-chubb-vm-cisco/preview.svg',
+          fallbackImg: './e5/1-chubb-vm-cisco/preview.svg',
           link: null
         },
         'chubb-forti-servicenow': {
           number: 2,
           folder: 'public/e5/2-chubb-forti-servicenow/',
-          previewImg: '/e5/2-chubb-forti-servicenow/preview.svg',
-          fallbackImg: '/e5/2-chubb-forti-servicenow/preview.svg',
+          previewImg: './e5/2-chubb-forti-servicenow/preview.svg',
+          fallbackImg: './e5/2-chubb-forti-servicenow/preview.svg',
           link: null
         },
         'holazyv': {
           number: 3,
           folder: 'public/e5/3-holazyv/',
-          previewImg: '/e5/3-holazyv/preview.png',
-          fallbackImg: '/projets/holazyv/cover_holazyv.png',
+          previewImg: './e5/3-holazyv/preview%20HoLazyV.png',
+          fallbackImg: './e5/3-holazyv/preview%20HoLazyV.png',
           link: 'projets/holazyv/holazyv.html'
         },
         'aegis': {
           number: 4,
           folder: 'public/e5/4-aegis/',
-          previewImg: '/e5/4-aegis/preview.svg',
-          fallbackImg: '/e5/4-aegis/preview.svg',
+          previewImg: './e5/4-aegis/preview%20AEGIS.png',
+          fallbackImg: './e5/4-aegis/preview%20AEGIS.png',
           link: null
         },
         'chefferie-projet': {
           number: 5,
           folder: 'public/e5/5-chefferie-projet/',
-          previewImg: '/e5/5-chefferie-projet/preview.svg',
-          fallbackImg: '/e5/5-chefferie-projet/preview.svg',
+          previewImg: './e5/5-chefferie-projet/chefferie-de-projet.png',
+          fallbackImg: './e5/5-chefferie-projet/chefferie-de-projet.png',
           link: null
         }
       };
@@ -849,33 +989,60 @@
         return domainMeta[primaryDomain]?.border || 'border-white/20';
       }
 
-      // 4. Render Left Sidebar Quick Jump List
+      // 4. Render Left Sidebar Quick Jump List & Mobile Quick Jumps
       function renderSidebar() {
         const sidebarContainer = document.getElementById('sidebar-task-list');
-        if (!sidebarContainer) return;
+        if (sidebarContainer) {
+          sidebarContainer.innerHTML = e5Tasks.map((task, idx) => {
+            const assets = taskAssets[task.id] || { number: idx + 1 };
+            const num = assets.number || (idx + 1);
+            return `
+              <button
+                type="button"
+                data-task-index="${idx}"
+                class="sidebar-jump-btn w-full text-left px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all flex items-center justify-between gap-2.5 group select-none cursor-pointer active:scale-[0.99]"
+                title="${num}. ${task.title}"
+              >
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <span class="task-badge w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:bg-white group-hover:text-black transition-colors shrink-0">
+                    ${num}
+                  </span>
+                  <span class="sidebar-label sidebar-text text-xs font-medium text-white/85 group-hover:text-white truncate">
+                    ${task.title}
+                  </span>
+                </div>
+                <span class="sidebar-label sidebar-text text-xs text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0">↗</span>
+              </button>
+            `;
+          }).join('');
+        }
 
-        sidebarContainer.innerHTML = e5Tasks.map((task, idx) => {
-          const assets = taskAssets[task.id] || { number: idx + 1 };
-          const num = assets.number || (idx + 1);
-          return `
-            <button
-              type="button"
-              data-task-index="${idx}"
-              class="sidebar-jump-btn w-full text-left px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all flex items-center justify-between gap-2.5 group select-none cursor-pointer active:scale-[0.99]"
-              title="${num}. ${task.title}"
-            >
-              <div class="flex items-center gap-2.5 min-w-0">
-                <span class="task-badge w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:bg-white group-hover:text-black transition-colors shrink-0">
-                  ${num}
-                </span>
-                <span class="sidebar-label sidebar-text text-xs font-medium text-white/85 group-hover:text-white truncate">
-                  ${task.title}
-                </span>
-              </div>
-              <span class="sidebar-label sidebar-text text-xs text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0">↗</span>
-            </button>
-          `;
-        }).join('');
+        // Mobile dropdown quick jumps list (< 1024px)
+        const mobileContainer = document.getElementById('mobile-sidebar-task-list');
+        if (mobileContainer) {
+          mobileContainer.innerHTML = e5Tasks.map((task, idx) => {
+            const assets = taskAssets[task.id] || { number: idx + 1 };
+            const num = assets.number || (idx + 1);
+            return `
+              <button
+                type="button"
+                data-task-index="${idx}"
+                class="mobile-sidebar-jump-btn text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs flex items-center justify-between gap-2 group cursor-pointer transition-all active:scale-[0.99]"
+                title="${num}. ${task.title}"
+              >
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="w-5 h-5 rounded-md bg-white/10 flex items-center justify-center text-[10px] font-mono font-bold text-white shrink-0 group-hover:bg-white group-hover:text-black transition-colors">
+                    ${num}
+                  </span>
+                  <span class="text-white/80 truncate text-[11px] font-medium group-hover:text-white">
+                    ${task.title}
+                  </span>
+                </div>
+                <span class="text-[11px] text-[#D4A373] shrink-0">↗</span>
+              </button>
+            `;
+          }).join('');
+        }
       }
 
       // 5. Render Tasks Grid
@@ -903,11 +1070,13 @@
           const assets = taskAssets[task.id] || {
             number: originalIndex + 1,
             folder: `public/e5/${originalIndex + 1}-${task.id}/`,
-            previewImg: '',
+            previewImg: task.imageUrl || '',
             fallbackImg: '',
             link: null
           };
           const taskNumber = assets.number || (originalIndex + 1);
+          const displayImg = task.imageUrl || assets.previewImg;
+          const fallbackImg = assets.fallbackImg || displayImg;
 
           const compBadges = task.domains.map(d => `
             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold border ${getCompetencyBadgeClasses(d)}" title="${domainMeta[d]?.label || d}">
@@ -920,6 +1089,47 @@
               ${tech}
             </span>
           `).join('');
+
+          // Card Action Bar Buttons: PDF dossier (when task.pdfUrl exists), live site (HoLazyV ONLY)
+          let cardActionLinks = '';
+          if (task.pdfUrl) {
+            cardActionLinks += `
+              <a
+                href="${task.pdfUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-semibold transition-all active:scale-95 shadow-sm cursor-pointer whitespace-nowrap select-none"
+                onclick="event.stopPropagation()"
+                title="Accéder au dossier documentaire"
+              >
+                <svg class="w-3.5 h-3.5 text-amber-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>Accéder au dossier ↗</span>
+              </a>
+            `;
+          }
+
+          // STRICT REQUIREMENT: ONLY render "Accéder au site ↗" for HoLazyV project
+          if (task.siteUrl && task.id === 'holazyv') {
+            cardActionLinks += `
+              <a
+                href="${task.siteUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#7A553A]/40 hover:bg-[#7A553A]/60 border border-[#7A553A]/50 text-[#D4A373] hover:text-white text-xs font-semibold transition-all active:scale-95 shadow-sm cursor-pointer whitespace-nowrap select-none"
+                onclick="event.stopPropagation()"
+                title="Accéder au site web"
+              >
+                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12" stroke-width="2"></line>
+                  <path stroke-width="2" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                <span>Accéder au site ↗</span>
+              </a>
+            `;
+          }
 
           const primaryDomain = task.domains[0] || 'D1';
 
@@ -955,20 +1165,19 @@
                   </p>
                 </div>
 
-                <!-- Visual screenshot preview or technical environment card -->
-                <div class="relative w-full h-44 aspect-video rounded-2xl bg-neutral-900 border border-white/15 overflow-hidden flex items-center justify-center">
+                <!-- Visual screenshot preview or technical environment card with onerror fallback -->
+                <div class="relative w-full max-h-48 rounded-2xl bg-neutral-900 border border-white/10 overflow-hidden flex items-center justify-center">
                   <img
-                    src="${assets.previewImg}"
+                    src="${displayImg}"
                     alt="${task.title}"
                     loading="lazy"
                     decoding="async"
-                    class="w-full h-full object-cover object-center aspect-video opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                    onerror="window.handleTaskImageFallback(this, '${assets.fallbackImg}', ${taskNumber}, '${assets.folder}')"
+                    class="w-full max-h-48 object-cover object-center aspect-video opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    onerror="window.handleTaskImageFallback(this, '${fallbackImg}', ${taskNumber}, '${assets.folder}')"
                   />
                   <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
-                  <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-[11px] text-white/90 font-mono pointer-events-none">
-                    <span class="truncate max-w-[200px] text-white/80">${assets.folder.replace('public/', '')}</span>
-                    <span class="text-xs shrink-0 font-semibold text-[#D4A373]">En savoir plus ↗</span>
+                  <div class="absolute bottom-3 right-3.5 flex items-center justify-end text-[11px] text-white/90 font-mono pointer-events-none">
+                    <span class="text-xs shrink-0 font-semibold text-[#D4A373] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">Fiche détaillée ↗</span>
                   </div>
                 </div>
 
@@ -978,21 +1187,27 @@
                 </div>
               </div>
 
-              <!-- Action button: En savoir plus... -->
-              <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between">
-                <button
-                  type="button"
-                  data-task-index="${originalIndex}"
-                  class="btn-open-task-modal inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95 shadow-md cursor-pointer select-none"
-                >
-                  <span>En savoir plus... →</span>
-                </button>
+              <!-- Action button bar: En savoir plus... & direct document/website links -->
+              <div class="pt-5 mt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    data-task-index="${originalIndex}"
+                    class="btn-open-task-modal inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95 shadow-md cursor-pointer select-none"
+                  >
+                    <span>En savoir plus... →</span>
+                  </button>
+                  ${cardActionLinks}
+                </div>
                 <span class="text-xs text-white/50 font-mono">BTS SISR · Fiche #${taskNumber}</span>
               </div>
             </article>
           `;
         }).join('');
       }
+
+      // Alias renderCards to renderTasksGrid for global convenience
+      window.renderCards = renderTasksGrid;
 
       // 6. Interactive Task Detail Modal Logic (#taskModal)
       function openTaskModal(index) {
@@ -1004,7 +1219,7 @@
         const assets = taskAssets[task.id] || {
           number: index + 1,
           folder: `public/e5/${index + 1}-${task.id}/`,
-          previewImg: '',
+          previewImg: task.imageUrl || '',
           fallbackImg: '',
           link: null
         };
@@ -1024,16 +1239,17 @@
         safeSetText('modal-task-summary', task.summary);
         safeSetText('modal-task-justification', task.justification);
         safeSetText('modal-pagination-counter', `${index + 1} / ${e5Tasks.length}`);
-        safeSetText('modal-folder-path', assets.folder);
 
         // Image in modal with automatic fallback
         const modalImg = document.getElementById('modal-task-image');
+        const modalImgSrc = task.imageUrl || assets.previewImg;
+        const modalFallbackSrc = assets.fallbackImg || modalImgSrc;
         if (modalImg) {
           modalImg.alt = task.title;
-          modalImg.src = assets.previewImg;
+          modalImg.src = modalImgSrc;
           modalImg.onerror = function() {
-            if (this.src && !this.src.endsWith(assets.fallbackImg)) {
-              this.src = assets.fallbackImg;
+            if (this.src && !this.src.endsWith(modalFallbackSrc)) {
+              this.src = modalFallbackSrc;
             }
           };
         }
@@ -1063,15 +1279,34 @@
           `).join('');
         }
 
-        // External Link if applicable (e.g. HoLazyV project page)
-        const extLinkContainer = document.getElementById('modal-external-link-container');
-        const extLink = document.getElementById('modal-external-link');
-        if (extLinkContainer && extLink) {
-          if (assets.link) {
-            extLink.setAttribute('href', assets.link);
-            extLinkContainer.classList.remove('hidden');
+        // Action links in modal: Accéder au dossier (task.pdfUrl), Accéder au site (HoLazyV ONLY), Page dédiée (HoLazyV ONLY)
+        const btnPdf = document.getElementById('modal-btn-pdf');
+        if (btnPdf) {
+          if (task.pdfUrl) {
+            btnPdf.href = task.pdfUrl;
+            btnPdf.classList.remove('hidden');
           } else {
-            extLinkContainer.classList.add('hidden');
+            btnPdf.classList.add('hidden');
+          }
+        }
+
+        const btnSite = document.getElementById('modal-btn-site');
+        if (btnSite) {
+          if (task.siteUrl && task.id === 'holazyv') {
+            btnSite.href = task.siteUrl;
+            btnSite.classList.remove('hidden');
+          } else {
+            btnSite.classList.add('hidden');
+          }
+        }
+
+        const btnProjectPage = document.getElementById('modal-btn-project-page');
+        if (btnProjectPage) {
+          if (assets.link && task.id === 'holazyv') {
+            btnProjectPage.href = assets.link;
+            btnProjectPage.classList.remove('hidden');
+          } else {
+            btnProjectPage.classList.add('hidden');
           }
         }
 
@@ -1272,6 +1507,42 @@
                 sidebar.setAttribute('aria-expanded', 'false');
               }
             } catch (e) {}
+          }
+
+          // Mobile Sidebar Dropdown Accordion Toggle (< 1024px)
+          const mobileToggleBtn = document.getElementById('mobileSidebarToggle');
+          const mobileSidebarContent = document.getElementById('mobileSidebarContent');
+          const mobileToggleIcon = document.getElementById('mobileSidebarToggleIcon');
+          const mobileToggleText = document.getElementById('mobileSidebarToggleText');
+
+          if (mobileToggleBtn && mobileSidebarContent) {
+            mobileToggleBtn.addEventListener('click', () => {
+              const isCollapsed = mobileSidebarContent.classList.contains('hidden');
+              if (isCollapsed) {
+                mobileSidebarContent.classList.remove('hidden');
+                mobileToggleBtn.setAttribute('aria-expanded', 'true');
+                if (mobileToggleIcon) mobileToggleIcon.classList.add('rotate-180');
+                if (mobileToggleText) mobileToggleText.textContent = 'Masquer';
+              } else {
+                mobileSidebarContent.classList.add('hidden');
+                mobileToggleBtn.setAttribute('aria-expanded', 'false');
+                if (mobileToggleIcon) mobileToggleIcon.classList.remove('rotate-180');
+                if (mobileToggleText) mobileToggleText.textContent = 'Afficher';
+              }
+            });
+          }
+
+          // Delegated Mobile Sidebar Jump Button Listener
+          const mobileSidebarTasks = document.getElementById('mobile-sidebar-task-list');
+          if (mobileSidebarTasks) {
+            mobileSidebarTasks.addEventListener('click', (e) => {
+              const btn = e.target.closest('.mobile-sidebar-jump-btn');
+              if (!btn) return;
+              const index = parseInt(btn.getAttribute('data-task-index'), 10);
+              if (!isNaN(index)) {
+                openTaskModal(index);
+              }
+            });
           }
         } catch (err) {
           console.error('Safe execution catch during E5 initialization:', err);

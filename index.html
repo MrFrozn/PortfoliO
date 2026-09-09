@@ -1791,67 +1791,52 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        /* 10. BACKGROUND VIDEO MOUSE-SCRUB CONTROL (EXACT ALGORITHM) */
+        /* 10. DESKTOP MOUSE-TRACKING VIDEO-SCRUB INTERACTION (60 FPS LERP) */
         (function initVideoMouseScrubbing() {
           const bgVideo = document.getElementById('hero-background-video');
+          const hero = document.getElementById('home');
           if (!bgVideo) return;
 
-          let prevX = null;
-          let targetTime = 0;
-          let isSeeking = false;
-          const SENSITIVITY = 0.8;
+          // 1. Performance optimizations: preload and mute
+          bgVideo.preload = 'auto';
+          bgVideo.muted = true;
 
-          // Touch / Mobile guard: on screens under 768px, disable active scrubbing
-          const isTouchOrMobile = () => {
-            return (
-              window.innerWidth < 768 ||
-              'ontouchstart' in window ||
-              navigator.maxTouchPoints > 0
-            );
-          };
+          // 2. Check for fine mouse pointers (desktop/laptop) - fallback gracefully on touch/mobile
+          const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+          if (!isFinePointer) return;
 
+          let targetProgress = 0;
+          let currentProgress = 0;
+          const lerpFactor = 0.08; // Easing smoothness (0.05 to 0.1 for silky smooth movement)
+          let rafId = null;
+
+          // Event listener ONLY computes and stores targetProgress normalized between 0 and 1
           const handleMouseMove = (e) => {
-            if (isTouchOrMobile()) return;
-            if (!Number.isFinite(bgVideo.duration) || bgVideo.duration <= 0) return;
-
-            const currentX = e.clientX;
-            if (prevX === null) {
-              prevX = currentX;
-              return;
-            }
-
-            const delta = currentX - prevX;
-            prevX = currentX;
-
-            const timeOffset = (delta / window.innerWidth) * SENSITIVITY * bgVideo.duration;
-            targetTime = Math.max(0, Math.min(bgVideo.duration, targetTime + timeOffset));
-
-            if (!isSeeking) {
-              isSeeking = true;
-              bgVideo.currentTime = targetTime;
+            const heroEl = hero || document.getElementById('home') || document.body;
+            const rect = heroEl.getBoundingClientRect();
+            if (rect.width > 0) {
+              targetProgress = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
             }
           };
 
-          const handleSeeked = () => {
-            if (!bgVideo) return;
-            if (Math.abs(bgVideo.currentTime - targetTime) > 0.01) {
-              bgVideo.currentTime = targetTime;
-            } else {
-              isSeeking = false;
+          // Continuous requestAnimationFrame loop with Linear Interpolation (LERP)
+          function animateScrub() {
+            // Smoothly transition currentProgress towards targetProgress
+            currentProgress += (targetProgress - currentProgress) * lerpFactor;
+
+            if (bgVideo && Number.isFinite(bgVideo.duration) && bgVideo.duration > 0) {
+              const targetTime = currentProgress * bgVideo.duration;
+              // Only update video currentTime if difference is noticeable to avoid thread lock
+              if (Math.abs(bgVideo.currentTime - targetTime) > 0.01) {
+                bgVideo.currentTime = targetTime;
+              }
             }
-          };
 
-          const handleMouseLeave = () => {
-            prevX = null;
-          };
+            rafId = requestAnimationFrame(animateScrub);
+          }
 
-          bgVideo.addEventListener('loadedmetadata', () => {
-            targetTime = bgVideo.currentTime || 0;
-          });
-
-          bgVideo.addEventListener('seeked', handleSeeked);
           window.addEventListener('mousemove', handleMouseMove, { passive: true });
-          window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
+          rafId = requestAnimationFrame(animateScrub);
         })();
       });
     </script>
