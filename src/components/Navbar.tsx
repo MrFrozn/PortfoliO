@@ -112,7 +112,7 @@ export function Navbar() {
           <span
             className="text-[21px] sm:text-[26px] tracking-tight font-bold text-white font-heading"
           >
-            Mainframe®
+            Maxence®
           </span>
           <span
             className="text-[21px] sm:text-[26px] font-bold text-white leading-none opacity-90 transition-transform duration-300 group-hover:rotate-45"

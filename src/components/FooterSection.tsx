@@ -20,7 +20,7 @@ export function FooterSection() {
                 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-heading"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                Mainframe®
+                Maxence®
               </span>
               <span className="text-2xl sm:text-3xl text-white opacity-80 leading-none">
                 ✳︎
