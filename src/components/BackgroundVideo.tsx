@@ -7,9 +7,10 @@ export function BackgroundVideo() {
     const video = videoRef.current;
     if (!video) return;
 
-    // 1. Performance optimizations: preload and mute
+    // 1. Force video pause & properties for manual scrubbing
     video.preload = 'auto';
     video.muted = true;
+    video.pause();
 
     // 2. Check for fine mouse pointers (desktop/laptop) - fallback gracefully on touch/mobile
     const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
@@ -17,12 +18,12 @@ export function BackgroundVideo() {
 
     let targetProgress = 0;
     let currentProgress = 0;
-    const lerpFactor = 0.08; // Easing smoothness (0.05 to 0.1 for silky smooth movement)
+    const lerpFactor = 0.12; // Easing reactivity
     let rafId: number | null = null;
 
     const hero = document.getElementById('home') || document.body;
 
-    // Event listener ONLY computes and stores targetProgress normalized between 0 and 1
+    // Passive mouse position listener
     const handleMouseMove = (e: MouseEvent) => {
       const rect = hero.getBoundingClientRect();
       if (rect.width > 0) {
@@ -30,15 +31,14 @@ export function BackgroundVideo() {
       }
     };
 
-    // Continuous requestAnimationFrame loop with Linear Interpolation (LERP)
+    // 3. 60 FPS loop guarded against video.seeking
     function animateScrub() {
-      // Smoothly transition currentProgress towards targetProgress
       currentProgress += (targetProgress - currentProgress) * lerpFactor;
 
-      if (video && Number.isFinite(video.duration) && video.duration > 0) {
+      // CRITICAL FIX: Only update currentTime if video is NOT currently seeking
+      if (video && video.duration && !video.seeking) {
         const targetTime = currentProgress * video.duration;
-        // Only update video currentTime if difference is noticeable to avoid thread lock
-        if (Math.abs(video.currentTime - targetTime) > 0.01) {
+        if (Math.abs(video.currentTime - targetTime) > 0.02) {
           video.currentTime = targetTime;
         }
       }
@@ -47,7 +47,19 @@ export function BackgroundVideo() {
     }
 
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    rafId = requestAnimationFrame(animateScrub);
+
+    // 4. Start loop once metadata is loaded
+    if (video.readyState >= 1) {
+      rafId = requestAnimationFrame(animateScrub);
+    } else {
+      video.addEventListener(
+        'loadedmetadata',
+        () => {
+          rafId = requestAnimationFrame(animateScrub);
+        },
+        { once: true }
+      );
+    }
 
     return () => {
       if (rafId !== null) cancelAnimationFrame(rafId);

@@ -17,10 +17,31 @@
 
     <!-- Preconnect origins and Preload critical background image for LCP -->
     <link rel="preconnect" href="https://db.onlinewebfonts.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
     <link rel="preload" as="image" href="/bg%20site2.png" />
+
+    <!-- Tailwind Configuration with Warm Brown Palette -->
+    <script>
+      window.tailwind = {
+        theme: {
+          extend: {
+            colors: {
+              warmDark: '#382A22',
+              warmPrimary: '#7A553A',
+              warmGold: '#D4A373',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Official Compiled Tailwind CSS Stylesheet -->
     <link rel="stylesheet" href="./css/output.css">
+
+    <!-- i18n Translation Engine -->
+    <script src="/public/i18n.js"></script>
+    <script src="/i18n.js"></script>
 
     <!-- Fonts matching portfolio -->
     <link
@@ -132,12 +153,25 @@
           </span>
         </a>
 
-        <!-- Right action buttons: Retour portfolio -->
+        <!-- Right action buttons: Language switcher & Retour portfolio -->
         <div class="flex items-center gap-3">
+          <button
+            id="lang-switcher-btn"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#382A22] text-white border border-[#7A553A]/40 hover:bg-[#4A382E] hover:border-[#7A553A]/70 text-xs font-mono font-medium transition-all duration-200 active:scale-95 shadow-md cursor-pointer"
+            title="Switch language / Changer de langue"
+            aria-label="Changer de langue / Switch language"
+          >
+            <span class="text-sm leading-none select-none">🌐</span>
+            <span id="lang-fr" class="lang-fr-label text-white font-bold transition-opacity">FR</span>
+            <span class="text-white/30 select-none">|</span>
+            <span id="lang-en" class="lang-en-label text-white/40 font-normal transition-opacity">EN</span>
+          </button>
           <a
             id="btn-back-portfolio-top"
             href="index.html#exams"
-            class="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md cursor-pointer"
+            data-i18n="e5_back_btn"
+            class="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 rounded-full bg-[#382A22]/60 hover:bg-[#382A22] border border-[#7A553A]/40 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm hover:shadow-md cursor-pointer"
           >
             ← Retour portfolio
           </a>
@@ -159,13 +193,13 @@
             class="hidden lg:block lg:w-80 flex-shrink-0 lg:sticky lg:top-28 space-y-6 select-none transition-all duration-300 ease-in-out"
             aria-expanded="true"
           >
-            <div id="sidebar-inner" class="rounded-3xl bg-neutral-900/50 backdrop-blur-xl border border-white/15 p-5 shadow-2xl space-y-5 transition-all duration-300">
+            <div id="sidebar-inner" class="rounded-3xl bg-[#382A22]/50 backdrop-blur-xl border border-[#7A553A]/40 p-5 shadow-2xl space-y-5 transition-all duration-300">
               
               <!-- Sidebar Header with Physical Toggle Button -->
-              <div id="sidebar-header" class="flex items-center justify-between pb-4 border-b border-white/10 gap-2">
+              <div id="sidebar-header" class="flex items-center justify-between pb-4 border-b border-[#7A553A]/30 gap-2">
                 <div id="sidebar-expanded-title" class="sidebar-label flex items-center gap-2 min-w-0">
-                  <h2 class="text-base font-bold text-white font-heading whitespace-nowrap">Tableau de bord — E5</h2>
-                  <span id="sidebar-count" class="px-2.5 py-0.5 text-xs bg-[#7A553A]/40 border border-[#7A553A]/50 text-white rounded-full font-mono shrink-0 font-medium">
+                  <h2 data-i18n="sidebar_dashboard_title" class="text-base font-bold text-white font-heading whitespace-nowrap">Tableau de bord — E5</h2>
+                  <span id="sidebar-count" data-i18n="sidebar_fiches_count" class="px-2.5 py-0.5 text-xs bg-[#7A553A]/50 border border-[#D4A373]/40 text-[#D4A373] rounded-full font-mono shrink-0 font-medium">
                     5 fiches
                   </span>
                 </div>
@@ -173,7 +207,7 @@
                 <button
                   id="toggleSidebar"
                   aria-label="Réduire le tableau de bord"
-                  class="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white transition-all cursor-pointer shrink-0"
+                  class="p-2 rounded-xl bg-[#241A14] border border-[#7A553A]/40 hover:bg-[#382A22] text-white transition-all cursor-pointer shrink-0"
                 >
                   <svg id="toggleIcon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -182,77 +216,77 @@
               </div>
 
               <!-- SECTION: STATUS DES COMPÉTENCES RÉFÉRENTIEL (D1 à D6) -->
-              <div id="sidebar-domain-status-block" class="space-y-3 pb-4 border-b border-white/10">
+              <div id="sidebar-domain-status-block" class="space-y-3 pb-4 border-b border-[#7A553A]/30">
                 <div id="sidebar-domain-status-header" class="sidebar-label flex items-center justify-between">
-                  <span class="text-[11px] font-mono uppercase tracking-wider text-white/50 font-semibold">
+                  <span data-i18n="sidebar_status_header" class="text-[11px] font-mono uppercase tracking-wider text-[#D4A373]/80 font-semibold">
                     Statut Référentiel SISR
                   </span>
-                  <span class="text-[10px] font-mono text-emerald-400 font-medium">5 validés / 1 en cours</span>
+                  <span data-i18n="sidebar_status_ratio" class="text-[10px] font-mono text-emerald-400 font-medium">5 validés / 1 en cours</span>
                 </div>
 
                 <div class="space-y-2">
                   <!-- D1: En cours -->
-                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs transition-all" title="D1 · Gérer le patrimoine (En cours)">
+                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#241A14]/60 border border-[#7A553A]/25 text-xs transition-all hover:border-[#7A553A]/50" title="D1 · Gérer le patrimoine (En cours)">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0"></span>
-                      <span class="sidebar-label text-white/90 whitespace-nowrap font-medium">D1 · Gérer le patrimoine</span>
+                      <span data-i18n="e5_d1_title" class="sidebar-label text-white/90 whitespace-nowrap font-medium">D1 · Gérer le patrimoine</span>
                     </div>
-                    <span class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap shrink-0">
+                    <span data-i18n="status_en_cours" class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap shrink-0">
                       En cours
                     </span>
                   </div>
 
                   <!-- D2: Validé -->
-                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs transition-all" title="D2 · Répondre aux incidents (Validé)">
+                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#241A14]/60 border border-[#7A553A]/25 text-xs transition-all hover:border-[#7A553A]/50" title="D2 · Répondre aux incidents (Validé)">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-orange-400 shrink-0"></span>
-                      <span class="sidebar-label text-white/90 whitespace-nowrap font-medium">D2 · Répondre aux incidents</span>
+                      <span data-i18n="e5_d2_title" class="sidebar-label text-white/90 whitespace-nowrap font-medium">D2 · Répondre aux incidents</span>
                     </div>
-                    <span class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
+                    <span data-i18n="status_valide" class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D3: Validé -->
-                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs transition-all" title="D3 · Présence en ligne (Validé)">
+                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#241A14]/60 border border-[#7A553A]/25 text-xs transition-all hover:border-[#7A553A]/50" title="D3 · Présence en ligne (Validé)">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
-                      <span class="sidebar-label text-white/90 whitespace-nowrap font-medium">D3 · Présence en ligne</span>
+                      <span data-i18n="e5_d3_title" class="sidebar-label text-white/90 whitespace-nowrap font-medium">D3 · Présence en ligne</span>
                     </div>
-                    <span class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
+                    <span data-i18n="status_valide" class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D4: Validé -->
-                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs transition-all" title="D4 · Mode projet (Validé)">
+                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#241A14]/60 border border-[#7A553A]/25 text-xs transition-all hover:border-[#7A553A]/50" title="D4 · Mode projet (Validé)">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shrink-0"></span>
-                      <span class="sidebar-label text-white/90 whitespace-nowrap font-medium">D4 · Mode projet</span>
+                      <span data-i18n="e5_d4_title" class="sidebar-label text-white/90 whitespace-nowrap font-medium">D4 · Mode projet</span>
                     </div>
-                    <span class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
+                    <span data-i18n="status_valide" class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D5: Validé -->
-                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs transition-all" title="D5 · Service informatique (Validé)">
+                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#241A14]/60 border border-[#7A553A]/25 text-xs transition-all hover:border-[#7A553A]/50" title="D5 · Service informatique (Validé)">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shrink-0"></span>
-                      <span class="sidebar-label text-white/90 whitespace-nowrap font-medium">D5 · Service informatique</span>
+                      <span data-i18n="e5_d5_title" class="sidebar-label text-white/90 whitespace-nowrap font-medium">D5 · Service informatique</span>
                     </div>
-                    <span class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
+                    <span data-i18n="status_valide" class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D6: Validé -->
-                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5 text-xs transition-all" title="D6 · Développement pro (Validé)">
+                  <div class="sidebar-domain-row flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#241A14]/60 border border-[#7A553A]/25 text-xs transition-all hover:border-[#7A553A]/50" title="D6 · Développement pro (Validé)">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-pink-400 shrink-0"></span>
-                      <span class="sidebar-label text-white/90 whitespace-nowrap font-medium">D6 · Développement pro</span>
+                      <span data-i18n="e5_d6_title" class="sidebar-label text-white/90 whitespace-nowrap font-medium">D6 · Développement pro</span>
                     </div>
-                    <span class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
+                    <span data-i18n="status_valide" class="sidebar-label px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 whitespace-nowrap shrink-0">
                       Validé
                     </span>
                   </div>
@@ -261,7 +295,7 @@
 
               <!-- Quick Jump List / Tasks list (5 Real-world activities) -->
               <div class="space-y-2">
-                <span class="sidebar-label sidebar-text text-[11px] font-mono uppercase tracking-wider text-white/50 font-semibold block px-1">
+                <span data-i18n="sidebar_activities_header" class="sidebar-label sidebar-text text-[11px] font-mono uppercase tracking-wider text-[#D4A373]/80 font-semibold block px-1">
                   Activités & Réalisations (5)
                 </span>
                 <div class="space-y-2" id="sidebar-task-list">
@@ -270,15 +304,14 @@
               </div>
 
               <!-- Quick link in Sidebar -->
-              <div id="sidebar-footer" class="sidebar-text pt-4 border-t border-white/10 space-y-2">
+              <div id="sidebar-footer" class="sidebar-text pt-4 border-t border-[#7A553A]/30 space-y-2">
                 <a
                   href="./e5/E5%20-%20Portfolio%20-%20Grille%20de%20notation.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-white/80 hover:text-white transition-all duration-200"
+                  class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#241A14]/70 hover:bg-[#241A14] border border-[#7A553A]/35 text-xs font-medium text-white/85 hover:text-[#D4A373] transition-all duration-200"
                 >
-                  <span>Grille de notation officielle</span>
-                  <span class="text-white/40">↗</span>
+                  <span data-i18n="sidebar_grille_btn">Grille de notation officielle ↗</span>
                 </a>
               </div>
 
@@ -291,19 +324,19 @@
           <section id="mainContent" class="flex-1 w-full min-w-0 space-y-8 sm:space-y-10 transition-all duration-300">
 
             <!-- Header Section & Action Buttons -->
-            <div class="rounded-3xl bg-neutral-900/50 backdrop-blur-xl border border-white/15 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-              <div class="absolute -right-16 -top-16 w-64 h-64 bg-[#7A553A]/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="rounded-3xl bg-[#382A22]/50 backdrop-blur-xl border border-[#7A553A]/40 p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-80 h-80 bg-[#7A553A]/30 rounded-full blur-3xl pointer-events-none"></div>
+              <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-[#D4A373]/15 rounded-full blur-3xl pointer-events-none"></div>
               
               <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div class="space-y-3 max-w-2xl">
-                  <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#7A553A]/25 border border-[#7A553A]/40 text-[#D4A373] text-xs font-mono uppercase tracking-wider shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-[#D4A373] animate-pulse"></span>
+                  <div data-i18n="e5_badge" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#7A553A]/40 border border-[#D4A373]/40 text-[#D4A373] text-xs font-mono uppercase tracking-wider shadow-sm">
                     Épreuve E5 · SISR
                   </div>
-                  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-heading">
+                  <h1 data-i18n="e5_title" class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-heading">
                     Épreuve E5 — Portefeuille de Compétences
                   </h1>
-                  <p class="text-white/80 text-sm sm:text-base leading-relaxed">
+                  <p data-i18n="e5_subtitle" class="text-white/80 text-sm sm:text-base leading-relaxed">
                     Présentation des fiches descriptives d'activités techniques réalisées en milieu professionnel (stage chez <strong class="text-white font-semibold">Chubb Delta</strong>) et en milieu scolaire (projets BTS SIO SISR).
                   </p>
                 </div>
@@ -316,15 +349,15 @@
                     download="tableau compétences E5.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-[0_0_25px_rgba(255,255,255,0.2)] select-none cursor-pointer"
+                    class="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-[#D4A373] text-[#1E1712] text-sm sm:text-base font-bold hover:bg-[#e0b284] transition-all duration-200 active:scale-95 shadow-[0_0_25px_rgba(212,163,115,0.35)] select-none cursor-pointer"
                     title="Télécharger le tableau E5 (PDF)"
                   >
-                    <svg class="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-4 h-4 text-[#1E1712]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7 10 12 15 17 10"/>
                       <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    <span>Télécharger le tableau E5 (PDF) ↗</span>
+                    <span data-i18n="e5_btn_download_pdf">Télécharger le tableau E5 (PDF) ↗</span>
                   </a>
                 </div>
               </div>
@@ -333,67 +366,67 @@
             <!-- ===================================================================
                  COMPETENCY LEGEND BANNER (6 BTS SIO Domains)
                  =================================================================== -->
-            <div id="competencies-legend" class="rounded-3xl bg-neutral-900/50 backdrop-blur-xl border border-white/15 p-6 sm:p-8 space-y-6 shadow-xl">
+            <div id="competencies-legend" class="rounded-3xl bg-[#382A22]/50 backdrop-blur-xl border border-[#7A553A]/40 p-6 sm:p-8 space-y-6 shadow-xl">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-mono uppercase tracking-widest text-[#D4A373] font-semibold">
+                <span data-i18n="e5_legend_title" class="text-xs font-mono uppercase tracking-widest text-[#D4A373] font-semibold">
                   Domaines de compétences du référentiel BTS SIO (D1 à D6)
                 </span>
-                <span class="text-xs text-white/50 font-mono">6 blocs de compétences</span>
+                <span data-i18n="e5_legend_subtitle" class="text-xs text-[#D4A373]/70 font-mono">6 blocs de compétences</span>
               </div>
 
               <!-- Horizontal Grid of 6 Competency Badges -->
               <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
                 <!-- D1: Bleu -->
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-blue-500/30 hover:border-blue-500/60 transition-all shadow-sm">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#241A14]/60 hover:bg-[#241A14]/90 border border-blue-500/30 hover:border-blue-500/60 transition-all shadow-sm">
                   <span class="w-3 h-3 rounded-full bg-blue-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(59,130,246,0.8)]"></span>
                   <div class="text-xs space-y-1">
-                    <strong class="text-blue-300 block font-mono text-xs tracking-wide">D1 · Gérer le patrimoine</strong>
-                    <span class="text-white/80 leading-relaxed block">Gérer le patrimoine informatique (parc, serveurs, licences, configurations)</span>
+                    <strong data-i18n="e5_d1_title" class="text-blue-300 block font-mono text-xs tracking-wide">D1 · Gérer le patrimoine</strong>
+                    <span data-i18n="e5_d1_desc" class="text-white/80 leading-relaxed block">Gérer le patrimoine informatique (parc, serveurs, licences, configurations)</span>
                   </div>
                 </div>
 
                 <!-- D2: Orange -->
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-orange-500/30 hover:border-orange-500/60 transition-all shadow-sm">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#241A14]/60 hover:bg-[#241A14]/90 border border-orange-500/30 hover:border-orange-500/60 transition-all shadow-sm">
                   <span class="w-3 h-3 rounded-full bg-orange-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></span>
                   <div class="text-xs space-y-1">
-                    <strong class="text-orange-300 block font-mono text-xs tracking-wide">D2 · Répondre aux incidents</strong>
-                    <span class="text-white/80 leading-relaxed block">Assistance utilisateurs, traitement des incidents ITIL & résolutions</span>
+                    <strong data-i18n="e5_d2_title" class="text-orange-300 block font-mono text-xs tracking-wide">D2 · Répondre aux incidents</strong>
+                    <span data-i18n="e5_d2_desc" class="text-white/80 leading-relaxed block">Assistance utilisateurs, traitement des incidents ITIL & résolutions</span>
                   </div>
                 </div>
 
                 <!-- D3: Vert -->
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-emerald-500/30 hover:border-emerald-500/60 transition-all shadow-sm">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#241A14]/60 hover:bg-[#241A14]/90 border border-emerald-500/30 hover:border-emerald-500/60 transition-all shadow-sm">
                   <span class="w-3 h-3 rounded-full bg-emerald-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(16,185,129,0.8)]"></span>
                   <div class="text-xs space-y-1">
-                    <strong class="text-emerald-300 block font-mono text-xs tracking-wide">D3 · Présence en ligne</strong>
-                    <span class="text-white/80 leading-relaxed block">Développer et valoriser la présence web de l’organisation</span>
+                    <strong data-i18n="e5_d3_title" class="text-emerald-300 block font-mono text-xs tracking-wide">D3 · Présence en ligne</strong>
+                    <span data-i18n="e5_d3_desc" class="text-white/80 leading-relaxed block">Développer et valoriser la présence web de l’organisation</span>
                   </div>
                 </div>
 
                 <!-- D4: Jaune -->
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-yellow-500/30 hover:border-yellow-500/60 transition-all shadow-sm">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#241A14]/60 hover:bg-[#241A14]/90 border border-yellow-500/30 hover:border-yellow-500/60 transition-all shadow-sm">
                   <span class="w-3 h-3 rounded-full bg-yellow-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(250,204,21,0.8)]"></span>
                   <div class="text-xs space-y-1">
-                    <strong class="text-yellow-300 block font-mono text-xs tracking-wide">D4 · Mode projet</strong>
-                    <span class="text-white/80 leading-relaxed block">Planification, cahier des charges, jalons & revues d'étape</span>
+                    <strong data-i18n="e5_d4_title" class="text-yellow-300 block font-mono text-xs tracking-wide">D4 · Mode projet</strong>
+                    <span data-i18n="e5_d4_desc" class="text-white/80 leading-relaxed block">Planification, cahier des charges, jalons & revues d'étape</span>
                   </div>
                 </div>
 
                 <!-- D5: Violet -->
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-purple-500/30 hover:border-purple-500/60 transition-all shadow-sm">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#241A14]/60 hover:bg-[#241A14]/90 border border-purple-500/30 hover:border-purple-500/60 transition-all shadow-sm">
                   <span class="w-3 h-3 rounded-full bg-purple-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
                   <div class="text-xs space-y-1">
-                    <strong class="text-purple-300 block font-mono text-xs tracking-wide">D5 · Service informatique</strong>
-                    <span class="text-white/80 leading-relaxed block">Mettre à disposition des utilisateurs un service IT opérationnel</span>
+                    <strong data-i18n="e5_d5_title" class="text-purple-300 block font-mono text-xs tracking-wide">D5 · Service informatique</strong>
+                    <span data-i18n="e5_d5_desc" class="text-white/80 leading-relaxed block">Mettre à disposition des utilisateurs un service IT opérationnel</span>
                   </div>
                 </div>
 
                 <!-- D6: Rose -->
-                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-pink-500/30 hover:border-pink-500/60 transition-all shadow-sm">
+                <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-[#241A14]/60 hover:bg-[#241A14]/90 border border-pink-500/30 hover:border-pink-500/60 transition-all shadow-sm">
                   <span class="w-3 h-3 rounded-full bg-pink-400 shrink-0 mt-1 shadow-[0_0_10px_rgba(236,72,153,0.8)]"></span>
                   <div class="text-xs space-y-1">
-                    <strong class="text-pink-300 block font-mono text-xs tracking-wide">D6 · Développement pro</strong>
-                    <span class="text-white/80 leading-relaxed block">Organiser son développement professionnel & veilles technologiques</span>
+                    <strong data-i18n="e5_d6_title" class="text-pink-300 block font-mono text-xs tracking-wide">D6 · Développement pro</strong>
+                    <span data-i18n="e5_d6_desc" class="text-white/80 leading-relaxed block">Organiser son développement professionnel & veilles technologiques</span>
                   </div>
                 </div>
               </div>
@@ -409,15 +442,15 @@
                 id="mobileSidebarToggle"
                 aria-expanded="false"
                 aria-controls="mobileSidebarContent"
-                class="w-full flex items-center justify-between gap-3 px-5 py-3.5 rounded-2xl bg-neutral-900/60 backdrop-blur-xl border border-white/15 text-white text-sm font-semibold hover:bg-neutral-900/80 transition-all shadow-lg active:scale-[0.99] select-none cursor-pointer"
+                class="w-full flex items-center justify-between gap-3 px-5 py-3.5 rounded-2xl bg-[#382A22]/70 backdrop-blur-xl border border-[#7A553A]/40 text-white text-sm font-semibold hover:bg-[#382A22]/90 transition-all shadow-lg active:scale-[0.99] select-none cursor-pointer"
               >
                 <div class="flex items-center gap-2.5">
                   <span class="text-base">📊</span>
-                  <span>Statut des compétences E5</span>
+                  <span data-i18n="mobile_accordion_title">Statut des compétences E5</span>
                   <span class="px-2 py-0.5 text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-full font-mono font-medium">5/6</span>
                 </div>
-                <div class="flex items-center gap-2 text-xs text-white/60">
-                  <span id="mobileSidebarToggleText">Afficher</span>
+                <div class="flex items-center gap-2 text-xs text-[#D4A373]/80">
+                  <span id="mobileSidebarToggleText" data-i18n="mobile_accordion_show">Afficher</span>
                   <svg id="mobileSidebarToggleIcon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                   </svg>
@@ -427,84 +460,84 @@
               <!-- Collapsible Content: Default Collapsed -->
               <div
                 id="mobileSidebarContent"
-                class="hidden overflow-hidden rounded-3xl bg-neutral-900/70 backdrop-blur-xl border border-white/15 p-5 shadow-2xl space-y-4 transition-all duration-300"
+                class="hidden overflow-hidden rounded-3xl bg-[#241A14]/90 backdrop-blur-xl border border-[#7A553A]/45 p-5 shadow-2xl space-y-4 transition-all duration-300"
               >
-                <div class="flex items-center justify-between pb-3 border-b border-white/10 text-xs">
-                  <span class="text-[11px] font-mono uppercase tracking-wider text-white/50 font-semibold">Statut Référentiel SISR</span>
-                  <span class="text-[11px] font-mono text-emerald-400 font-medium">5 validés / 1 en cours</span>
+                <div class="flex items-center justify-between pb-3 border-b border-[#7A553A]/30 text-xs">
+                  <span data-i18n="sidebar_status_header" class="text-[11px] font-mono uppercase tracking-wider text-[#D4A373]/80 font-semibold">Statut Référentiel SISR</span>
+                  <span data-i18n="sidebar_status_ratio" class="text-[11px] font-mono text-emerald-400 font-medium">5 validés / 1 en cours</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <!-- D1: En cours -->
-                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#1E1712]/70 border border-[#7A553A]/25">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shrink-0"></span>
-                      <span class="text-white/90 truncate font-medium">D1 · Gérer le patrimoine</span>
+                      <span data-i18n="e5_d1_title" class="text-white/90 truncate font-medium">D1 · Gérer le patrimoine</span>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">
+                    <span data-i18n="status_en_cours" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 shrink-0">
                       En cours
                     </span>
                   </div>
 
                   <!-- D2: Validé -->
-                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#1E1712]/70 border border-[#7A553A]/25">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-orange-400 shrink-0"></span>
-                      <span class="text-white/90 truncate font-medium">D2 · Répondre aux incidents</span>
+                      <span data-i18n="e5_d2_title" class="text-white/90 truncate font-medium">D2 · Répondre aux incidents</span>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                    <span data-i18n="status_valide" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D3: Validé -->
-                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#1E1712]/70 border border-[#7A553A]/25">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0"></span>
-                      <span class="text-white/90 truncate font-medium">D3 · Présence en ligne</span>
+                      <span data-i18n="e5_d3_title" class="text-white/90 truncate font-medium">D3 · Présence en ligne</span>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                    <span data-i18n="status_valide" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D4: Validé -->
-                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#1E1712]/70 border border-[#7A553A]/25">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shrink-0"></span>
-                      <span class="text-white/90 truncate font-medium">D4 · Mode projet</span>
+                      <span data-i18n="e5_d4_title" class="text-white/90 truncate font-medium">D4 · Mode projet</span>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                    <span data-i18n="status_valide" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D5: Validé -->
-                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#1E1712]/70 border border-[#7A553A]/25">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shrink-0"></span>
-                      <span class="text-white/90 truncate font-medium">D5 · Service informatique</span>
+                      <span data-i18n="e5_d5_title" class="text-white/90 truncate font-medium">D5 · Service informatique</span>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                    <span data-i18n="status_valide" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
                       Validé
                     </span>
                   </div>
 
                   <!-- D6: Validé -->
-                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-white/[0.03] border border-white/5">
+                  <div class="flex items-center justify-between gap-2 py-2 px-3 rounded-xl bg-[#1E1712]/70 border border-[#7A553A]/25">
                     <div class="flex items-center gap-2 min-w-0">
                       <span class="w-2.5 h-2.5 rounded-full bg-pink-400 shrink-0"></span>
-                      <span class="text-white/90 truncate font-medium">D6 · Développement pro</span>
+                      <span data-i18n="e5_d6_title" class="text-white/90 truncate font-medium">D6 · Développement pro</span>
                     </div>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
+                    <span data-i18n="status_valide" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 shrink-0">
                       Validé
                     </span>
                   </div>
                 </div>
 
                 <!-- Quick Jump Buttons on Mobile -->
-                <div class="pt-3 border-t border-white/10 space-y-2">
-                  <span class="text-[11px] font-mono uppercase tracking-wider text-white/50 font-semibold block">
+                <div class="pt-3 border-t border-[#7A553A]/30 space-y-2">
+                  <span data-i18n="sidebar_quick_access" class="text-[11px] font-mono uppercase tracking-wider text-[#D4A373]/80 font-semibold block">
                     Accès rapide aux fiches
                   </span>
                   <div id="mobile-sidebar-task-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -519,28 +552,31 @@
                  =================================================================== -->
             <div
               id="filterBar"
-              class="relative z-10 rounded-3xl bg-neutral-900/50 backdrop-blur-xl border border-white/15 p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-5 shadow-xl select-none mt-8 mb-6"
+              class="relative z-10 rounded-3xl bg-[#382A22]/60 backdrop-blur-xl border border-[#7A553A]/40 p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-5 shadow-xl select-none mt-8 mb-6"
             >
               <!-- Context filter buttons (Toutes, Scolaire, Professionnel) -->
               <div id="context-filter-group" class="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
                 <button
                   type="button"
                   data-filter-context="all"
-                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white text-black shadow-md cursor-pointer"
+                  data-i18n="filter_all_tasks"
+                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold transition-all active:scale-95 bg-[#D4A373] text-[#1E1712] shadow-md cursor-pointer"
                 >
                   Toutes les fiches (5)
                 </button>
                 <button
                   type="button"
                   data-filter-context="scolaire"
-                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white/10 text-white/80 hover:bg-white/15 border border-white/15 cursor-pointer"
+                  data-i18n="filter_scolaire"
+                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-[#241A14]/70 text-white/80 hover:bg-[#241A14] border border-[#7A553A]/35 cursor-pointer"
                 >
                   En milieu Scolaire (3)
                 </button>
                 <button
                   type="button"
                   data-filter-context="pro"
-                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-white/10 text-white/80 hover:bg-white/15 border border-white/15 cursor-pointer"
+                  data-i18n="filter_pro"
+                  class="filter-context-btn px-4 sm:px-5 py-2.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-[#241A14]/70 text-white/80 hover:bg-[#241A14] border border-[#7A553A]/35 cursor-pointer"
                 >
                   En milieu Professionnel (2)
                 </button>
@@ -551,73 +587,73 @@
                 <button
                   id="btn-competency-dropdown"
                   type="button"
-                  class="inline-flex items-center justify-between gap-2.5 w-full md:w-72 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition-all cursor-pointer shadow-sm"
+                  class="inline-flex items-center justify-between gap-2.5 w-full md:w-72 px-5 py-2.5 rounded-full bg-[#241A14]/70 hover:bg-[#241A14] border border-[#7A553A]/40 text-xs font-semibold text-white transition-all cursor-pointer shadow-sm"
                   aria-expanded="false"
                 >
-                  <span id="dropdown-selected-label" class="truncate">Filtrer par compétence D1-D6 ▾</span>
-                  <svg class="w-3.5 h-3.5 text-white/70 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                  <span id="dropdown-selected-label" data-i18n="filter_competencies_default" class="truncate">Filtrer par compétence D1-D6 ▾</span>
+                  <svg class="w-3.5 h-3.5 text-[#D4A373] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
 
                 <!-- Dropdown options panel -->
                 <div
                   id="competenceDropdown"
-                  class="hidden absolute right-0 top-full mt-2 w-full md:w-80 rounded-2xl bg-neutral-900/95 backdrop-blur-2xl border border-white/20 shadow-2xl p-2.5 z-30 space-y-1"
+                  class="hidden absolute right-0 top-full mt-2 w-full md:w-80 rounded-2xl bg-[#1E1712]/98 backdrop-blur-2xl border border-[#7A553A]/50 shadow-2xl p-2.5 z-30 space-y-1"
                 >
                   <button
                     type="button"
                     data-filter-competency="all"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white transition-colors cursor-pointer"
                   >
-                    <span class="w-2.5 h-2.5 rounded-full bg-white shadow-sm"></span>
-                    <span>Toutes les compétences</span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#D4A373] shadow-sm"></span>
+                    <span data-i18n="filter_all_competencies">Toutes les compétences</span>
                   </button>
                   <button
                     type="button"
                     data-filter-competency="D1"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white/90 transition-colors cursor-pointer"
                   >
                     <span class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
-                    <span>D1 · Gérer le patrimoine informatique</span>
+                    <span data-i18n="e5_d1_filter">D1 · Gérer le patrimoine informatique</span>
                   </button>
                   <button
                     type="button"
                     data-filter-competency="D2"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white/90 transition-colors cursor-pointer"
                   >
                     <span class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]"></span>
-                    <span>D2 · Répondre aux incidents & demandes</span>
+                    <span data-i18n="e5_d2_filter">D2 · Répondre aux incidents & demandes</span>
                   </button>
                   <button
                     type="button"
                     data-filter-competency="D3"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white/90 transition-colors cursor-pointer"
                   >
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]"></span>
-                    <span>D3 · Développer la présence en ligne</span>
+                    <span data-i18n="e5_d3_filter">D3 · Développer la présence en ligne</span>
                   </button>
                   <button
                     type="button"
                     data-filter-competency="D4"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white/90 transition-colors cursor-pointer"
                   >
                     <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]"></span>
-                    <span>D4 · Travailler en mode projet</span>
+                    <span data-i18n="e5_d4_filter">D4 · Travailler en mode projet</span>
                   </button>
                   <button
                     type="button"
                     data-filter-competency="D5"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white/90 transition-colors cursor-pointer"
                   >
                     <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]"></span>
-                    <span>D5 · Mettre à disposition un service IT</span>
+                    <span data-i18n="e5_d5_filter">D5 · Mettre à disposition un service IT</span>
                   </button>
                   <button
                     type="button"
                     data-filter-competency="D6"
-                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-white/10 text-white/90 transition-colors cursor-pointer"
+                    class="filter-comp-item w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs text-left font-medium hover:bg-[#382A22] text-white/90 transition-colors cursor-pointer"
                   >
                     <span class="w-2.5 h-2.5 rounded-full bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.8)]"></span>
-                    <span>D6 · Organiser son développement pro</span>
+                    <span data-i18n="e5_d6_filter">D6 · Organiser son développement pro</span>
                   </button>
                 </div>
               </div>
@@ -632,12 +668,13 @@
             </div>
 
             <!-- Empty State if no tasks match -->
-            <div id="empty-state" class="hidden text-center py-16 rounded-3xl bg-neutral-900/40 border border-white/15 p-8 space-y-3">
-              <p class="text-white/70 text-sm">Aucune réalisation ne correspond aux filtres sélectionnés.</p>
+            <div id="empty-state" class="hidden text-center py-16 rounded-3xl bg-[#382A22]/40 border border-[#7A553A]/35 p-8 space-y-3">
+              <p data-i18n="empty_state_msg" class="text-white/70 text-sm">Aucune réalisation ne correspond aux filtres sélectionnés.</p>
               <button
                 type="button"
                 id="btn-reset-filters"
-                class="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-xs font-semibold text-white transition-colors cursor-pointer"
+                data-i18n="filter_reset_btn"
+                class="px-5 py-2 rounded-full bg-[#D4A373]/20 hover:bg-[#D4A373]/30 border border-[#D4A373]/40 text-xs font-semibold text-[#D4A373] transition-colors cursor-pointer"
               >
                 Réinitialiser les filtres
               </button>
@@ -649,7 +686,7 @@
       </main>
 
       <!-- Footer -->
-      <footer class="mt-auto w-full py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-mono select-none">
+      <footer class="mt-auto w-full py-8 px-6 border-t border-[#7A553A]/30 text-center text-xs text-[#D4A373]/60 font-mono select-none">
         <p>© 2026 Maxence FONTAINE GROS · Portefeuille E5 BTS SIO SISR · Institution des Chartreux, Lyon.</p>
       </footer>
     </div>
@@ -659,7 +696,7 @@
          ========================================================================= -->
     <div
       id="taskModal"
-      class="hidden fixed inset-0 z-[9999] backdrop-blur-md bg-black/80 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+      class="hidden fixed inset-0 z-[9999] backdrop-blur-md bg-black/85 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-task-title"
@@ -671,14 +708,14 @@
 
       <div
         id="taskModalContent"
-        class="relative z-10 w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-neutral-900/95 border border-white/15 shadow-2xl p-6 sm:p-10 text-white space-y-6"
+        class="relative z-10 w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#1E1712]/98 backdrop-blur-2xl border border-[#7A553A]/50 shadow-[0_25px_60px_rgba(0,0,0,0.85)] p-6 sm:p-10 text-white space-y-6"
       >
         <!-- Modal Top Bar -->
-        <div class="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
+        <div class="flex items-start justify-between gap-4 pb-4 border-b border-[#7A553A]/30">
           <div class="space-y-2">
             <!-- Context & Number Badges -->
             <div class="flex flex-wrap items-center gap-2">
-              <span id="modal-badge-context" class="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-white/10 border border-white/15 text-white">
+              <span id="modal-badge-context" class="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider font-semibold bg-[#7A553A]/30 border border-[#7A553A]/45 text-[#D4A373]">
                 Milieu Professionnel
               </span>
               <span id="modal-badge-date" class="px-3 py-1 rounded-full text-xs font-mono bg-[#7A553A]/30 text-[#D4A373] border border-[#7A553A]/40">
@@ -700,8 +737,9 @@
           <button
             type="button"
             id="btn-close-modal"
-            class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition-all duration-200 active:scale-90 shrink-0 cursor-pointer"
+            class="w-10 h-10 rounded-full bg-[#241A14] hover:bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-white transition-all duration-200 active:scale-90 shrink-0 cursor-pointer"
             aria-label="Fermer la fenêtre"
+            data-i18n-aria="modal_close_aria"
           >
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
@@ -709,14 +747,14 @@
 
         <!-- Validated Competencies Badges Row -->
         <div class="space-y-2">
-          <span class="text-xs font-mono uppercase tracking-widest text-[#D4A373] font-semibold">Compétences validées :</span>
+          <span data-i18n="modal_associated_skills" class="text-xs font-mono uppercase tracking-widest text-[#D4A373] font-semibold">Compétences validées :</span>
           <div id="modal-competencies-badges" class="flex flex-wrap gap-2">
             <!-- Populated dynamically -->
           </div>
         </div>
 
         <!-- Preview Image -->
-        <div class="relative w-full h-52 sm:h-72 aspect-video rounded-2xl bg-neutral-950 border border-white/15 overflow-hidden flex items-center justify-center shadow-inner">
+        <div class="relative w-full h-52 sm:h-72 aspect-video rounded-2xl bg-[#120D0A] border border-[#7A553A]/40 overflow-hidden flex items-center justify-center shadow-inner">
           <img
             id="modal-task-image"
             src=""
@@ -726,8 +764,8 @@
         </div>
 
         <!-- Summary & Context -->
-        <div class="p-5 rounded-2xl bg-black/30 border border-white/5 space-y-2">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-amber-300 font-semibold">Synthèse de l'activité</h3>
+        <div class="p-5 rounded-2xl bg-[#241A14]/70 border border-[#7A553A]/35 space-y-2">
+          <h3 data-i18n="modal_summary_heading" class="text-xs font-mono uppercase tracking-wider text-[#D4A373] font-semibold">Synthèse de l'activité</h3>
           <p id="modal-task-summary" class="text-sm sm:text-base text-white/90 leading-relaxed">
             Description courte...
           </p>
@@ -735,10 +773,10 @@
 
         <!-- Detailed Technical Justification -->
         <div class="space-y-3">
-          <h3 class="text-base sm:text-lg font-bold text-white font-heading">
+          <h3 data-i18n="modal_justification_heading" class="text-base sm:text-lg font-bold text-white font-heading">
             Démarche & Justification Technique Détaillée
           </h3>
-          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+          <div class="p-5 rounded-2xl bg-[#241A14]/50 border border-[#7A553A]/30">
             <p id="modal-task-justification" class="text-sm sm:text-base text-white/80 leading-relaxed">
               Justification complète de l'activité...
             </p>
@@ -747,25 +785,25 @@
 
         <!-- Technologies Used Tags -->
         <div class="space-y-2 pt-2">
-          <span class="text-xs font-mono uppercase tracking-widest text-white/50">Environnement, Outils & Technologies :</span>
+          <span data-i18n="modal_env_heading" class="text-xs font-mono uppercase tracking-widest text-[#D4A373]/80">Environnement, Outils & Technologies :</span>
           <div id="modal-tech-tags" class="flex flex-wrap gap-2">
             <!-- Dynamic tech tags -->
           </div>
         </div>
 
         <!-- Dedicated Action Links Bar in Modal (Accéder au dossier, Accéder au site, Page projet) -->
-        <div id="modal-action-buttons-bar" class="flex flex-wrap items-center gap-3 pt-4 border-t border-white/10">
+        <div id="modal-action-buttons-bar" class="flex flex-wrap items-center gap-3 pt-4 border-t border-[#7A553A]/30">
           <a
             id="modal-btn-pdf"
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95 shadow-md cursor-pointer select-none"
+            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#D4A373] text-[#1E1712] text-xs sm:text-sm font-bold hover:bg-[#e0b284] transition-all active:scale-95 shadow-md cursor-pointer select-none"
           >
-            <svg class="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-[#1E1712] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
-            <span>Accéder au dossier ↗</span>
+            <span data-i18n="modal_btn_dossier">Accéder au dossier ↗</span>
           </a>
 
           <a
@@ -773,47 +811,47 @@
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7A553A]/40 hover:bg-[#7A553A]/60 border border-[#7A553A]/50 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 shadow-md cursor-pointer select-none"
+            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#7A553A]/50 hover:bg-[#7A553A]/80 border border-[#D4A373]/50 text-[#D4A373] hover:text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 shadow-md cursor-pointer select-none"
           >
             <svg class="w-4 h-4 text-[#D4A373] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
               <line x1="2" y1="12" x2="22" y2="12" stroke-width="2"></line>
               <path stroke-width="2" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <span>Accéder au site ↗</span>
+            <span data-i18n="modal_btn_site">Accéder au site ↗</span>
           </a>
 
           <a
             id="modal-btn-project-page"
             href="#"
             target="_blank"
-            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 shadow-sm cursor-pointer select-none"
+            class="hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#241A14] hover:bg-[#382A22] border border-[#7A553A]/45 text-white text-xs sm:text-sm font-semibold transition-all active:scale-95 shadow-sm cursor-pointer select-none"
           >
-            <span>Consulter la page dédiée du projet ↗</span>
+            <span data-i18n="modal_btn_project">Consulter la page dédiée du projet ↗</span>
           </a>
         </div>
 
         <!-- Modal Bottom Navigation (Prev / Next & Close) -->
-        <div class="pt-6 border-t border-white/10 flex items-center justify-between gap-4">
+        <div class="pt-6 border-t border-[#7A553A]/30 flex items-center justify-between gap-4">
           <button
             type="button"
             id="btn-prev-modal-task"
-            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-xs sm:text-sm font-medium text-white transition-colors active:scale-95 cursor-pointer"
+            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-[#241A14] hover:bg-[#382A22] border border-[#7A553A]/40 text-xs sm:text-sm font-medium text-white transition-colors active:scale-95 cursor-pointer"
           >
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span>Activité précédente</span>
+            <span data-i18n="modal_btn_prev">← Précédente</span>
           </button>
 
-          <span id="modal-pagination-counter" class="text-xs font-mono text-white/50">
+          <span id="modal-pagination-counter" class="text-xs font-mono text-[#D4A373]/80">
             1 / 5
           </span>
 
           <button
             type="button"
             id="btn-next-modal-task"
-            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-xs sm:text-sm font-medium text-white transition-colors active:scale-95 cursor-pointer"
+            class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-[#241A14] hover:bg-[#382A22] border border-[#7A553A]/40 text-xs sm:text-sm font-medium text-white transition-colors active:scale-95 cursor-pointer"
           >
-            <span>Activité suivante</span>
+            <span data-i18n="modal_btn_next">Suivante →</span>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
         </div>
@@ -924,7 +962,7 @@
           folder: 'public/e5/3-holazyv/',
           previewImg: './e5/3-holazyv/preview%20HoLazyV.png',
           fallbackImg: './e5/3-holazyv/preview%20HoLazyV.png',
-          link: 'projets/holazyv/holazyv.html'
+          link: './projets/holazyv/holazyv.html'
         },
         'aegis': {
           number: 4,
@@ -967,6 +1005,42 @@
         }
       };
 
+      // i18n dynamic translation helpers
+      function getCurrentLang() {
+        if (typeof window.getCurrentLanguage === 'function') return window.getCurrentLanguage();
+        if (typeof window.currentLang !== 'undefined' && window.currentLang) return window.currentLang;
+        if (typeof window.getLanguage === 'function') return window.getLanguage();
+        try {
+          return localStorage.getItem('portfolio_lang') || localStorage.getItem('user_preferred_lang') || 'fr';
+        } catch (e) {
+          return 'fr';
+        }
+      }
+
+      function getTranslatedTask(task) {
+        const lang = getCurrentLang();
+        const i18n = window.i18nData && window.i18nData[lang];
+        const t = (i18n && i18n.e5_tasks && i18n.e5_tasks[task.id]) || {};
+        return {
+          title: t.title || task.title,
+          contextLabel: t.contextLabel || task.contextLabel,
+          summary: t.summary || task.summary,
+          justification: t.justification || task.justification
+        };
+      }
+
+      function getDomainMeta(d) {
+        const lang = getCurrentLang();
+        const i18n = window.i18nData && window.i18nData[lang];
+        const t = (i18n && i18n.e5_domains && i18n.e5_domains[d]) || {};
+        const base = domainMeta[d] || { label: d, color: 'blue', border: 'border-blue-500/40' };
+        return {
+          ...base,
+          label: t.label || base.label,
+          title: t.title || base.label
+        };
+      }
+
       // 2. Filter State
       let currentContextFilter = 'all';
       let currentCompetencyFilter = 'all';
@@ -996,22 +1070,23 @@
           sidebarContainer.innerHTML = e5Tasks.map((task, idx) => {
             const assets = taskAssets[task.id] || { number: idx + 1 };
             const num = assets.number || (idx + 1);
+            const tTask = getTranslatedTask(task);
             return `
               <button
                 type="button"
                 data-task-index="${idx}"
-                class="sidebar-jump-btn w-full text-left px-3.5 py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 transition-all flex items-center justify-between gap-2.5 group select-none cursor-pointer active:scale-[0.99]"
-                title="${num}. ${task.title}"
+                class="sidebar-jump-btn w-full text-left px-3.5 py-2.5 rounded-2xl bg-[#241A14]/70 hover:bg-[#241A14] border border-[#7A553A]/30 hover:border-[#D4A373]/50 transition-all flex items-center justify-between gap-2.5 group select-none cursor-pointer active:scale-[0.99]"
+                title="${num}. ${tTask.title}"
               >
                 <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="task-badge w-6 h-6 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-xs font-mono font-bold text-white group-hover:bg-white group-hover:text-black transition-colors shrink-0">
+                  <span class="task-badge w-6 h-6 rounded-lg bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-xs font-mono font-bold text-[#D4A373] group-hover:bg-[#D4A373] group-hover:text-[#1E1712] transition-colors shrink-0">
                     ${num}
                   </span>
-                  <span class="sidebar-label sidebar-text text-xs font-medium text-white/85 group-hover:text-white truncate">
-                    ${task.title}
+                  <span class="sidebar-label sidebar-text text-xs font-medium text-white/85 group-hover:text-[#D4A373] truncate">
+                    ${tTask.title}
                   </span>
                 </div>
-                <span class="sidebar-label sidebar-text text-xs text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all shrink-0">↗</span>
+                <span class="sidebar-label sidebar-text text-xs text-[#D4A373]/60 group-hover:text-[#D4A373] group-hover:translate-x-0.5 transition-all shrink-0">↗</span>
               </button>
             `;
           }).join('');
@@ -1023,19 +1098,20 @@
           mobileContainer.innerHTML = e5Tasks.map((task, idx) => {
             const assets = taskAssets[task.id] || { number: idx + 1 };
             const num = assets.number || (idx + 1);
+            const tTask = getTranslatedTask(task);
             return `
               <button
                 type="button"
                 data-task-index="${idx}"
-                class="mobile-sidebar-jump-btn text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs flex items-center justify-between gap-2 group cursor-pointer transition-all active:scale-[0.99]"
-                title="${num}. ${task.title}"
+                class="mobile-sidebar-jump-btn text-left px-3 py-2 rounded-xl bg-[#241A14]/80 hover:bg-[#241A14] border border-[#7A553A]/35 text-xs flex items-center justify-between gap-2 group cursor-pointer transition-all active:scale-[0.99]"
+                title="${num}. ${tTask.title}"
               >
                 <div class="flex items-center gap-2 min-w-0">
-                  <span class="w-5 h-5 rounded-md bg-white/10 flex items-center justify-center text-[10px] font-mono font-bold text-white shrink-0 group-hover:bg-white group-hover:text-black transition-colors">
+                  <span class="w-5 h-5 rounded-md bg-[#382A22] border border-[#7A553A]/40 flex items-center justify-center text-[10px] font-mono font-bold text-[#D4A373] shrink-0 group-hover:bg-[#D4A373] group-hover:text-[#1E1712] transition-colors">
                     ${num}
                   </span>
-                  <span class="text-white/80 truncate text-[11px] font-medium group-hover:text-white">
-                    ${task.title}
+                  <span class="text-white/85 truncate text-[11px] font-medium group-hover:text-[#D4A373]">
+                    ${tTask.title}
                   </span>
                 </div>
                 <span class="text-[11px] text-[#D4A373] shrink-0">↗</span>
@@ -1065,6 +1141,14 @@
 
         emptyState.classList.add('hidden');
 
+        const lang = getCurrentLang();
+        const i18n = window.i18nData && window.i18nData[lang];
+        const btnDossierText = (i18n && i18n.modal_btn_dossier) || "Accéder au dossier ↗";
+        const btnSiteText = (i18n && i18n.modal_btn_site) || "Accéder au site ↗";
+        const badgeDetailText = (i18n && i18n.badge_fiche_detaillee) || "Fiche détaillée ↗";
+        const btnLearnMoreText = (i18n && i18n.btn_learn_more_arrow) || "En savoir plus... →";
+        const fichePrefix = (i18n && i18n.badge_bts_sisr_fiche) || "BTS SISR · Fiche #";
+
         grid.innerHTML = filtered.map(task => {
           const originalIndex = e5Tasks.findIndex(t => t.id === task.id);
           const assets = taskAssets[task.id] || {
@@ -1077,15 +1161,19 @@
           const taskNumber = assets.number || (originalIndex + 1);
           const displayImg = task.imageUrl || assets.previewImg;
           const fallbackImg = assets.fallbackImg || displayImg;
+          const tTask = getTranslatedTask(task);
 
-          const compBadges = task.domains.map(d => `
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold border ${getCompetencyBadgeClasses(d)}" title="${domainMeta[d]?.label || d}">
-              ${d}
-            </span>
-          `).join('');
+          const compBadges = task.domains.map(d => {
+            const meta = getDomainMeta(d);
+            return `
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold border ${getCompetencyBadgeClasses(d)}" title="${meta.label}">
+                ${d}
+              </span>
+            `;
+          }).join('');
 
           const techPills = task.badges.map(tech => `
-            <span class="px-2.5 py-0.5 rounded-full bg-white/[0.06] border border-white/15 text-white/80 text-[11px] font-mono">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#241A14]/80 border border-[#7A553A]/35 text-white/85 text-[11px] font-mono">
               ${tech}
             </span>
           `).join('');
@@ -1098,14 +1186,14 @@
                 href="${task.pdfUrl}"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-semibold transition-all active:scale-95 shadow-sm cursor-pointer whitespace-nowrap select-none"
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#241A14]/80 hover:bg-[#241A14] border border-[#7A553A]/45 text-white text-xs font-semibold transition-all active:scale-95 shadow-sm cursor-pointer whitespace-nowrap select-none"
                 onclick="event.stopPropagation()"
-                title="Accéder au dossier documentaire"
+                title="${btnDossierText}"
               >
-                <svg class="w-3.5 h-3.5 text-amber-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3.5 h-3.5 text-[#D4A373] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                <span>Accéder au dossier ↗</span>
+                <span>${btnDossierText}</span>
               </a>
             `;
           }
@@ -1117,16 +1205,16 @@
                 href="${task.siteUrl}"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#7A553A]/40 hover:bg-[#7A553A]/60 border border-[#7A553A]/50 text-[#D4A373] hover:text-white text-xs font-semibold transition-all active:scale-95 shadow-sm cursor-pointer whitespace-nowrap select-none"
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#7A553A]/50 hover:bg-[#7A553A]/80 border border-[#D4A373]/50 text-[#D4A373] hover:text-white text-xs font-semibold transition-all active:scale-95 shadow-sm cursor-pointer whitespace-nowrap select-none"
                 onclick="event.stopPropagation()"
-                title="Accéder au site web"
+                title="${btnSiteText}"
               >
                 <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
                   <line x1="2" y1="12" x2="22" y2="12" stroke-width="2"></line>
                   <path stroke-width="2" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
-                <span>Accéder au site ↗</span>
+                <span>${btnSiteText}</span>
               </a>
             `;
           }
@@ -1137,14 +1225,14 @@
             <article
               id="${task.id}"
               data-task-index="${originalIndex}"
-              class="group relative rounded-3xl bg-neutral-900/50 backdrop-blur-xl border ${getBorderColor(primaryDomain)} p-6 sm:p-8 shadow-xl flex flex-col justify-between hover:border-white/40 hover:bg-neutral-900/70 hover:shadow-2xl transition-all duration-300 cursor-pointer"
+              class="group relative rounded-3xl bg-[#382A22]/45 backdrop-blur-xl border ${getBorderColor(primaryDomain)} p-6 sm:p-8 shadow-xl flex flex-col justify-between hover:border-[#D4A373]/60 hover:bg-[#382A22]/70 hover:shadow-[0_12px_36px_rgba(56,42,34,0.45)] transition-all duration-300 cursor-pointer"
             >
               <div class="space-y-4">
                 <!-- Top Row: Context Tag, Date & Domain Badges -->
                 <div class="flex items-center justify-between gap-2 flex-wrap">
                   <div class="flex items-center gap-2 flex-wrap">
-                    <span class="px-3 py-1 rounded-full bg-white/[0.08] border border-white/15 text-[11px] font-mono uppercase tracking-wider text-white font-semibold">
-                      ${task.contextLabel}
+                    <span class="px-3 py-1 rounded-full bg-[#241A14]/80 border border-[#7A553A]/40 text-[11px] font-mono uppercase tracking-wider text-white font-semibold">
+                      ${tTask.contextLabel}
                     </span>
                     <span class="px-2.5 py-1 rounded-full bg-[#7A553A]/30 text-[#D4A373] border border-[#7A553A]/40 text-[10px] font-mono">
                       ${task.date}
@@ -1158,26 +1246,26 @@
                 <!-- Title & Summary -->
                 <div>
                   <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight font-heading group-hover:text-white transition-colors">
-                    ${task.title}
+                    ${tTask.title}
                   </h3>
                   <p class="text-white/80 text-xs sm:text-sm mt-2.5 leading-relaxed">
-                    ${task.summary}
+                    ${tTask.summary}
                   </p>
                 </div>
 
                 <!-- Visual screenshot preview or technical environment card with onerror fallback -->
-                <div class="relative w-full max-h-48 rounded-2xl bg-neutral-900 border border-white/10 overflow-hidden flex items-center justify-center">
+                <div class="relative w-full max-h-48 rounded-2xl bg-[#1E1712] border border-[#7A553A]/30 overflow-hidden flex items-center justify-center">
                   <img
                     src="${displayImg}"
-                    alt="${task.title}"
+                    alt="${tTask.title}"
                     loading="lazy"
                     decoding="async"
                     class="w-full max-h-48 object-cover object-center aspect-video opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                     onerror="window.handleTaskImageFallback(this, '${fallbackImg}', ${taskNumber}, '${assets.folder}')"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#1E1712]/90 via-transparent to-transparent pointer-events-none"></div>
                   <div class="absolute bottom-3 right-3.5 flex items-center justify-end text-[11px] text-white/90 font-mono pointer-events-none">
-                    <span class="text-xs shrink-0 font-semibold text-[#D4A373] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">Fiche détaillée ↗</span>
+                    <span class="text-xs shrink-0 font-semibold text-[#D4A373] bg-[#241A14]/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#7A553A]/40">${badgeDetailText}</span>
                   </div>
                 </div>
 
@@ -1188,18 +1276,18 @@
               </div>
 
               <!-- Action button bar: En savoir plus... & direct document/website links -->
-              <div class="pt-5 mt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+              <div class="pt-5 mt-5 border-t border-[#7A553A]/30 flex flex-wrap items-center justify-between gap-3">
                 <div class="flex flex-wrap items-center gap-2">
                   <button
                     type="button"
                     data-task-index="${originalIndex}"
-                    class="btn-open-task-modal inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-white text-black text-xs sm:text-sm font-semibold hover:bg-neutral-200 transition-all active:scale-95 shadow-md cursor-pointer select-none"
+                    class="btn-open-task-modal inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-[#D4A373] text-[#1E1712] text-xs sm:text-sm font-bold hover:bg-[#e0b284] transition-all active:scale-95 shadow-md cursor-pointer select-none"
                   >
-                    <span>En savoir plus... →</span>
+                    <span>${btnLearnMoreText}</span>
                   </button>
                   ${cardActionLinks}
                 </div>
-                <span class="text-xs text-white/50 font-mono">BTS SISR · Fiche #${taskNumber}</span>
+                <span class="text-xs text-[#D4A373]/70 font-mono">${fichePrefix}${taskNumber}</span>
               </div>
             </article>
           `;
@@ -1224,6 +1312,8 @@
           link: null
         };
         const taskNumber = assets.number || (index + 1);
+        const tTask = getTranslatedTask(task);
+        const lang = getCurrentLang();
 
         // Helper safely set text
         const safeSetText = (id, text) => {
@@ -1232,12 +1322,13 @@
         };
 
         // Populate modal text fields
-        safeSetText('modal-badge-context', task.contextLabel);
+        safeSetText('modal-badge-context', tTask.contextLabel);
         safeSetText('modal-badge-date', task.date);
-        safeSetText('modal-badge-id', `Fiche #${taskNumber} / ${e5Tasks.length}`);
-        safeSetText('modal-task-title', task.title);
-        safeSetText('modal-task-summary', task.summary);
-        safeSetText('modal-task-justification', task.justification);
+        const ficheLabel = lang === 'en' ? 'Task #' : 'Fiche #';
+        safeSetText('modal-badge-id', `${ficheLabel}${taskNumber} / ${e5Tasks.length}`);
+        safeSetText('modal-task-title', tTask.title);
+        safeSetText('modal-task-summary', tTask.summary);
+        safeSetText('modal-task-justification', tTask.justification);
         safeSetText('modal-pagination-counter', `${index + 1} / ${e5Tasks.length}`);
 
         // Image in modal with automatic fallback
@@ -1245,7 +1336,7 @@
         const modalImgSrc = task.imageUrl || assets.previewImg;
         const modalFallbackSrc = assets.fallbackImg || modalImgSrc;
         if (modalImg) {
-          modalImg.alt = task.title;
+          modalImg.alt = tTask.title;
           modalImg.src = modalImgSrc;
           modalImg.onerror = function() {
             if (this.src && !this.src.endsWith(modalFallbackSrc)) {
@@ -1258,7 +1349,7 @@
         const compContainer = document.getElementById('modal-competencies-badges');
         if (compContainer) {
           compContainer.innerHTML = task.domains.map(d => {
-            const meta = domainMeta[d] || { label: d };
+            const meta = getDomainMeta(d);
             return `
               <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium border ${getCompetencyBadgeClasses(d)}">
                 <span class="font-bold">${d}</span>
@@ -1273,7 +1364,7 @@
         const techContainer = document.getElementById('modal-tech-tags');
         if (techContainer) {
           techContainer.innerHTML = task.badges.map(tech => `
-            <span class="px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs text-white font-mono">
+            <span class="px-3.5 py-1 rounded-full bg-[#382A22]/60 border border-[#7A553A]/40 text-xs text-[#D4A373] font-mono">
               ${tech}
             </span>
           `).join('');
@@ -1405,11 +1496,11 @@
               if (!btn) return;
               const allButtons = contextFilterGroup.querySelectorAll('.filter-context-btn');
               allButtons.forEach(b => {
-                b.classList.remove('bg-white', 'text-black');
-                b.classList.add('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/15');
+                b.classList.remove('bg-[#D4A373]', 'text-[#1E1712]', 'font-bold', 'shadow-md');
+                b.classList.add('bg-[#241A14]/70', 'text-white/80', 'hover:bg-[#241A14]', 'border', 'border-[#7A553A]/35', 'font-semibold');
               });
-              btn.classList.remove('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/15');
-              btn.classList.add('bg-white', 'text-black');
+              btn.classList.remove('bg-[#241A14]/70', 'text-white/80', 'hover:bg-[#241A14]', 'border', 'border-[#7A553A]/35', 'font-semibold');
+              btn.classList.add('bg-[#D4A373]', 'text-[#1E1712]', 'font-bold', 'shadow-md');
 
               currentContextFilter = btn.getAttribute('data-filter-context') || 'all';
               renderTasksGrid();
@@ -1450,10 +1541,11 @@
               const compCode = item.getAttribute('data-filter-competency');
               if (!compCode) return;
               currentCompetencyFilter = compCode;
+              const curLang = getCurrentLang();
               if (compCode === 'all') {
-                dropdownSelectedLabel.textContent = "Filtrer par compétence D1-D6 ▾";
+                dropdownSelectedLabel.textContent = (window.i18nData && window.i18nData[curLang]?.filter_competencies_default) || "Filtrer par compétence D1-D6 ▾";
               } else {
-                dropdownSelectedLabel.textContent = `Compétence : ${compCode} ▾`;
+                dropdownSelectedLabel.textContent = (curLang === 'en' ? `Competency : ${compCode} ▾` : `Compétence : ${compCode} ▾`);
               }
               compDropdownMenu.classList.add('hidden');
               btnCompDropdown.setAttribute('aria-expanded', 'false');
@@ -1468,17 +1560,18 @@
               currentContextFilter = 'all';
               currentCompetencyFilter = 'all';
               if (dropdownSelectedLabel) {
-                dropdownSelectedLabel.textContent = "Filtrer par compétence D1-D6 ▾";
+                const curLang = getCurrentLang();
+                dropdownSelectedLabel.textContent = (window.i18nData && window.i18nData[curLang]?.filter_competencies_default) || "Filtrer par compétence D1-D6 ▾";
               }
               if (contextFilterGroup) {
                 const contextButtons = contextFilterGroup.querySelectorAll('.filter-context-btn');
                 contextButtons.forEach((b, idx) => {
                   if (idx === 0) {
-                    b.classList.remove('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/15');
-                    b.classList.add('bg-white', 'text-black');
+                    b.classList.remove('bg-[#241A14]/70', 'text-white/80', 'hover:bg-[#241A14]', 'border', 'border-[#7A553A]/35', 'font-semibold');
+                    b.classList.add('bg-[#D4A373]', 'text-[#1E1712]', 'font-bold', 'shadow-md');
                   } else {
-                    b.classList.remove('bg-white', 'text-black');
-                    b.classList.add('bg-white/10', 'text-white/80', 'hover:bg-white/15', 'border', 'border-white/15');
+                    b.classList.remove('bg-[#D4A373]', 'text-[#1E1712]', 'font-bold', 'shadow-md');
+                    b.classList.add('bg-[#241A14]/70', 'text-white/80', 'hover:bg-[#241A14]', 'border', 'border-[#7A553A]/35', 'font-semibold');
                   }
                 });
               }
@@ -1518,16 +1611,17 @@
           if (mobileToggleBtn && mobileSidebarContent) {
             mobileToggleBtn.addEventListener('click', () => {
               const isCollapsed = mobileSidebarContent.classList.contains('hidden');
+              const curLang = getCurrentLang();
               if (isCollapsed) {
                 mobileSidebarContent.classList.remove('hidden');
                 mobileToggleBtn.setAttribute('aria-expanded', 'true');
                 if (mobileToggleIcon) mobileToggleIcon.classList.add('rotate-180');
-                if (mobileToggleText) mobileToggleText.textContent = 'Masquer';
+                if (mobileToggleText) mobileToggleText.textContent = (window.i18nData && window.i18nData[curLang]?.mobile_accordion_hide) || 'Masquer';
               } else {
                 mobileSidebarContent.classList.add('hidden');
                 mobileToggleBtn.setAttribute('aria-expanded', 'false');
                 if (mobileToggleIcon) mobileToggleIcon.classList.remove('rotate-180');
-                if (mobileToggleText) mobileToggleText.textContent = 'Afficher';
+                if (mobileToggleText) mobileToggleText.textContent = (window.i18nData && window.i18nData[curLang]?.mobile_accordion_show) || 'Afficher';
               }
             });
           }
@@ -1544,6 +1638,38 @@
               }
             });
           }
+
+          // Dynamic Language Change Listener for E5 Page
+          window.addEventListener('languageChanged', (e) => {
+            const lang = e.detail?.lang || getCurrentLang();
+            renderSidebar();
+            renderTasksGrid();
+
+            // Refresh open modal if currently visible
+            const modal = document.getElementById('taskModal');
+            if (modal && !modal.classList.contains('hidden')) {
+              openTaskModal(activeModalTaskIndex);
+            }
+
+            // Refresh competency dropdown label
+            if (dropdownSelectedLabel) {
+              if (currentCompetencyFilter === 'all') {
+                dropdownSelectedLabel.textContent = (window.i18nData && window.i18nData[lang]?.filter_competencies_default) || "Filtrer par compétence D1-D6 ▾";
+              } else {
+                dropdownSelectedLabel.textContent = (lang === 'en' ? `Competency : ${currentCompetencyFilter} ▾` : `Compétence : ${currentCompetencyFilter} ▾`);
+              }
+            }
+
+            // Refresh mobile accordion text
+            if (mobileToggleText && mobileSidebarContent) {
+              const isCollapsed = mobileSidebarContent.classList.contains('hidden');
+              if (isCollapsed) {
+                mobileToggleText.textContent = (window.i18nData && window.i18nData[lang]?.mobile_accordion_show) || 'Afficher';
+              } else {
+                mobileToggleText.textContent = (window.i18nData && window.i18nData[lang]?.mobile_accordion_hide) || 'Masquer';
+              }
+            }
+          });
         } catch (err) {
           console.error('Safe execution catch during E5 initialization:', err);
         }

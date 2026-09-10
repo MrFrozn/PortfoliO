@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projet Portfolio BTS SIO SISR — Maxence FONTAINE GROS</title>
+    <title data-i18n="port_meta_title">Projet Portfolio BTS SIO SISR — Maxence FONTAINE GROS</title>
     <meta
       name="description"
       content="Présentation complète de la démarche, des objectifs et de la réalisation de mon portfolio d'étudiant en BTS SIO SISR."
@@ -90,18 +90,33 @@
           </span>
         </a>
 
-        <!-- Back to Portfolio Pill-Button -->
-        <a
-          id="btn-back-portfolio"
-          href="../../index.html#projects"
-          class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          <span>Back to Portfolio</span>
-        </a>
+        <!-- Right Controls: Language Switcher + Back to Portfolio Pill-Button -->
+        <div class="flex items-center gap-3">
+          <button
+            id="lang-switcher-btn"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#382A22] text-white border border-[#7A553A]/40 hover:bg-[#4A382E] hover:border-[#7A553A]/70 text-xs font-mono font-medium transition-all duration-200 active:scale-95 shadow-md cursor-pointer"
+            title="Switch language / Changer de langue"
+            aria-label="Changer de langue / Switch language"
+          >
+            <span class="text-sm leading-none select-none">🌐</span>
+            <span id="lang-fr" class="lang-fr-label text-white font-bold transition-opacity">FR</span>
+            <span class="text-white/30 select-none">|</span>
+            <span id="lang-en" class="lang-en-label text-white/40 font-normal transition-opacity">EN</span>
+          </button>
+
+          <a
+            id="btn-back-portfolio"
+            href="../../index.html#projects"
+            class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span data-i18n="nav_back_portfolio">Back to Portfolio</span>
+          </a>
+        </div>
       </header>
 
       <!-- =========================================================================
@@ -112,18 +127,19 @@
           <!-- Small Category Eyebrow -->
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs font-mono uppercase tracking-wider">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Projet Phare · Web & Documentation
+            <span data-i18n="port_badge">Projet Phare · Web & Documentation</span>
           </div>
 
           <!-- Hero Title -->
           <h1
             class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] font-heading"
+            data-i18n="port_title"
           >
             Mon Portfolio
           </h1>
 
           <!-- Intro Paragraph -->
-          <p class="text-lg sm:text-xl text-white/75 leading-relaxed font-normal">
+          <p class="text-lg sm:text-xl text-white/75 leading-relaxed font-normal" data-i18n="port_desc">
             Vous trouverez ici une présentation de la création de mon portfolio. Conçu comme une vitrine vivante de mes compétences en administration systèmes, réseaux et technologies web modernes.
           </p>
 
@@ -137,7 +153,7 @@
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-xl select-none"
             >
-              <span>Voir le cahier des charges</span>
+              <span data-i18n="port_btn_specs">Voir le cahier des charges</span>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
@@ -150,7 +166,7 @@
               href="#details"
               class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm sm:text-base font-medium transition-all duration-200 active:scale-95 select-none"
             >
-              <span>En savoir plus</span>
+              <span data-i18n="port_btn_learn_more">En savoir plus</span>
               <svg class="w-4 h-4 text-white/70 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <polyline points="19 12 12 19 5 12"></polyline>
@@ -168,10 +184,10 @@
              ===================================================================== -->
         <section id="details" class="space-y-8 scroll-mt-28">
           <div class="space-y-3 pb-4 border-b border-white/10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading" data-i18n="port_sec1_title">
               Pourquoi un Portfolio en BTS SIO ?
             </h2>
-            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl" data-i18n="port_sec1_desc">
               Dans le cadre du diplôme BTS SIO (option SISR — Solutions d'Infrastructure, Systèmes et Réseaux), le portfolio représente bien plus qu'un simple curriculum vitae : il constitue la synthèse vivante des compétences acquises, des architectures réseau déployées, des travaux pratiques d'administration et des résolutions d'incidents informatiques.
             </p>
           </div>
@@ -192,19 +208,19 @@
                 </div>
 
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">Objectif Pédagogique</span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-emerald-400" data-i18n="port_card1_tag">Objectif Pédagogique</span>
                 </div>
 
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading" data-i18n="port_card1_title">
                   Évaluation & Suivi des Compétences
                 </h3>
 
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed" data-i18n="port_card1_desc">
                   Le portfolio est l'outil indispensable pour présenter l'ensemble de mes réalisations techniques devant les examinateurs lors des épreuves professionnelles du BTS SIO (notamment les épreuves E4 et E5). Il conserve un historique précis de mes fiches de situations professionnelles, documentations techniques, scripts d'automatisation et topologies réseau.
                 </p>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono flex items-center gap-2">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono flex items-center gap-2" data-i18n="port_card1_foot">
                 <span>Épreuves E4 / E5 · Fiches d'activités</span>
               </div>
             </article>
@@ -222,19 +238,19 @@
                 </div>
 
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs font-mono uppercase tracking-widest text-blue-400">Carrière & Insertion</span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-blue-400" data-i18n="port_card2_tag">Carrière & Insertion</span>
                 </div>
 
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading" data-i18n="port_card2_title">
                   Référence Professionnelle
                 </h3>
 
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed" data-i18n="port_card2_desc">
                   Au-delà du cadre scolaire, ce site web sert de support professionnel direct auprès des recruteurs, maîtres d'apprentissage et tuteurs de stage. Il valorise concrètement ma rigueur documentaire, ma veille technologique continue et mon approche méthodique de la résolution d'incidents.
                 </p>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono flex items-center gap-2">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono flex items-center gap-2" data-i18n="port_card2_foot">
                 <span>Alternance · Stages · Insertion professionnelle</span>
               </div>
             </article>
@@ -246,10 +262,10 @@
              ===================================================================== -->
         <section class="space-y-8">
           <div class="space-y-3 pb-4 border-b border-white/10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading" data-i18n="port_sec2_title">
               Comment j'ai réalisé mon Portfolio
             </h2>
-            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl" data-i18n="port_sec2_desc">
               La conception de cette plateforme s'est étalée sur un cycle complet d'une année scolaire, en parallèle de mes cours et de mes projets en entreprise, combinant exigence ergonomique, esthétique épurée et technologies modernes.
             </p>
           </div>
@@ -268,14 +284,14 @@
                 </div>
 
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs font-mono uppercase tracking-widest text-amber-400">Stack & Ingénierie</span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-amber-400" data-i18n="port_tools_tag">Stack & Ingénierie</span>
                 </div>
 
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading" data-i18n="port_tools_title">
                   Outils Utilisés
                 </h3>
 
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed mb-4">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed mb-4" data-i18n="port_tools_desc">
                   Développé au moyen de <strong>VS Code</strong>, avec l'assistance d'intelligence artificielle avancée (<strong>Google Gemini</strong>) et de modèles LLM locaux pour accélérer le prototypage. Le design s'appuie sur <strong>Tailwind CSS</strong>, une suite de composants réactifs et des éléments visuels 3D sur-mesure.
                 </p>
 
@@ -288,7 +304,7 @@
                 </div>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono" data-i18n="port_tools_foot">
                 Architecture modulaire · Accessibilité · Performance
               </div>
             </article>
@@ -306,34 +322,34 @@
                 </div>
 
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs font-mono uppercase tracking-widest text-purple-400">Chronologie & Rigueur</span>
+                  <span class="text-xs font-mono uppercase tracking-widest text-purple-400" data-i18n="port_time_tag">Chronologie & Rigueur</span>
                 </div>
 
-                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading">
+                <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 font-heading" data-i18n="port_time_title">
                   Temps de Réalisation
                 </h3>
 
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed mb-4">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed mb-4" data-i18n="port_time_desc">
                   Développé en continu sur une <strong>durée d'environ 1 an</strong>, ce portfolio a fait l'objet de multiples itérations : affinement des palettes chromatiques (tons terre chaude et taupe), intégration de la vidéo scrubbing réactive à la souris, optimisation des fenêtres modales avec centrage absolu viewport et vérification constante de la lisibilité.
                 </p>
 
                 <div class="space-y-2 text-xs sm:text-sm text-white/70">
                   <div class="flex items-center justify-between py-1 border-b border-white/5">
-                    <span>Phase 1 : Cadrage & Cahier des charges</span>
-                    <span class="font-mono text-white/50">Mois 1 - 2</span>
+                    <span data-i18n="port_time_p1">Phase 1 : Cadrage & Cahier des charges</span>
+                    <span class="font-mono text-white/50" data-i18n="port_time_p1_val">Mois 1 - 2</span>
                   </div>
                   <div class="flex items-center justify-between py-1 border-b border-white/5">
-                    <span>Phase 2 : Intégration UI/UX & Vidéo Scrub</span>
-                    <span class="font-mono text-white/50">Mois 3 - 6</span>
+                    <span data-i18n="port_time_p2">Phase 2 : Intégration UI/UX & Vidéo Scrub</span>
+                    <span class="font-mono text-white/50" data-i18n="port_time_p2_val">Mois 3 - 6</span>
                   </div>
                   <div class="flex items-center justify-between py-1">
-                    <span>Phase 3 : Modularisation & Sections BTS</span>
-                    <span class="font-mono text-white/50">Mois 7 - 12</span>
+                    <span data-i18n="port_time_p3">Phase 3 : Modularisation & Sections BTS</span>
+                    <span class="font-mono text-white/50" data-i18n="port_time_p3_val">Mois 7 - 12</span>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono" data-i18n="port_time_foot">
                 Itérations continues · Qualité de code certifiée
               </div>
             </article>
@@ -344,8 +360,11 @@
 
       <!-- Footer -->
       <footer class="mt-auto w-full py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-mono">
-        <p>© 2026 - 2027 Maxence FONTAINE GROS · Portfolio BTS SIO SISR · Tous droits réservés.</p>
+        <p data-i18n="port_footer">© 2026 - 2027 Maxence FONTAINE GROS · Portfolio BTS SIO SISR · Tous droits réservés.</p>
       </footer>
     </div>
+
+    <!-- I18N LOCALIZATION ENGINE -->
+    <script src="/public/i18n.js"></script>
   </body>
 </html>

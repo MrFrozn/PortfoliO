@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Le BTS SIO, qu'est-ce que c'est ? — Maxence FONTAINE GROS</title>
+    <title data-i18n="bts_meta_title">Le BTS SIO, qu'est-ce que c'est ? — Maxence FONTAINE GROS</title>
     <meta
       name="description"
       content="Présentation complète du BTS SIO (Services Informatiques aux Organisations) et de ses deux options : SISR et SLAM. Référentiel, compétences clés et débouchés."
@@ -129,26 +129,41 @@
         </span>
       </a>
 
-      <!-- Right: Pill Button "← Retour portfolio" -->
-      <a
-        href="index.html#about"
-        class="inline-flex items-center gap-2 rounded-full px-5 py-2 bg-[#382A22] text-white border border-[#7A553A]/40 hover:bg-[#4A382E] hover:border-[#7A553A]/70 text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-md cursor-pointer group"
-      >
-        <svg
-          class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
+      <!-- Right Controls: Language Switcher + Pill Button "← Retour portfolio" -->
+      <div class="flex items-center gap-3">
+        <button
+          id="lang-switcher-btn"
+          type="button"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#382A22] text-white border border-[#7A553A]/40 hover:bg-[#4A382E] hover:border-[#7A553A]/70 text-xs font-mono font-medium transition-all duration-200 active:scale-95 shadow-md cursor-pointer"
+          title="Switch language / Changer de langue"
+          aria-label="Changer de langue / Switch language"
         >
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-        <span>Retour portfolio</span>
-      </a>
+          <span class="text-sm leading-none select-none">🌐</span>
+          <span id="lang-fr" class="lang-fr-label text-white font-bold transition-opacity">FR</span>
+          <span class="text-white/30 select-none">|</span>
+          <span id="lang-en" class="lang-en-label text-white/40 font-normal transition-opacity">EN</span>
+        </button>
+
+        <a
+          href="index.html#about"
+          class="inline-flex items-center gap-2 rounded-full px-5 py-2 bg-[#382A22] text-white border border-[#7A553A]/40 hover:bg-[#4A382E] hover:border-[#7A553A]/70 text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-md cursor-pointer group"
+        >
+          <svg
+            class="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span data-i18n="nav_back_portfolio">Retour portfolio</span>
+        </a>
+      </div>
     </header>
 
     <!-- MAIN CONTAINER -->
@@ -162,43 +177,43 @@
         <div class="max-w-4xl space-y-5">
           <!-- Badge Tag -->
           <div class="flex items-center gap-2">
-            <span class="text-[#D4A373] text-xs font-semibold tracking-wider uppercase font-mono px-3 py-1 rounded-full bg-[#7A553A]/25 border border-[#7A553A]/40">
+            <span class="text-[#D4A373] text-xs font-semibold tracking-wider uppercase font-mono px-3 py-1 rounded-full bg-[#7A553A]/25 border border-[#7A553A]/40" data-i18n="bts_header_badge">
               DIPLÔME & RÉFÉRENTIEL
             </span>
-            <span class="text-white/40 text-xs font-mono">Bac +2 • 120 ECTS</span>
+            <span class="text-white/40 text-xs font-mono" data-i18n="bts_header_credits">Bac +2 • 120 ECTS</span>
           </div>
 
           <!-- Main Title -->
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-heading tracking-tight leading-[1.12]">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-heading tracking-tight leading-[1.12]" data-i18n="bts_header_title">
             Le BTS SIO, qu'est-ce que c'est&nbsp;?
           </h1>
 
           <!-- Description text -->
-          <p class="text-base sm:text-lg text-white/90 leading-relaxed font-normal">
+          <p class="text-base sm:text-lg text-white/90 leading-relaxed font-normal" data-i18n="bts_header_desc1">
             Le <strong class="text-white font-semibold">BTS Services Informatiques aux Organisations (SIO)</strong> est un diplôme national d'État de niveau Bac+2 formant des techniciens supérieurs hautement qualifiés pour répondre aux besoins numériques des entreprises, des administrations et des ESN (Entreprises de Services du Numérique).
           </p>
 
-          <p class="text-sm sm:text-base text-white/75 leading-relaxed">
+          <p class="text-sm sm:text-base text-white/75 leading-relaxed" data-i18n="bts_header_desc2">
             La formation combine un socle académique solide (culture générale, anglais technique, mathématiques appliquées, économie, management et droit du numérique) avec une immersion professionnelle concrète : <strong class="text-white font-medium">ateliers de professionnalisation (AP)</strong>, projets collaboratifs en situation réelle, et périodes de stage ou d'alternance.
           </p>
 
           <!-- Key Stats / Indicators Strip -->
           <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-white/10">
             <div class="p-3 rounded-2xl bg-black/20 border border-white/5">
-              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono">Durée</span>
-              <span class="text-base sm:text-lg font-bold text-white font-heading">2 Ans</span>
+              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono" data-i18n="bts_stat_duration">Durée</span>
+              <span class="text-base sm:text-lg font-bold text-white font-heading" data-i18n="bts_stat_duration_val">2 Ans</span>
             </div>
             <div class="p-3 rounded-2xl bg-black/20 border border-white/5">
-              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono">Crédits</span>
-              <span class="text-base sm:text-lg font-bold text-white font-heading">120 ECTS</span>
+              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono" data-i18n="bts_stat_credits">Crédits</span>
+              <span class="text-base sm:text-lg font-bold text-white font-heading" data-i18n="bts_stat_credits_val">120 ECTS</span>
             </div>
             <div class="p-3 rounded-2xl bg-black/20 border border-white/5">
-              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono">Spécialisations</span>
-              <span class="text-base sm:text-lg font-bold text-[#D4A373] font-heading">2 Options</span>
+              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono" data-i18n="bts_stat_options">Spécialisations</span>
+              <span class="text-base sm:text-lg font-bold text-[#D4A373] font-heading" data-i18n="bts_stat_options_val">2 Options</span>
             </div>
             <div class="p-3 rounded-2xl bg-black/20 border border-white/5">
-              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono">Immersion</span>
-              <span class="text-base sm:text-lg font-bold text-white font-heading">Stage / Alternance</span>
+              <span class="block text-xs uppercase tracking-wider text-white/40 font-mono" data-i18n="bts_stat_immersion">Immersion</span>
+              <span class="text-base sm:text-lg font-bold text-white font-heading" data-i18n="bts_stat_immersion_val">Stage / Alternance</span>
             </div>
           </div>
         </div>
@@ -211,54 +226,54 @@
         <article class="glass-card-sisr p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative group">
           <!-- Top Floating Mon Option Badge -->
           <div class="flex items-center justify-between mb-4">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#7A553A] text-white text-xs font-semibold uppercase tracking-wider shadow-md">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#7A553A] text-white text-xs font-semibold uppercase tracking-wider shadow-md" data-i18n="bts_sisr_badge">
               <span>★</span> Mon option • Spécialisation
             </span>
-            <span class="text-xs font-mono text-[#D4A373]">Systèmes & Réseaux</span>
+            <span class="text-xs font-mono text-[#D4A373]" data-i18n="bts_sisr_track_tag">Systèmes & Réseaux</span>
           </div>
 
           <div class="space-y-4">
             <div>
-              <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight mb-1">
+              <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight mb-1" data-i18n="bts_sisr_title">
                 Option SISR
               </h2>
-              <span class="text-[#D4A373] text-xs sm:text-sm uppercase tracking-wider font-semibold block">
+              <span class="text-[#D4A373] text-xs sm:text-sm uppercase tracking-wider font-semibold block" data-i18n="bts_sisr_subtitle">
                 Solutions d'Infrastructure, Systèmes et Réseaux
               </span>
             </div>
 
-            <p class="text-white/80 text-sm sm:text-base leading-relaxed">
+            <p class="text-white/80 text-sm sm:text-base leading-relaxed" data-i18n="bts_sisr_desc">
               L'option SISR prépare les professionnels chargés de la mise en place, de la gestion et de la sécurité des équipements informatiques. L'étudiant apprend à administrer des parcs informatiques, configurer des commutateurs et routeurs, concevoir des environnements virtualisés et garantir la cyber-résilience d'une organisation.
             </p>
 
             <!-- Key Skills with Clean Tech Pill Badges -->
             <div class="pt-2">
-              <h3 class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-3">
+              <h3 class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-3" data-i18n="bts_skills_title">
                 Compétences clés
               </h3>
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill1">
                   Administration Windows Server
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill2">
                   Linux (Debian / AlmaLinux)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill3">
                   Switchs & Routeurs Cisco (CLI IOS)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill4">
                   Virtualisation (VMware / Proxmox)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill5">
                   Pare-feu & Filtrage (Fortinet / Palo Alto)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill6">
                   Active Directory, GPO & DNS/DHCP
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill7">
                   VLANs 802.1Q & Routage inter-VLAN
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_sisr_skill8">
                   Sauvegardes & Reprise d'Activité (PRA)
                 </span>
               </div>
@@ -266,23 +281,23 @@
 
             <!-- Career Outcomes -->
             <div class="pt-4 border-t border-[#7A553A]/40">
-              <h3 class="text-xs uppercase tracking-wider text-[#D4A373] font-semibold mb-2.5">
+              <h3 class="text-xs uppercase tracking-wider text-[#D4A373] font-semibold mb-2.5" data-i18n="bts_careers_title">
                 Débouchés professionnels
               </h3>
               <div class="flex flex-wrap gap-1.5">
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_sisr_career1">
                   Administrateur systèmes & réseaux
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_sisr_career2">
                   Technicien support d'infrastructure
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_sisr_career3">
                   Gestionnaire de parc informatique
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_sisr_career4">
                   Auditeur cybersécurité junior
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_sisr_career5">
                   Intégrateur solutions réseaux
                 </span>
               </div>
@@ -294,54 +309,54 @@
         <article class="glass-card p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 relative group">
           <!-- Top Badge -->
           <div class="flex items-center justify-between mb-4">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 text-white/90 text-xs font-semibold uppercase tracking-wider border border-white/15">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 text-white/90 text-xs font-semibold uppercase tracking-wider border border-white/15" data-i18n="bts_slam_badge">
               Développement Logiciel
             </span>
-            <span class="text-xs font-mono text-white/40">Web, Mobile & BD</span>
+            <span class="text-xs font-mono text-white/40" data-i18n="bts_slam_track_tag">Web, Mobile & BD</span>
           </div>
 
           <div class="space-y-4">
             <div>
-              <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight mb-1">
+              <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight mb-1" data-i18n="bts_slam_title">
                 Option SLAM
               </h2>
-              <span class="text-[#D4A373] text-xs sm:text-sm uppercase tracking-wider font-semibold block">
+              <span class="text-[#D4A373] text-xs sm:text-sm uppercase tracking-wider font-semibold block" data-i18n="bts_slam_subtitle">
                 Solutions Logicielles et Applications Métiers
               </span>
             </div>
 
-            <p class="text-white/80 text-sm sm:text-base leading-relaxed">
+            <p class="text-white/80 text-sm sm:text-base leading-relaxed" data-i18n="bts_slam_desc">
               L'option SLAM forme des spécialistes de la conception et du développement d'applications logicielles, web et mobiles. L'étudiant apprend à traduire les besoins des utilisateurs en solutions logicielles fiables, modéliser des bases de données relationnelles et maintenir les applications en production.
             </p>
 
             <!-- Key Skills with Clean Tech Pill Badges -->
             <div class="pt-2">
-              <h3 class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-3">
+              <h3 class="text-xs uppercase tracking-wider text-white/50 font-semibold mb-3" data-i18n="bts_skills_title">
                 Compétences clés
               </h3>
               <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill1">
                   Développement Web (HTML, CSS, JavaScript)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill2">
                   Programmation Orientée Objet (Python, Java, C#)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill3">
                   Bases de données relationnelles (SQL, MySQL)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill4">
                   Conception & Consommation d'APIs REST
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill5">
                   Frameworks Modernes (React, Symfony)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill6">
                   Gestion de versions avec Git & GitHub
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill7">
                   Méthodologies Agiles (Scrum, Kanban)
                 </span>
-                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors">
+                <span class="px-3 py-1 bg-white/10 rounded-full text-xs text-white border border-white/10 hover:border-white/20 transition-colors" data-i18n="bts_slam_skill8">
                   Sécurité applicative (Normes OWASP)
                 </span>
               </div>
@@ -349,23 +364,23 @@
 
             <!-- Career Outcomes -->
             <div class="pt-4 border-t border-white/10">
-              <h3 class="text-xs uppercase tracking-wider text-[#D4A373] font-semibold mb-2.5">
+              <h3 class="text-xs uppercase tracking-wider text-[#D4A373] font-semibold mb-2.5" data-i18n="bts_careers_title">
                 Débouchés professionnels
               </h3>
               <div class="flex flex-wrap gap-1.5">
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_slam_career1">
                   Développeur d'applications web & mobile
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_slam_career2">
                   Analyste programmeur
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_slam_career3">
                   Concepteur / Intégrateur logiciel
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_slam_career4">
                   Gestionnaire de bases de données junior
                 </span>
-                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85">
+                <span class="px-2.5 py-1 rounded-lg bg-black/30 border border-white/10 text-xs text-white/85" data-i18n="bts_slam_career5">
                   Technicien support applicatif
                 </span>
               </div>
@@ -379,10 +394,10 @@
       <article class="glass-card p-8 sm:p-10">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
           <div>
-            <span class="text-[#D4A373] text-xs font-semibold tracking-wider uppercase font-mono block mb-1">
+            <span class="text-[#D4A373] text-xs font-semibold tracking-wider uppercase font-mono block mb-1" data-i18n="bts_exams_section_badge">
               ÉVALUATION & CERTIFICATION
             </span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white font-heading" data-i18n="bts_exams_section_title">
               Les Épreuves Pratiques du BTS SIO
             </h2>
           </div>
@@ -390,7 +405,7 @@
             href="index.html#epreuves"
             class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#D4A373] hover:text-white transition-colors"
           >
-            <span>Consulter la section Épreuves</span>
+            <span data-i18n="bts_exams_section_link">Consulter la section Épreuves</span>
             <span aria-hidden="true">→</span>
           </a>
         </div>
@@ -398,33 +413,33 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <!-- E4 -->
           <div class="p-5 rounded-2xl bg-black/20 border border-white/10 hover:border-white/20 transition-all">
-            <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[11px] font-mono uppercase mb-2 inline-block">
+            <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[11px] font-mono uppercase mb-2 inline-block" data-i18n="bts_e4_badge">
               Épreuve E4
             </span>
-            <h3 class="text-lg font-bold text-white font-heading mb-1.5">Support & Mise à disposition</h3>
-            <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+            <h3 class="text-lg font-bold text-white font-heading mb-1.5" data-i18n="bts_e4_title">Support & Mise à disposition</h3>
+            <p class="text-xs sm:text-sm text-white/70 leading-relaxed" data-i18n="bts_e4_desc">
               Gestion du patrimoine informatique, réponse aux incidents utilisateurs et développement de la présence en ligne.
             </p>
           </div>
 
           <!-- E5 -->
           <div class="p-5 rounded-2xl bg-[#7A553A]/20 border border-[#7A553A]/40 hover:border-[#7A553A]/70 transition-all">
-            <span class="px-2.5 py-0.5 rounded-full bg-[#7A553A] text-white text-[11px] font-mono uppercase mb-2 inline-block">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#7A553A] text-white text-[11px] font-mono uppercase mb-2 inline-block" data-i18n="bts_e5_badge">
               Épreuve E5 (SISR)
             </span>
-            <h3 class="text-lg font-bold text-white font-heading mb-1.5">Conception & Maintenance</h3>
-            <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+            <h3 class="text-lg font-bold text-white font-heading mb-1.5" data-i18n="bts_e5_title">Conception & Maintenance</h3>
+            <p class="text-xs sm:text-sm text-white/70 leading-relaxed" data-i18n="bts_e5_desc">
               Déploiement d'architectures réseaux, virtualisation de serveurs et administration avancée de parcs systèmes.
             </p>
           </div>
 
           <!-- E6 -->
           <div class="p-5 rounded-2xl bg-black/20 border border-white/10 hover:border-white/20 transition-all">
-            <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[11px] font-mono uppercase mb-2 inline-block">
+            <span class="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-[11px] font-mono uppercase mb-2 inline-block" data-i18n="bts_e6_badge">
               Épreuve E6
             </span>
-            <h3 class="text-lg font-bold text-white font-heading mb-1.5">Cybersécurité</h3>
-            <p class="text-xs sm:text-sm text-white/70 leading-relaxed">
+            <h3 class="text-lg font-bold text-white font-heading mb-1.5" data-i18n="bts_e6_title">Cybersécurité</h3>
+            <p class="text-xs sm:text-sm text-white/70 leading-relaxed" data-i18n="bts_e6_desc">
               Audit de vulnérabilités, durcissement d'équipements, politique de sécurité et mise en conformité des systèmes.
             </p>
           </div>
@@ -434,10 +449,10 @@
       <!-- 4. BOTTOM CALL-TO-ACTION & BACK TO PORTFOLIO -->
       <div class="glass-card p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
         <div class="space-y-1">
-          <h3 class="text-xl sm:text-2xl font-bold text-white font-heading">
+          <h3 class="text-xl sm:text-2xl font-bold text-white font-heading" data-i18n="bts_cta_box_title">
             Envie de découvrir mes réalisations techniques&nbsp;?
           </h3>
-          <p class="text-sm sm:text-base text-white/70">
+          <p class="text-sm sm:text-base text-white/70" data-i18n="bts_cta_box_desc">
             Explorez mes compétences pratiques, mes projets et mes certifications sur mon portfolio.
           </p>
         </div>
@@ -446,8 +461,7 @@
           href="index.html#about"
           class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-sm hover:bg-neutral-200 transition-all active:scale-95 shadow-lg whitespace-nowrap cursor-pointer"
         >
-          <span>Retourner au portfolio</span>
-          <span aria-hidden="true">→</span>
+          <span data-i18n="bts_cta_box_btn">Retourner au portfolio →</span>
         </a>
       </div>
 
@@ -455,15 +469,18 @@
 
     <!-- FOOTER -->
     <footer class="relative z-10 max-w-6xl mx-auto px-6 py-10 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-white/50 select-none">
-      <p>
+      <p data-i18n="bts_footer_brand">
         Maxence FONTAINE GROS — Portfolio BTS SIO SISR
       </p>
       <div class="flex items-center gap-6">
-        <a href="index.html#skills" class="hover:text-white transition-colors">Compétences</a>
-        <a href="index.html#projets" class="hover:text-white transition-colors">Projets</a>
-        <a href="index.html#experiences" class="hover:text-white transition-colors">Expériences</a>
-        <a href="index.html#contact" class="hover:text-white transition-colors">Contact</a>
+        <a href="index.html#skills" class="hover:text-white transition-colors" data-i18n="nav_skills">Compétences</a>
+        <a href="index.html#projets" class="hover:text-white transition-colors" data-i18n="nav_projects">Projets</a>
+        <a href="index.html#experiences" class="hover:text-white transition-colors" data-i18n="nav_experiences">Expériences</a>
+        <a href="index.html#contact" class="hover:text-white transition-colors" data-i18n="nav_contact">Contact</a>
       </div>
     </footer>
+
+    <!-- I18N LOCALIZATION ENGINE -->
+    <script src="/public/i18n.js"></script>
   </body>
 </html>

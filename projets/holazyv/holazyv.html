@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projet HoLazyV — Branding & E-Commerce — Maxence FONTAINE GROS</title>
+    <title data-i18n="holazyv_meta_title">Projet HoLazyV — Branding & E-Commerce — Maxence FONTAINE GROS</title>
     <meta
       name="description"
       content="Création de boutique en ligne, identité visuelle complète, branding vectoriel et design e-commerce pour le projet HoLazyV."
@@ -90,18 +90,33 @@
           </span>
         </a>
 
-        <!-- Back to Portfolio Pill-Button -->
-        <a
-          id="btn-back-portfolio"
-          href="../../index.html#projects"
-          class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm"
-        >
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-          <span>Back to Portfolio</span>
-        </a>
+        <!-- Right Controls: Language Switcher + Back to Portfolio Pill-Button -->
+        <div class="flex items-center gap-3">
+          <button
+            id="lang-switcher-btn"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#382A22] text-white border border-[#7A553A]/40 hover:bg-[#4A382E] hover:border-[#7A553A]/70 text-xs font-mono font-medium transition-all duration-200 active:scale-95 shadow-md cursor-pointer"
+            title="Switch language / Changer de langue"
+            aria-label="Changer de langue / Switch language"
+          >
+            <span class="text-sm leading-none select-none">🌐</span>
+            <span id="lang-fr" class="lang-fr-label text-white font-bold transition-opacity">FR</span>
+            <span class="text-white/30 select-none">|</span>
+            <span id="lang-en" class="lang-en-label text-white/40 font-normal transition-opacity">EN</span>
+          </button>
+
+          <a
+            id="btn-back-portfolio"
+            href="../../index.html#projects"
+            class="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs sm:text-sm font-medium transition-all duration-200 active:scale-95 shadow-sm"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span data-i18n="nav_back_portfolio">Back to Portfolio</span>
+          </a>
+        </div>
       </header>
 
       <!-- =========================================================================
@@ -112,18 +127,19 @@
           <!-- Small Category Eyebrow -->
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/90 text-xs font-mono uppercase tracking-wider">
             <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-            Branding · E-Commerce & Direction Artistique
+            <span data-i18n="holazyv_badge">Branding · E-Commerce & Direction Artistique</span>
           </div>
 
           <!-- Hero Title -->
           <h1
             class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] font-heading"
+            data-i18n="holazyv_title"
           >
             Projet HoLazyV
           </h1>
 
           <!-- Intro Paragraph -->
-          <p class="text-lg sm:text-xl text-white/75 leading-relaxed font-normal">
+          <p class="text-lg sm:text-xl text-white/75 leading-relaxed font-normal" data-i18n="holazyv_desc">
             Création de boutique en ligne, identité visuelle complète, branding vectoriel et design e-commerce pour le projet HoLazyV. Une expérience moderne axée sur l'originalité graphique et l'ergonomie d'achat.
           </p>
 
@@ -137,7 +153,7 @@
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-white text-black text-sm sm:text-base font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-xl select-none"
             >
-              <span>Voir le document du projet (PDF)</span>
+              <span data-i18n="holazyv_btn_pdf">Voir le document du projet (PDF)</span>
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
                 <polyline points="7 7 17 7 17 17"></polyline>
@@ -150,7 +166,7 @@
               href="../../index.html#projects"
               class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm sm:text-base font-medium transition-all duration-200 active:scale-95 select-none"
             >
-              <span>Retour aux projets</span>
+              <span data-i18n="holazyv_btn_back">Retour aux projets</span>
               <svg class="w-4 h-4 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -168,10 +184,10 @@
              ===================================================================== -->
         <section class="space-y-8">
           <div class="space-y-3 pb-4 border-b border-white/10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-heading" data-i18n="holazyv_art_dir_title">
               Direction Artistique & Conception
             </h2>
-            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl">
+            <p class="text-white/70 text-base sm:text-lg leading-relaxed max-w-3xl" data-i18n="holazyv_art_dir_desc">
               Le projet HoLazyV est né de la volonté de fusionner une esthétique streetwear underground avec une boutique en ligne haut de gamme et parfaitement fluide.
             </p>
           </div>
@@ -189,15 +205,15 @@
                   </svg>
                 </div>
 
-                <span class="text-xs font-mono uppercase tracking-widest text-indigo-400">Identité & ADN</span>
-                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                <span class="text-xs font-mono uppercase tracking-widest text-indigo-400" data-i18n="holazyv_card1_tag">Identité & ADN</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading" data-i18n="holazyv_card1_title">
                   Concept de Marque (Branding)
                 </h3>
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed" data-i18n="holazyv_card1_desc">
                   Définition des valeurs fondamentales de la marque : décontraction assumée, culture urbaine contemporaine et exclusivité. Création de la charte graphique globale comprenant le logotype, les déclinaisons monochrome et couleurs, ainsi que le packaging digital.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono" data-i18n="holazyv_card1_foot">
                 Logotype · Moodboard · Charte graphique
               </div>
             </article>
@@ -214,15 +230,15 @@
                   </svg>
                 </div>
 
-                <span class="text-xs font-mono uppercase tracking-widest text-amber-400">Typographie</span>
-                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                <span class="text-xs font-mono uppercase tracking-widest text-amber-400" data-i18n="holazyv_card2_tag">Typographie</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading" data-i18n="holazyv_card2_title">
                   Choix Typographiques
                 </h3>
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed" data-i18n="holazyv_card2_desc">
                   Sélection minutieuse de polices à fort impact visuel : des titrages display imposants et expressifs associés à des polices de corps géométriques sans-serif hautement lisibles sur mobile comme sur desktop pour maximiser le taux de conversion.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono" data-i18n="holazyv_card2_foot">
                 Hiérarchie visuelle · Display Fonts · Ratios optiques
               </div>
             </article>
@@ -240,15 +256,15 @@
                   </svg>
                 </div>
 
-                <span class="text-xs font-mono uppercase tracking-widest text-pink-400">Illustration & Vector</span>
-                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                <span class="text-xs font-mono uppercase tracking-widest text-pink-400" data-i18n="holazyv_card3_tag">Illustration & Vector</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading" data-i18n="holazyv_card3_title">
                   Graphismes Vectoriels
                 </h3>
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed" data-i18n="holazyv_card3_desc">
                   Réalisation de tracés vectoriels originaux sous Kittle : icônes personnalisées pour la boutique, motifs de broderie/sérigraphie, badges de certification et éléments d'habillage responsive sans perte de résolution.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono" data-i18n="holazyv_card3_foot">
                 Figma · SVG optimisés
               </div>
             </article>
@@ -263,15 +279,15 @@
                   </svg>
                 </div>
 
-                <span class="text-xs font-mono uppercase tracking-widest text-cyan-400">Effets Visuels & Shaders</span>
-                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading">
+                <span class="text-xs font-mono uppercase tracking-widest text-cyan-400" data-i18n="holazyv_card4_tag">Effets Visuels & Shaders</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-white my-3 font-heading" data-i18n="holazyv_card4_title">
                   Effets Astronomiques
                 </h3>
-                <p class="text-white/75 text-sm sm:text-base leading-relaxed">
+                <p class="text-white/75 text-sm sm:text-base leading-relaxed" data-i18n="holazyv_card4_desc">
                   Signature visuelle distinctive du projet : mise au point d'une ambiance astronomique appliqués aux éléments d'arrière-plan, conférant une atmosphère futuriste et dynamique à la vitrine e-commerce.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono">
+              <div class="mt-6 pt-4 border-t border-white/10 text-xs text-white/50 font-mono" data-i18n="holazyv_card4_foot">
                 Spacey Atmosphere · Textures · Street-wear · Future
               </div>
             </article>
@@ -282,8 +298,11 @@
 
       <!-- Footer -->
       <footer class="mt-auto w-full py-8 px-6 border-t border-white/10 text-center text-xs text-white/40 font-mono">
-        <p>© 2026 - 2027 Projet HoLazyV · Direction Artistique & E-commerce · Maxence FONTAINE GROS</p>
+        <p data-i18n="holazyv_footer">© 2026 - 2027 Projet HoLazyV · Direction Artistique & E-commerce · Maxence FONTAINE GROS</p>
       </footer>
     </div>
+
+    <!-- I18N LOCALIZATION ENGINE -->
+    <script src="/public/i18n.js"></script>
   </body>
 </html>
