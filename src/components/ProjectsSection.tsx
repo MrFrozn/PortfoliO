@@ -21,7 +21,7 @@ const PROJECTS_DATA: ProjectItem[] = [
     // User can place custom cover images in /public/projets/portfolio/cover portfolio.png
     coverImage: '/projets/portfolio/cover_portfolio.png',
     tags: ['Web Design', 'Tailwind CSS', 'UI/UX', 'JS', 'AI'],
-    detailUrl: '/projets/portfolio/portfolio.html',
+    detailUrl: './projets/portfolio/portfolio.html',
     statsLabel: 'Projet Phare 2025 - 2026',
   },
   {
@@ -33,7 +33,7 @@ const PROJECTS_DATA: ProjectItem[] = [
     // User can place custom cover images in /public/projets/holazyv/cover_holazyv.png
     coverImage: '/projets/holazyv/cover_holazyv.png',
     tags: ['Branding', 'Graphic Design', 'Online Store', 'UI/UX'],
-    detailUrl: '/projets/holazyv/holazyv.html',
+    detailUrl: './projets/holazyv/holazyv.html',
     statsLabel: 'E-commerce & Brand Concept',
   },
 ];
@@ -70,7 +70,7 @@ export function ProjectsSection() {
             <article
               key={project.id}
               id={`project-card-${project.id}`}
-              className="group relative rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 overflow-hidden shadow-2xl transition-all duration-300 hover:border-white/25 hover:bg-neutral-900/90 flex flex-col justify-between"
+              className="group relative z-10 rounded-3xl bg-neutral-900/80 backdrop-blur-sm md:backdrop-blur-md border border-white/10 overflow-hidden shadow-2xl transition-all duration-300 hover:border-white/25 hover:bg-neutral-900/90 flex flex-col justify-between"
             >
               {/* Cover Image Container with fixed aspect ratio to prevent CLS */}
               <div className="relative w-full aspect-video h-56 sm:h-64 md:h-72 overflow-hidden bg-black/40 border-b border-white/10">
@@ -160,7 +160,7 @@ export function ProjectsSection() {
                   <a
                     id={`btn-discover-${project.id}`}
                     href={project.detailUrl}
-                    className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-md group/btn cursor-pointer select-none"
+                    className="relative z-20 pointer-events-auto inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:bg-neutral-200 transition-all duration-200 active:scale-95 shadow-md group/btn cursor-pointer select-none"
                   >
                     <span>Découvrir le projet</span>
                     <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
@@ -168,7 +168,7 @@ export function ProjectsSection() {
 
                   <a
                     href={project.detailUrl}
-                    className="text-xs text-white/40 hover:text-white transition-colors font-mono flex items-center gap-1"
+                    className="relative z-20 pointer-events-auto cursor-pointer text-xs text-white/40 hover:text-white transition-colors font-mono flex items-center gap-1"
                     title="Ouvrir la page du projet"
                   >
                     <span>Détails</span>

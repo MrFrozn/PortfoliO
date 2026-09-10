@@ -68,21 +68,33 @@ export function BackgroundVideo() {
   }, []);
 
   return (
-    <video
-      id="hero-background-video"
-      ref={videoRef}
-      src="/hero%20animation.mp4"
-      muted
-      playsInline
-      preload="auto"
-      className="fixed inset-0 z-0 w-full h-full object-cover opacity-60 pointer-events-none"
-      style={{
-        position: 'fixed',
-        inset: 0,
-        zIndex: 0,
-        objectFit: 'cover',
-        objectPosition: '70% center',
-      }}
-    />
+    <div
+      id="hero-bg-wrapper"
+      className="fixed inset-0 z-0 bg-black pointer-events-none overflow-hidden"
+    >
+      {/* Desktop Video (Active ONLY on desktop fine pointer screens) */}
+      <video
+        id="hero-background-video"
+        ref={videoRef}
+        src="/hero%20animation.mp4"
+        poster="/hero-poster.jpg"
+        muted
+        playsInline
+        preload="auto"
+        className="hidden md:block w-full h-full object-cover opacity-60"
+        style={{
+          objectFit: 'cover',
+          objectPosition: '70% center',
+        }}
+      />
+
+      {/* Mobile Hero Image Fallback (Active ONLY on mobile < md screens) */}
+      <div
+        className="block md:hidden absolute inset-0 w-full h-full bg-cover bg-center bg-gradient-to-b from-[#382A22]/80 via-black to-black opacity-70"
+        style={{
+          backgroundImage: "url('/hero-poster.jpg')",
+        }}
+      />
+    </div>
   );
 }

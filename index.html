@@ -90,19 +90,37 @@
       .glass-card:hover {
         border-color: rgba(122, 85, 58, 0.4);
       }
+      /* Firefox Backdrop-Filter & Stacking Context pointer-events fix */
+      #projects .glass-card {
+        transform: translateZ(0);
+      }
+      #projects a {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+      }
     </style>
   </head>
   <body class="relative bg-black text-white selection:bg-[#7A553A]/40 selection:text-white">
-    <!-- Background Video (Mouse-Scrub Controlled) -->
-    <video
-      id="hero-background-video"
-      src="/hero%20animation.mp4"
-      muted
-      playsinline
-      preload="auto"
-      class="fixed inset-0 z-0 w-full h-full object-cover opacity-60 pointer-events-none"
-      style="position: fixed; inset: 0; z-index: 0; object-fit: cover; object-position: 70% center;"
-    ></video>
+    <!-- Dedicated Hero Video Backdrop with Solid Black Isolation -->
+    <div id="hero-bg-wrapper" class="fixed inset-0 z-0 bg-black pointer-events-none overflow-hidden">
+      <!-- Desktop Video (Active ONLY on desktop fine pointer screens) -->
+      <video
+        id="hero-background-video"
+        src="/hero%20animation.mp4"
+        poster="/hero-poster.jpg"
+        muted
+        playsinline
+        preload="auto"
+        class="hidden md:block w-full h-full object-cover opacity-60"
+        style="object-fit: cover; object-position: 70% center;"
+      ></video>
+
+      <!-- Mobile Hero Image Fallback (Active ONLY on mobile < md screens) -->
+      <div 
+        class="block md:hidden absolute inset-0 w-full h-full bg-cover bg-center bg-gradient-to-b from-[#382A22]/80 via-black to-black opacity-70"
+        style="background-image: url('/hero-poster.jpg');"
+      ></div>
+    </div>
 
     <!-- Global Subtle Ambient Overlay -->
     <div class="fixed inset-0 z-0 bg-black/30 pointer-events-none"></div>
@@ -896,7 +914,7 @@
         <!-- 2 Centered Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           <!-- Card 1: Portfolio BTS SIO SISR -->
-          <article class="glass-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:brightness-110">
+          <article class="glass-card relative z-10 overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:brightness-110">
             <div class="relative w-full aspect-video overflow-hidden bg-black/50 border-b border-white/10">
               <img
                 src="/projets/portfolio/cover_portfolio.png"
@@ -932,7 +950,7 @@
               <div class="pt-4 border-t border-white/10 flex items-center justify-between">
                 <a
                   href="./projets/portfolio/portfolio.html"
-                  class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all shadow-md"
+                  class="relative z-20 pointer-events-auto cursor-pointer inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all shadow-md"
                 >
                   <span data-i18n="btn_discover_project">Découvrir le projet</span>
                   <span>→</span>
@@ -942,7 +960,7 @@
           </article>
 
           <!-- Card 2: HoLazyV -->
-          <article class="glass-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:brightness-110">
+          <article class="glass-card relative z-10 overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:brightness-110">
             <div class="relative w-full aspect-video overflow-hidden bg-black/50 border-b border-white/10">
               <img
                 src="/projets/holazyv/cover_holazyv.png"
@@ -977,7 +995,7 @@
               <div class="pt-4 border-t border-white/10 flex items-center justify-between">
                 <a
                   href="./projets/holazyv/holazyv.html"
-                  class="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all shadow-md"
+                  class="relative z-20 pointer-events-auto cursor-pointer inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#7A553A] hover:bg-[#8C6345] text-white text-sm font-semibold transition-all shadow-md"
                 >
                   <span data-i18n="btn_discover_project">Découvrir le projet</span>
                   <span>→</span>

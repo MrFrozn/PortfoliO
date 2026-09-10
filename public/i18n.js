@@ -504,7 +504,7 @@ const i18nData = {
     nav_back_top_aria: "Back to top",
 
     // Hero
-    hero_typewriter: "Welcome to my portfolio, I hope you'll enjoy it!",
+    hero_typewriter: "Welcome to my portfolio, hope you'll enjoy it!",
     hero_contact_pill: "Contact me: maxencefontainegros@ik.me",
     hero_contact_pill_title: "Click to copy email",
     hero_email_copied: "Email copied to clipboard!",
